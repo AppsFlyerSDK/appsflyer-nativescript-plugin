@@ -1,0 +1,53 @@
+{
+  "name": "nativescript-plugin-appsflyer",
+  "version": "1.0.1",
+  "description": "desc todo",
+  "main": "appsflyer.js",
+  "typings": "index.d.ts",
+  "nativescript": {
+    "platforms": {
+      "android": "2.0.0",
+      "ios": "2.0.0"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "buildall": "tsc; tns build",
+    "demo.ios": "npm run preparedemo; cd demo; tns emulate ios",
+    "demo.ios.watch.sim": "npm run preparedemo; cd demo; tns livesync ios --emulator --watch",
+    "demo.ios.watch": "npm run preparedemo; cd demo; tns livesync ios --watch",
+    "demo.debug.i": "cd demo; tns debug ios",
+    "demo.android": "npm run preparedemo; cd demo; tns emulate android",
+    "demo.debug.a": "cd demo; tns debug android",
+    "demo.android.watch": "npm run preparedemo; cd demo; tns livesync android --emulator --watch",
+    "run.android": "npm run preparedemo; cd demo; tns run android",
+    "preparedemo": "npm run build; cd demo; tns plugin remove nativescript-plugin-appsflyer; tns plugin add ..; tns install",
+    "setup": "cd demo; npm install; cd ..; npm run build; cd demo; tns plugin add ..; cd .."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/af-fess/nativescript-plugin-appsflyer.git"
+  },
+  "keywords": [
+    "appsflyer",
+    "nativescript"
+  ],
+  "author": {
+    "name": "Maxim Shoustin"
+  },
+  "license": {
+    "type": "MIT",
+    "url": "https://xxxxxx/LICENSE"
+  },
+  "bugs": {
+    "url": "https://xxxx/issues"
+  },
+  "homepage": "https://xxxxxxxx",
+  "readme": "# NativeScript AppsFlyer SDK.\n\nAn AppsFlyer plugin for use in your NativeScript app.\n\n<img src=\"/af-logo.png\"  width=\"200\">\n\n**This plugin is in development state**",
+  "readmeFilename": "README.md",
+  "gitHead": "0ab349373ac9c9ff388e2191a52bb7db7dba3d56",
+  "_id": "nativescript-plugin-appsflyer@1.0.1",
+  "_shasum": "f33646025647bddc7e01bbbe445a1de4566c77b7",
+  "_from": "..",
+  "_resolved": "file:.."
+}

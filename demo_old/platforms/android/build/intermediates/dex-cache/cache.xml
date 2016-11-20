@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/maxim/Appsflyer/projects/nativescript-plugin-appsflyer/demo/platforms/android/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
+        <dex dex="/Users/maxim/Appsflyer/projects/nativescript-plugin-appsflyer/demo/platforms/android/build/intermediates/pre-dexed/F0/debug/internal_impl-24.2.1_af5e37fe38b757eb79fc7392b23746daa420e88e.jar" />
+    </item>
+    <item
+        jar="/Users/maxim/Appsflyer/projects/nativescript-plugin-appsflyer/demo/platforms/android/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
+        <dex dex="/Users/maxim/Appsflyer/projects/nativescript-plugin-appsflyer/demo/platforms/android/build/intermediates/pre-dexed/F0/debug/com.android.support-support-core-ui-24.2.1_caf3780c6c00389b1a8059b08a7c3677bae43de9.jar" />
+    </item>
+    <item
+        jar="/Users/maxim/Appsflyer/projects/nativescript-plugin-appsflyer/demo/platforms/android/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
+        <dex dex="/Users/maxim/Appsflyer/projects/nativescript-plugin-appsflyer/demo/platforms/android/build/intermediates/pre-dexed/F0/debug/com.android.support-appcompat-v7-24.2.1_20acf6c68093e296c91e21014a5832e624c5ff68.jar" />
+    </item>
+    <item
+        jar="/Users/maxim/Appsflyer/projects/nativescript-plugin-appsflyer/demo/platforms/android/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
+        <dex dex="/Users/maxim/Appsflyer/projects/nativescript-plugin-appsflyer/demo/platforms/android/build/intermediates/pre-dexed/F0/debug/internal_impl-24.2.1_c02ef93a4bb5b1d2c01406dae48b584f3fbb4f29.jar" />
+    </item>
+    <item
+        jar="/Users/maxim/Appsflyer/projects/nativescript-plugin-appsflyer/demo/platforms/android/build/intermediates/exploded-aar/tns/runtime/unspecified/jars/libs/binding-generator.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="4290aba11bda501dbadc2dd5c4b08282c0bbfeb8">
+        <dex dex="/Users/maxim/Appsflyer/projects/nativescript-plugin-appsflyer/demo/platforms/android/build/intermediates/pre-dexed/F0/debug/binding-generator_9e6a7e2e37d0e6c7c8893b501da8b6a6a77136c5.jar" />
+    </item>
+    <item
+        jar="/Users/maxim/Appsflyer/projects/nativescript-plugin-appsflyer/demo/platforms/android/build/intermediates/exploded-aar/com.android.support/support-v4/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/maxim/Appsflyer/projects/nativescript-plugin-appsflyer/demo/platforms/android/build/intermediates/pre-dexed/F0/debug/com.android.support-support-v4-24.2.1_6ac4a5accb5e52a9c28ae68222917ac7ce6e8e1a.jar" />
+    </item>
+    <item
+        jar="/Users/maxim/Appsflyer/projects/nativescript-plugin-appsflyer/demo/platforms/android/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
+        <dex dex="/Users/maxim/Appsflyer/projects/nativescript-plugin-appsflyer/demo/platforms/android/build/intermediates/pre-dexed/F0/debug/com.android.support-support-media-compat-24.2.1_dc34ad5313057d2b65d5b181f2781547f649b2b3.jar" />
+    </item>
+    <item
+        jar="/Users/maxim/Appsflyer/projects/nativescript-plugin-appsflyer/demo/platforms/android/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
+        <dex dex="/Users/maxim/Appsflyer/projects/nativescript-plugin-appsflyer/demo/platforms/android/build/intermediates/pre-dexed/F0/debug/com.android.support-support-fragment-24.2.1_3f5ef553d5081054bbcba0edf3bea3b4aa71b3b2.jar" />
+    </item>
+    <item
+        jar="/Users/maxim/Appsflyer/projects/nativescript-plugin-appsflyer/demo/platforms/android/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
+        <dex dex="/Users/maxim/Appsflyer/projects/nativescript-plugin-appsflyer/demo/platforms/android/build/intermediates/pre-dexed/F0/debug/com.android.support-support-compat-24.2.1_3c836381c71979c479abd5c20d6fc2878fae5a21.jar" />
+    </item>
+    <item
+        jar="/Users/maxim/Appsflyer/projects/nativescript-plugin-appsflyer/demo/platforms/android/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="867dad63c33388ff8c7644b236579355036d075f">
+        <dex dex="/Users/maxim/Appsflyer/projects/nativescript-plugin-appsflyer/demo/platforms/android/build/intermediates/pre-dexed/F0/debug/internal_impl-24.2.1_c7dcbc741609cf06351a55c6e863f15e7e9fb3ce.jar" />
+    </item>
+    <item
+        jar="/Users/maxim/Appsflyer/projects/nativescript-plugin-appsflyer/demo/platforms/android/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
+        <dex dex="/Users/maxim/Appsflyer/projects/nativescript-plugin-appsflyer/demo/platforms/android/build/intermediates/pre-dexed/F0/debug/com.android.support-animated-vector-drawable-24.2.1_680a561a9823bd626ad25ecb7901aa6d91d80bfe.jar" />
+    </item>
+    <item
+        jar="/Users/maxim/Appsflyer/projects/nativescript-plugin-appsflyer/demo/platforms/android/build/intermediates/exploded-aar/tns/runtime/unspecified/jars/classes.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="9909ad5fcc13fcc60529cfa340ee7e0abc79af38">
+        <dex dex="/Users/maxim/Appsflyer/projects/nativescript-plugin-appsflyer/demo/platforms/android/build/intermediates/pre-dexed/F0/debug/tns-runtime-unspecified_675996ccd245b061c6a79711a9e8138e6e17f5e9.jar" />
+    </item>
+    <item
+        jar="/Users/maxim/Appsflyer/projects/nativescript-plugin-appsflyer/demo/platforms/android/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
+        <dex dex="/Users/maxim/Appsflyer/projects/nativescript-plugin-appsflyer/demo/platforms/android/build/intermediates/pre-dexed/F0/debug/internal_impl-24.2.1_bd647bda86b45c43f14c6cc77d5f1bae4c01c00f.jar" />
+    </item>
+    <item
+        jar="/Users/maxim/Appsflyer/projects/nativescript-plugin-appsflyer/demo/platforms/android/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
+        <dex dex="/Users/maxim/Appsflyer/projects/nativescript-plugin-appsflyer/demo/platforms/android/build/intermediates/pre-dexed/F0/debug/internal_impl-24.2.1_d5b4c8b1a63c8e910dab938749b81a941c232908.jar" />
+    </item>
+    <item
+        jar="/Users/maxim/Appsflyer/projects/nativescript-plugin-appsflyer/demo/platforms/android/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
+        <dex dex="/Users/maxim/Appsflyer/projects/nativescript-plugin-appsflyer/demo/platforms/android/build/intermediates/pre-dexed/F0/debug/com.android.support-support-vector-drawable-24.2.1_354db57883a7a78080841f98e9841d5a2ffbba80.jar" />
+    </item>
+    <item
+        jar="/Users/maxim/Appsflyer/projects/nativescript-plugin-appsflyer/demo/platforms/android/build/intermediates/exploded-aar/widgets-release/jars/classes.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="f3064a6bb3bf091d8ef08a38816df98e4c033ce2">
+        <dex dex="/Users/maxim/Appsflyer/projects/nativescript-plugin-appsflyer/demo/platforms/android/build/intermediates/pre-dexed/F0/debug/intermediates-exploded-aar-widgets-release_ab4c22f1714b42d5ee0e62972959825f293a5005.jar" />
+    </item>
+    <item
+        jar="/Users/maxim/Appsflyer/projects/nativescript-plugin-appsflyer/demo/platforms/android/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
+        <dex dex="/Users/maxim/Appsflyer/projects/nativescript-plugin-appsflyer/demo/platforms/android/build/intermediates/pre-dexed/F0/debug/com.android.support-support-core-utils-24.2.1_255268b0274165517de3ecc642baff9056f74651.jar" />
+    </item>
+    <item
+        jar="/Users/maxim/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/24.2.1/support-annotations-24.2.1.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
+        <dex dex="/Users/maxim/Appsflyer/projects/nativescript-plugin-appsflyer/demo/platforms/android/build/intermediates/pre-dexed/F0/debug/support-annotations-24.2.1_830927ce08b0dbd78dfa81a552997fbaf2d2cb8e.jar" />
+    </item>
+
+</items>

@@ -1,0 +1,19 @@
+android {
+    productFlavors {
+        "nativescript-plugin-appsflyer" {
+            dimension "nativescript-plugin-appsflyer"
+        }
+    }
+}
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+dependencies {
+    // make sure you have these versions by updating your local Android SDK's (Android Support repo and Google repo)
+    compile 'com.google.android.gms:play-services-ads:9.6.+'
+    compile 'com.google.android.gms:play-services-identity:9.6.+'
+
+}

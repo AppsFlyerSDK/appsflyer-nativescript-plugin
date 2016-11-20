@@ -1,0 +1,5 @@
+demo/
+*.svg
+*.log
+*.ts
+!*.d.ts

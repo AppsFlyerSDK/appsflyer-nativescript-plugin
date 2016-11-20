@@ -1,0 +1,26 @@
+-x
+objective-c
+-arch
+armv7
+-std=gnu99
+-fobjc-arc
+-gmodules
+-fpascal-strings
+-O0
+-DDEBUG=1
+-isysroot
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.1.sdk
+-miphoneos-version-min=8.0
+-g
+-iquote
+-iquote
+-I/Users/maxim/Appsflyer/projects/nativescript-plugin-appsflyer/demoNative/platforms/ios/build/device/include
+-I/Users/maxim/Appsflyer/projects/nativescript-plugin-appsflyer/demoNative/platforms/ios/internal
+-F/Users/maxim/Appsflyer/projects/nativescript-plugin-appsflyer/demoNative/platforms/ios/build/device
+-F/Users/maxim/Appsflyer/projects/nativescript-plugin-appsflyer/demoNative/platforms/ios/internal
+-F/Users/maxim/Appsflyer/projects/nativescript-plugin-appsflyer/demoNative/platforms/ios/../../lib/iOS
+-F../../lib/iOS
+arm-apple-darwin16.1.0
+"4.2.1 Compatible Apple LLVM 8.0.0 (clang-800.0.42.1)"
+SDK_PRODUCT_BUILD_VERSION=14B72
+14B72
