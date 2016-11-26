@@ -1,6 +1,6 @@
 {
   "name": "nativescript-plugin-appsflyer",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "desc todo",
   "main": "appsflyer.js",
   "typings": "index.d.ts",
@@ -13,20 +13,18 @@
   "scripts": {
     "build": "tsc",
     "buildall": "tsc; tns build",
-
     "demo.ios": "npm run preparedemo; cd demoNative; tns emulate ios",
     "demo.ios.watch.sim": "npm run preparedemo; cd demoNative; tns livesync ios --emulator --watch",
     "demo.ios.watch": "npm run preparedemo; cd demoNative; tns livesync ios --watch",
     "demo.debug.i": "cd demoNative; tns debug ios",
-
-    "demo.android": "npm run preparedemo; cd demoNative; tns emulate android", 
-    "demo.debug.a": "cd demoNative; tns debug android",    
+    "demo.android": "npm run preparedemo; cd demoNative; tns emulate android",
+    "demo.debug.a": "cd demoNative; tns debug android",
     "demo.android.watch": "npm run preparedemo; cd demoNative; tns livesync android --emulator --watch",
     "run.android": "npm run preparedemo; cd demoNative; tns run android",
     "ra": "cd demoNative; tns run android",
     "riw": "cd demoNative; tns livesync ios --watch",
     "raw": "cd demoNative; tns livesync android --watch",
-    "preparedemo": "npm run build; cd demoNative; tns plugin remove nativescript-plugin-appsflyer; tns plugin add ..; tns install",    
+    "preparedemo": "npm run build; cd demoNative; tns plugin remove nativescript-plugin-appsflyer; tns plugin add ..; tns install",
     "setup": "cd demoNative; npm install; cd ..; npm run build; cd demoNative; tns plugin add ..; cd .."
   },
   "repository": {
