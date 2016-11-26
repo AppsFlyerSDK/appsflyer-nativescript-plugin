@@ -2,7 +2,7 @@
 <img src="https://www.appsflyer.com/wp-content/themes/ohav-child/images/logo.svg"  width="200">
 
 # nativescript-plugin-appsflyer
-This React Native Library uses the AppsFlyer 4.6.0 library for both iOS and Android
+ Nativescript Library for AppsFlyer SDK
 
 [![npm version](https://badge.fury.io/js/nativescript-plugin-appsflyer.svg)](https://badge.fury.io/js/nativescript-plugin-appsflyer)
 
@@ -108,9 +108,9 @@ So `getPackages()` should look like:
 
 ---
 
-Call module by adding: 
+Call module by adding (native javascript): 
 
-`import appsFlyer from 'nativescript-plugin-appsflyer';`
+`var appsFlyer = require("nativescript-plugin-appsflyer");`
 
 ---
 
@@ -118,6 +118,7 @@ Call module by adding:
 ##### <a id="initSdk">  **`appsFlyer.initSdk(options, callback): void`**
 
 initializes the SDK.
+
 
 | parameter   | type                        | description  |
 | ----------- |-----------------------------|--------------|
@@ -132,27 +133,27 @@ initializes the SDK.
 | `appId`    |`string` |        | [Apple Application ID](https://support.appsflyer.com/hc/en-us/articles/207032066-AppsFlyer-SDK-Integration-iOS) (for iOS only) |
 | `isDebug`  |`boolean`| `false` | debug mode (optional)|
 
+
+
 *Example:*
 
 ```javascript
- let options = {
-       devKey:  'WdpTVAcYwmxsaQ4WeTspmh',
-       appId: "975313579",
-       isDebug: true
-     };
+ var options = {
+            devKey:  'WdpTVAcYwmxsaQ4WeTspmh',
+            appId: "975313579",
+            isDebug: true
+        };
 
-    appsFlyer.initSdk(options, (error, result) => {
-      if (error) {
-        console.error(error);
-      } else {
-       //..
-      }
-    })
+        appsFlyer.initSdk(options).then(function(result) {
+            viewModel.set("initSdkResponse", result.status);
+        }, function(err) {
+            viewModel.set("initSdkResponse", JSON.stringify(err));
+        });
 ```
 
 ---
 
-#####<a id="trackEvent"> **`appsFlyer.trackEvent(eventName, eventValues, callback): void`**
+#####<a id="trackEvent"> **`appsFlyer.trackEvent(options): Promise<any>`**
 
 
 - These in-app events help you track how loyal users discover your app, and attribute them to specific 
@@ -160,30 +161,38 @@ campaigns/media-sources. Please take the time define the event/s you want to mea
 to track ROI (Return on Investment) and LTV (Lifetime Value).
 - The `trackEvent` method allows you to send in-app events to AppsFlyer analytics. This method allows you to add events dynamically by adding them directly to the application code.
 
+| parameter   | type                        | description  |
+| ----------- |-----------------------------|--------------|
+| `options`   | `Object`                    |   track event configuration           |
+
+
+**`options`**
+
 
 | parameter   | type                        | description |
 | ----------- |-----------------------------|--------------|
-| `eventName` | `String`                    | custom event name, is presented in your dashboard.  See the Event list [HERE](https://github.com/AppsFlyerSDK/nativescript-plugin-appsflyer/blob/master/ios/AppsFlyerTracker.h)  |
-| `eventValue` | `Object`                    | event details |
+| `eventName` | `string`                    | custom event name, is presented in your dashboard.  See the Event list [HERE](https://github.com/AppsFlyerSDK/nativescript-plugin-appsflyer/blob/master/ios/AppsFlyerTracker.h)  |
+| `eventValues` | `Object`                    | event details (see example bellow) |
 
-*Example:*
+
+*Example: (native javascript)*
 
 ```javascript
-
- const eventName = "af_add_to_cart";
- const eventValues = {
-      "af_content_id": "id123",
-      "af_currency":"USD",
-      "af_revenue": "2"
-  };
-
- appsFlyer.trackEvent(eventName, eventValues, (error, result) => {
-     if (error) {
-         console.error(error);
-     } else {
-         //...
-     }
- })
+ 
+        var options = {
+            eventName: "af_add_to_cart",
+            eventValues: {
+                "af_content_id": "id123",
+                "af_currency": "USD",
+                "af_revenue": "2"
+            }
+        };
+        appsFlyer.trackEvent(options).then(function(result) {
+            viewModel.set("trackEventResponse", result);
+        }, function(err) {
+            viewModel.set("trackEventResponse", JSON.stringify(err));
+        });
+    
     
 ```
 
@@ -192,14 +201,10 @@ to track ROI (Return on Investment) and LTV (Lifetime Value).
 
 ##Demo
 
-This plugin has a `demo` project bundled with it. To give it a try , clone this repo and from root a.e. `nativescript-plugin-appsflyer` execute the following:
+This plugin has a `demoNative` project bundled with it. To give it a try , clone this repo and from root a.e. `nativescript-plugin-appsflyer` execute the following:
 
 ```sh
 npm run setup
 ```
 
  - Run `npm run demo.ios` or `npm run demo.android` will run for the appropriate platform.
- - Run `npm run ios-pod` to run `Podfile` under `demo` project
- 
-
-![demo printscreen](demo/demo_example.png?raw=true)
