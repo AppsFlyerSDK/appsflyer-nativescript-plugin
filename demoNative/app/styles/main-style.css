@@ -1,12 +1,6 @@
-.api_wrapper{
-    height: 60px;
-    /*border-style: solid;*/
-    /*border-color: black;*/
-    border-top: solid 10px black;
-
-
-    background-color:green;
-}
+/*.api-wrapper{*/
+    /*border: solid 10px black;*/
+/*}*/
 
 
 .default_button{
@@ -15,10 +9,17 @@
     background-color: powderblue;
 }
 
-.data_wrapper{
+.data-wrapper{
     height: 60px;
     background-color: skyblue;
+    /*padding-left: 20px;*/
 }
+
+.data-wrapper-label{
+    height: 60px;
+    line-height: 60px;
+}
+
 
 
 .sdk-button{

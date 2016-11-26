@@ -1,22 +1,60 @@
-<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo"
-      style="margin-top:20px;"
->
-  <StackLayout>
-
-    <!--<WrapLayout cssClass="api_wrapper">-->
-      <!--<Button cssClass="default_button"-->
-              <!--text="TAP" tap="{{ onTap }}" />-->
-      <!--<Label text="{{ message }}" class="data_wrapper" textWrap="true"/>-->
-    <!--</WrapLayout>-->
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <StackLayout orientation="vertical">
 
 
-    <GridLayout columns="100, *, auto" rows="auto, *" >
-      <Button cssClass="sdk-button" col="0" text="initSDK" tap="{{initSdk}}"/>
 
-      <Label col="1" text="{{ initSdkResponse }}" class="data_wrapper" textWrap="true"/>
-      <!--<Label col="1" text="{{ message }}" class="data_wrapper" textWrap="true"/>-->
-    </GridLayout>
+    <FlexboxLayout flexDirection="column">
+        <Border  borderWidth="1" borderColor="#000000">
+        <FlexboxLayout height="60">
+            <Button cssClass="sdk-button" textWrap="false" text="initSDK" tap="{{initSdk}}"/>
+
+            <StackLayout orientation="horizontal" class="data-wrapper" flexGrow="3" paddingLeft="20">
+                <Label text="{{ initSdkResponse }}" class="data_wrapper-label" textWrap="true"/>
+            </StackLayout>
+        </FlexboxLayout>
+        </Border>
+    </FlexboxLayout>
 
 
-  </StackLayout>
+
+        <FlexboxLayout flexDirection="column" >
+            <Border  borderWidth="1" borderColor="#000000">
+                <FlexboxLayout height="60">
+                    <Button cssClass="sdk-button" textWrap="false" text="trackEvent" tap="{{trackEvent}}"/>
+
+                    <StackLayout orientation="horizontal" class="data-wrapper" flexGrow="3" paddingLeft="20">
+                        <Label text="{{ trackEventResponse.status }}" class="data_wrapper-label" textWrap="true"/>
+                    </StackLayout>
+                </FlexboxLayout>
+            </Border>
+        </FlexboxLayout>
+
+        <!--<FlexboxLayout flexDirection="column" >-->
+            <!--<Border  borderWidth="1" borderColor="#000000">-->
+                <!--<FlexboxLayout height="60">-->
+                    <!--<Button cssClass="sdk-button" textWrap="false" text="getAppsFlyerUID" tap="{{getAppsFlyerUID}}" />-->
+
+                    <!--<StackLayout orientation="horizontal" class="data-wrapper" flexGrow="3" paddingLeft="20">-->
+                        <!--<Label text="{{ getAppsFlyerUIDResponse }}" class="data_wrapper-label" textWrap="true"/>-->
+                    <!--</StackLayout>-->
+                <!--</FlexboxLayout>-->
+            <!--</Border>-->
+        <!--</FlexboxLayout>-->
+
+        <!--<FlexboxLayout flexDirection="column" >-->
+            <!--<Border  borderWidth="1" borderColor="#000000">-->
+                <!--<FlexboxLayout height="60">-->
+                    <!--<Button cssClass="sdk-button" textWrap="false" text="trackLocation" tap="{{trackLocation}}" />-->
+
+                    <!--<StackLayout orientation="horizontal" class="data-wrapper" flexGrow="3" paddingLeft="20">-->
+                        <!--<Label text="{{ trackLocationResponse }}" class="data_wrapper-label" textWrap="true"/>-->
+                    <!--</StackLayout>-->
+                <!--</FlexboxLayout>-->
+            <!--</Border>-->
+        <!--</FlexboxLayout>-->
+
+
+
+
+    </StackLayout>
 </Page>

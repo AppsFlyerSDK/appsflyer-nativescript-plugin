@@ -6,14 +6,15 @@
   "nativescript": {
     "id": "com.appsflyer.nativescript.demoNative",
     "tns-ios": {
-      "version": "2.3.0"
+      "version": "2.4.0"
     },
     "tns-android": {
-      "version": "2.3.0"
+      "version": "2.4.1"
     }
   },
   "dependencies": {
-    "nativescript-plugin-appsflyer": "file:.."
+    "nativescript-plugin-appsflyer": "file:..",
+    "tns-core-modules": "^2.4.0"
   },
   "devDependencies": {
     "babel-traverse": "6.18.0",

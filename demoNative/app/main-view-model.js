@@ -3,13 +3,7 @@ var Observable = require("data/observable").Observable;
 
 var appsFlyer = require("nativescript-plugin-appsflyer");
 
-function getMessage(counter) {
-    if (counter <= 0) {
-        return "Hoorraaay! You unlocked the NativeScript clicker achievement!";
-    } else {
-        return counter + " taps left";
-    }
-}
+
 
 function createViewModel() {
 
@@ -18,27 +12,18 @@ function createViewModel() {
 
 
     var viewModel = new Observable();
-      viewModel.counter = 2;
-      viewModel.message = getMessage(viewModel.counter);
 
 
-    viewModel.trackEventResponse = {status: "NA"};
-    viewModel.viewModelappsFlyerUID = "not called yet";
+    viewModel.trackEventResponse = {status: "not called yet"};
+    viewModel.getAppsFlyerUIDResponse = "not called yet";
     viewModel.initSdkResponse = "not initialized yet";
-    viewModel.trackLocation = [];
+    viewModel.trackLocationResponse = [];
 
 
-
-    viewModel.onTap = function() {
-        this.counter--;
-        this.set("message", getMessage(this.counter));
-    }
 
     viewModel.initSdk = function() {
 
         console.log("FESS :: call initSdk ... ");
-
-
 
         var options = {
             devKey:  'WdpTVAcYwmxsaQ4WeTspmh',
@@ -47,14 +32,34 @@ function createViewModel() {
         };
 
         appsFlyer.initSdk(options).then(function(result) {
-
-            console.log("FESS :: XXXXXXXXXXX  1 " + JSON.stringify(result));
-
             viewModel.set("initSdkResponse", result.status);
-
-            console.log("FESS :: XXXXXXXXXXX 2 " + viewModel.initSdkResponse);
         }, function(err) {
-            viewModel.set("initSdkResponse", err);
+            console.log("trackEvent :: results  ... " +  JSON.stringify(err));
+            viewModel.set("initSdkResponse", JSON.stringify(err));
+        });
+    };
+
+    viewModel.trackEvent = function() {
+
+        console.log("FESS :: call trackEvent ... ");
+
+        var options = {
+            eventName: "af_add_to_cart",
+            eventValues: {
+            "af_content_id": "id123",
+            "af_currency":"USD",
+            "af_revenue": "2"
+            }
+        };
+
+        appsFlyer.trackEvent(options).then(function(result) {
+
+            console.log("trackEvent :: results  ... " + JSON.stringify(result));
+
+            viewModel.set("trackEventResponse", result);
+        }, function(err) {
+            console.log("trackEvent :: ERROR results  ... " + JSON.stringify(err));
+            viewModel.set("trackEventResponse", JSON.stringify(err));
         });
     }
 
@@ -67,29 +72,3 @@ function createViewModel() {
 }
 
 exports.createViewModel = createViewModel;
-
-
-// var Observable = require("data/observable").Observable;
-
-// function getMessage(counter) {
-//     if (counter <= 0) {
-//         return "Hoorraaay! You unlocked the NativeScript clicker achievement!";
-//     } else {
-//         return counter + " taps left";
-//     }
-// }
-
-// function createViewModel() {
-//     var viewModel = new Observable();
-//     viewModel.counter = 42;
-//     viewModel.message = getMessage(viewModel.counter);
-
-//     viewModel.onTap = function() {
-//         this.counter--;
-//         this.set("message", getMessage(this.counter));
-//     }
-
-//     return viewModel;
-// }
-
-// exports.createViewModel = createViewModel;
