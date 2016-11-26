@@ -46,9 +46,9 @@ function createViewModel() {
         var options = {
             eventName: "af_add_to_cart",
             eventValues: {
-            "af_content_id": "id123",
-            "af_currency":"USD",
-            "af_revenue": "2"
+                "af_content_id": "id123",
+                "af_currency": "USD",
+                "af_revenue": "2"
             }
         };
 
