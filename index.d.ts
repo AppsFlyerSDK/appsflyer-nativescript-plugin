@@ -9,6 +9,8 @@ export interface TrackEventOptions {
     eventValues: Object
 }
 
-export function initSdk(options: InitSDKOptions): Promise<boolean>;
 
-export function trackEvent(options:TrackEventOptions): Promise<boolean>;
+
+export function initSdk(options: InitSDKOptions): Promise<any>;
+
+export function trackEvent(options:TrackEventOptions): Promise<any>;
