@@ -17,8 +17,6 @@ appsFlyer.initSdk = function (args) {
 
             if (typeof(AppsFlyerTracker) !== "undefined") {
 
-
-
                 appsFlyer.appsFlyerTracker = AppsFlyerTracker.alloc().init();
 
                 appsFlyer.appsFlyerTracker.appleAppID = args.appId;
