@@ -1,6 +1,6 @@
 {
   "name": "nativescript-plugin-appsflyer",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "desc todo",
   "main": "appsflyer.js",
   "typings": "index.d.ts",
