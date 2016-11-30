@@ -1,7 +1,11 @@
 demoNative/
-demo_old/
-demoNative_empty_work/
+
 *.svg
 *.log
 *.ts
 !*.d.ts
+
+es6-promise.d.ts
+af-logo.png
+README.md
+LICENSE
