@@ -18,8 +18,8 @@
 
 ## <a id="this-plugin-is-built-for"> This plugin is built for
 
-- iOS AppsFlyerSDK **v4.5.12**
-- Android AppsFlyerSDK **v4.6.1**
+- iOS AppsFlyerSDK **v4.6.5**
+- Android AppsFlyerSDK **v4.6.3**
 
 ## <a id="installation"> Installation
 
