@@ -8,11 +8,15 @@
     "platforms": {
       "android": "2.3.0",
       "ios": "2.3.0"
+    },
+    "tns-ios": {
+      "version": "2.6.0-2017-1-10-1"
     }
   },
   "scripts": {
     "build": "tsc",
     "buildall": "tsc; tns build",
+    "demo.ios.build": "cd demoNative; tns build ios; tns emulate ios;",
     "demo.ios": "npm run preparedemo; cd demoNative; tns emulate ios",
     "demo.ios.watch.sim": "npm run preparedemo; cd demoNative; tns livesync ios --emulator --watch",
     "demo.ios.watch": "npm run preparedemo; cd demoNative; tns livesync ios --watch",
@@ -43,5 +47,6 @@
   "bugs": {
     "url": "https://github.com/AppsFlyerSDK/nativescript-plugin-appsflyer/issues"
   },
-  "homepage": "https://github.com/AppsFlyerSDK/nativescript-plugin-appsflyer#readme"
+  "homepage": "https://github.com/AppsFlyerSDK/nativescript-plugin-appsflyer#readme",
+  "dependencies": {}
 }

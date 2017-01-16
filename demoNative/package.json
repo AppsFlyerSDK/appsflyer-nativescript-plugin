@@ -9,11 +9,11 @@
       "version": "2.4.0"
     },
     "tns-android": {
-      "version": "2.4.1"
+      "version": "2.6.0-next-2017-01-16-1625"
     }
   },
   "dependencies": {
-    "nativescript-plugin-appsflyer": "file:..",
+    "nativescript-plugin-appsflyer": "file..... your path",
     "tns-core-modules": "^2.4.0"
   },
   "devDependencies": {
