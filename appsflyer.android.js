@@ -71,6 +71,22 @@ appsFlyer.trackEvent = function (args) {
     });
 };
 
+appsFlyer.setCustomerUserId = function (userId) {
+
+        return new Promise(function (resolve, reject) {
+            try {
+
+                var appsFlyerLibInstance = com.appsflyer.AppsFlyerLib.getInstance();
+                appsFlyerLibInstance.setCustomerUserId(userId);
+
+                resolve({status: "success"});
+            } catch (ex) {
+                console.log("AF-A :: Error: " + ex);
+                reject(ex);
+            }
+        });
+    };
+
 
 appsFlyer.toHashMap = function(obj) {
     var node = new java.util.HashMap();

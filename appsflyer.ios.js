@@ -68,4 +68,28 @@ appsFlyer.trackEvent = function (args) {
 
 };
 
+appsFlyer.setCustomerUserId = function (userId) {
+
+        return new Promise(function (resolve, reject) {
+            try {
+
+                if (typeof(appsFlyer.appsFlyerTracker) !== "undefined") {
+
+
+                    appsFlyer.appsFlyerTracker.customerUserID = userId;
+
+                    resolve({status: "success"});
+                }
+                else{
+                    reject({status: "failure", message: "appsFlyerTracker is not defined, call 1st 'initSdk'"});
+                }
+
+            } catch (ex) {
+                console.log("AF_IOS ::  Error: " + ex);
+                reject(ex);
+            }
+        });
+
+    };
+
 module.exports = appsFlyer;
