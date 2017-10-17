@@ -76,7 +76,7 @@ appsFlyer.setCustomerUserId = function (userId) {
                 if (typeof(appsFlyer.appsFlyerTracker) !== "undefined") {
 
 
-                    appsFlyer.appsFlyerTracker.customerUserId = userId;
+                    appsFlyer.appsFlyerTracker.customerUserID = userId;
 
                     resolve({status: "success"});
                 }
