@@ -16,12 +16,12 @@
   "scripts": {
     "build": "tsc",
     "buildall": "tsc; tns build",
-    "demo.ios.build": "cd demoNative; tns build ios; tns emulate ios;",
-    "demo.ios": "npm run preparedemo; cd demoNative; tns emulate ios",
+    "demo.ios.build": "cd demoNative; tns build ios; tns run ios;",
+    "demo.ios": "npm run preparedemo; cd demoNative; tns run ios",
     "demo.ios.watch.sim": "npm run preparedemo; cd demoNative; tns livesync ios --emulator --watch",
     "demo.ios.watch": "npm run preparedemo; cd demoNative; tns livesync ios --watch",
     "demo.debug.i": "cd demoNative; tns debug ios",
-    "demo.android": "npm run preparedemo; cd demoNative; tns emulate android",
+    "demo.android": "npm run preparedemo; cd demoNative; tns run android",
     "demo.debug.a": "cd demoNative; tns debug android",
     "demo.android.watch": "npm run preparedemo; cd demoNative; tns livesync android --emulator --watch",
     "run.android": "npm run preparedemo; cd demoNative; tns run android",
@@ -48,7 +48,9 @@
     "url": "https://github.com/AppsFlyerSDK/nativescript-plugin-appsflyer/issues"
   },
   "homepage": "https://github.com/AppsFlyerSDK/nativescript-plugin-appsflyer#readme",
-  "dependencies": {},
+  "dependencies": {
+    "tns-core-modules": "^3.2.0"
+  },
   "peerDependencies": {
     "tns-core-modules": "^3.0.0"
   }
