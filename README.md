@@ -1,5 +1,5 @@
 
-<img src="https://www.appsflyer.com/wp-content/themes/ohav-child/images/logo.svg"  width="200">
+<img src="https://www.appsflyer.com/wp-content/uploads/2016/11/logo-1.svg"  width="200">
 
 # nativescript-plugin-appsflyer
  Nativescript Library for AppsFlyer SDK
@@ -89,7 +89,7 @@ to track ROI (Return on Investment) and LTV (Lifetime Value).
 
 | parameter   | type                        | description |
 | ----------- |-----------------------------|--------------|
-| `eventName` | `string`                    | custom event name, is presented in your dashboard.  See the Event list [HERE](https://github.com/AppsFlyerSDK/nativescript-plugin-appsflyer/blob/master/ios/AppsFlyerTracker.h)  |
+| `eventName` | `string`                    | custom event name, is presented in your dashboard.  See the Event list [HERE](https://github.com/AppsFlyerSDK/AppsFlyerFramework/blob/master/AppsFlyerLib.framework/Versions/A/Headers/AppsFlyerTracker.h)  |
 | `eventValues` | `Object`                    | event details (see example bellow) |
 
 *Example: (native javascript)*
