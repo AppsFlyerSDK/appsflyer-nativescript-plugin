@@ -12,8 +12,7 @@ repositories {
 }
 
 dependencies {
-    // make sure you have these versions by updating your local Android SDK's (Android Support repo and Google repo)
-    compile 'com.google.android.gms:play-services-ads:9.6.+'
-    compile 'com.google.android.gms:play-services-identity:9.6.+'
-
+	def googlePlayServicesVersion = project.hasProperty('googlePlayServicesVersion') ? project.googlePlayServicesVersion : '9.6.+'
+	compile "com.google.android.gms:play-services-ads:$googlePlayServicesVersion"
+    compile "com.google.android.gms:play-services-identity:$googlePlayServicesVersion"
 }
