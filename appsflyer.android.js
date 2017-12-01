@@ -19,7 +19,7 @@ appsFlyer.initSdk = function (args) {
 
                 //console.log("AF_Android ::  appsFlyerLibInstance: initSdk: " + getMethods(appsFlyer.appsFlyerLibInstance));
 
-                var isDebug = (!args.isDebug) ? true : args.isDebug;
+                var isDebug = args.isDebug || false;
 
                 appsFlyer.isDebugLocal = isDebug;
 

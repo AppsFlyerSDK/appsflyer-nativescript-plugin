@@ -21,7 +21,7 @@ appsFlyer.initSdk = function (args) {
 
                 appsFlyer.appsFlyerTracker.appleAppID = args.appId;
                 appsFlyer.appsFlyerTracker.appsFlyerDevKey = args.devKey;
-                appsFlyer.appsFlyerTracker.isDebug = (!args.isDebug) ? true : args.isDebug;
+                appsFlyer.appsFlyerTracker.isDebug = args.isDebug || false;
 
                 appsFlyer.isDebugLocal = appsFlyer.appsFlyerTracker.isDebug;
 
