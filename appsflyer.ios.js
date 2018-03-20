@@ -1,8 +1,4 @@
 
-var utils = require("utils/utils");
-var frame = require("ui/frame");
-var platform = require("platform");
-
 var appsFlyer = {};
 
 appsFlyer.isDebugLocal = false;
