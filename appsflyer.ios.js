@@ -1,4 +1,7 @@
 
+var utils = require("utils/utils");
+var platform = require("platform");
+
 var appsFlyer = {};
 
 appsFlyer.isDebugLocal = false;

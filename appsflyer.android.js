@@ -1,5 +1,7 @@
 
 var appModule = require("application");
+var utils = require("utils/utils");
+var platform = require("platform");
 
 var appsFlyer = {};
 
