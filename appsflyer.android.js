@@ -42,7 +42,7 @@ appsFlyer.initSdk = function (args) {
 
 function trackAppLaunch(_instance){
     console.log("AppsFlyer :: NativeScript :: trackAppLaunch is called");
-        var c = appModule.android.currentContext;
+        var c = appModule.android.currentContext || com.tns.NativeScriptApplication.getInstance();
         _instance.trackEvent(c, null, null);
     }
 };
@@ -58,7 +58,7 @@ appsFlyer.trackEvent = function (args) {
 
             if(appsFlyer.isDebugLocal === true){console.log("AF-A :: appsFlyer.trackEvent: " + JSON.stringify(args));}
 
-            var c = appModule.android.currentContext;
+            var c = appModule.android.currentContext || com.tns.NativeScriptApplication.getInstance();
 
             appsFlyerLibInstance.trackEvent(c, args.eventName, appsFlyer.toValue(args.eventValues));
 
