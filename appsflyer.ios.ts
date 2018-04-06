@@ -118,29 +118,45 @@ class ConversionDataDelegate extends NSObject implements AppsFlyerTrackerDelegat
     }
 
     public onConversionDataReceived(installData: NSDictionary<string, string>): void {
-      if (this._successCallback && typeof this._successCallback === 'function') {
-        try {
-          const data = {};
-          for (const key of nsArrayToJSArray(installData.allKeys)) {
-            data[key] = installData.objectForKey(key);
+      if (!this._successCallback) {
+        return;
+      }
+      if (typeof this._successCallback === 'function') {
+        const data = {};
+        if (installData && installData.allKeys) {
+          let keys;
+          try {
+            keys = nsArrayToJSArray(installData.allKeys);
+          } catch (e) {
+            console.error(`AF-I :: onConversionDataReceived allKeys Error: ${e}`);
           }
-          this._successCallback(data);
-        } catch (e) {
-          console.error(`AF-I :: onConversionDataReceived Error: ${e}`);
+          if (keys && keys.length) {
+            for (const key of keys) {
+              try {
+                data[key] = installData.objectForKey(key);
+              } catch (e) {
+                console.error(`AF-I :: onConversionDataReceived objectForKey Error: ${e}`);
+              }
+            }
+          }
         }
-      } else if (typeof this._successCallback !== 'function') {
+        this._successCallback(data);
+      } else {
         console.error(`AF-I :: onConversionDataReceived: callback is not a function`);
       }
     }
 
     public onConversionDataRequestFailure(error: NSError): void {
-      if (this._failureCallback && typeof this._failureCallback === 'function') {
+      if (!this._failureCallback) {
+        return;
+      }
+      if (typeof this._failureCallback === 'function') {
         try {
           this._failureCallback(`${error}`);
         } catch (e) {
           console.error(`AF-I :: onConversionDataRequestFailure Error: ${e}`);
         }
-      } else if (typeof this._failureCallback !== 'function') {
+      } else {
         console.error(`AF-I :: onConversionDataRequestFailure: callback is not a function`);
       }
     }

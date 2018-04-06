@@ -35,7 +35,10 @@ export const initSdk = function (args: InitSDKOptions) {
                               _successCallback: args.onConversionDataSuccess,
                               _failureCallback: args.onConversionDataFailure,
                               onInstallConversionDataLoaded(conversionData: java.util.Map<string, string>): void {
-                                if (this._successCallback && typeof this._successCallback === 'function') {
+                                if (!this._successCallback) {
+                                  return;
+                                }
+                                if (typeof this._successCallback === 'function') {
                                   try {
                                     const data = {};
                                     for (const key of stringSetToStringArray(conversionData.keySet())) {
@@ -45,18 +48,21 @@ export const initSdk = function (args: InitSDKOptions) {
                                   } catch (e) {
                                     console.error(`AF-A :: onInstallConversionDataLoaded Error: ${e}`);
                                   }
-                                } else if (typeof this._successCallback !== 'function') {
+                                } else {
                                   console.error(`AF-A :: onInstallConversionDataLoaded: callback is not a function`);
                                 }
                               },
                               onInstallConversionFailure(error: string): void {
-                                if (this._failureCallback && typeof this._failureCallback === 'function') {
+                                if (!this._failureCallback) {
+                                  return;
+                                }
+                                if (typeof this._failureCallback === 'function') {
                                   try {
                                     this._failureCallback(error);
                                   } catch (e) {
                                     console.error(`AF-A :: onInstallConversionFailure Error: ${e}`);
                                   }
-                                } else if (typeof this._failureCallback !== 'function') {
+                                } else {
                                   console.error(`AF-A :: onInstallConversionFailure: callback is not a function`);
                                 }
                               },
