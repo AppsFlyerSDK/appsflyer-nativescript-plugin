@@ -14,5 +14,6 @@ repositories {
 dependencies {
 	def googlePlayServicesVersion = project.hasProperty('googlePlayServicesVersion') ? project.googlePlayServicesVersion : '9.6.+'
 	compile "com.google.android.gms:play-services-ads:$googlePlayServicesVersion"
-    compile "com.google.android.gms:play-services-identity:$googlePlayServicesVersion"
+  compile "com.google.android.gms:play-services-identity:$googlePlayServicesVersion"
+  compile 'com.appsflyer:af-android-sdk:4.8.3@aar'
 }
