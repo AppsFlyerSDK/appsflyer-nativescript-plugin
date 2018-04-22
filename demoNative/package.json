@@ -13,7 +13,7 @@
     }
   },
   "dependencies": {
-    "nativescript-plugin-appsflyer": "file:..",
+    "nativescript-plugin-appsflyer": "^1.0.11",
     "tns-core-modules": "^3.2.0"
   },
   "devDependencies": {
