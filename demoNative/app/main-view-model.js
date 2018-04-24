@@ -28,7 +28,13 @@ function createViewModel() {
         var options = {
             devKey:  'WdpTVAcYwmxsaQ4WeTspmh',
             appId: "975313579",
-            isDebug: true
+            isDebug: true,
+            onConversionDataSuccess: function(_res){
+                alert(JSON.stringify(_res));
+            },
+            onConversionDataFailure: function(_res){
+                alert("failure: " + JSON.stringify(_res));
+            },
         };
 
         appsFlyer.initSdk(options).then(function(result) {

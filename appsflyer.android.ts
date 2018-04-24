@@ -10,6 +10,7 @@ import { ad } from 'tns-core-modules/utils/utils';
 import stringSetToStringArray = ad.collections.stringSetToStringArray;
 
 let _isDebugLocal = false;
+let _appsFlyerConversionListener = undefined;
 
 export const initSdk = function (args: InitSDKOptions) {
 
@@ -29,9 +30,7 @@ export const initSdk = function (args: InitSDKOptions) {
 
                 if (args.onConversionDataSuccess || args.onConversionDataFailure) {
                     try {
-                        com.appsflyer.AppsFlyerLib.getInstance().registerConversionListener(
-                            appModule.android.currentContext || (<any>com).tns.NativeScriptApplication.getInstance(),
-                            new com.appsflyer.AppsFlyerConversionListener(<any>{
+                        _appsFlyerConversionListener = new com.appsflyer.AppsFlyerConversionListener(<any>{
                               _successCallback: args.onConversionDataSuccess,
                               _failureCallback: args.onConversionDataFailure,
                               onInstallConversionDataLoaded(conversionData: java.util.Map<string, string>): void {
@@ -68,12 +67,13 @@ export const initSdk = function (args: InitSDKOptions) {
                               },
                               onAttributionFailure(param0: string): void {/*ignore*/},
                               onAppOpenAttribution(param0: java.util.Map<any, any>): void {/*ignore*/},
-                            }),
-                        );
+                            });
                     } catch (e) {
                         console.error(`AF-A :: registerConversionListener Error:${e}`);
                     }
                 }
+
+                appsFlyerLibInstance.init(args.devKey,_appsFlyerConversionListener,(appModule.android.currentContext || (<any>com).tns.NativeScriptApplication.getInstance()));
 
                 _trackAppLaunch(appsFlyerLibInstance);
 
