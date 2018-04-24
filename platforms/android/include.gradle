@@ -15,5 +15,6 @@ dependencies {
 	def googlePlayServicesVersion = project.hasProperty('googlePlayServicesVersion') ? project.googlePlayServicesVersion : '9.6.+'
 	compile "com.google.android.gms:play-services-ads:$googlePlayServicesVersion"
   compile "com.google.android.gms:play-services-identity:$googlePlayServicesVersion"
-  compile 'com.appsflyer:af-android-sdk:4.8.3@aar'
+  compile 'com.android.installreferrer:installreferrer:1.0'
+  compile 'com.appsflyer:af-android-sdk:4.8.9@aar'
 }
