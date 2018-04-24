@@ -77,7 +77,7 @@ export const initSdk = function (args: InitSDKOptions) {
 
                 _trackAppLaunch(appsFlyerLibInstance);
 
-                appsFlyerLibInstance.startTracking((<any>com).tns.NativeScriptApplication.getInstance(), args.devKey);
+                appsFlyerLibInstance.startTracking((<any>com).tns.NativeScriptApplication.getInstance());
 
                 resolve({status: "success"});
             } else {

@@ -262,7 +262,7 @@ declare module com {
 			public setMinTimeBetweenSessions(param0: number): void;
 			public static getInstance(): com.appsflyer.AppsFlyerLib;
 			public setCollectAndroidID(param0: boolean): void;
-			public init(param0: string, param1: com.appsflyer.AppsFlyerConversionListener): com.appsflyer.AppsFlyerLib;
+			public init(param0: string, param1: com.appsflyer.AppsFlyerConversionListener, param2: androidcontentContext): com.appsflyer.AppsFlyerLib;
 			public trackEvent(param0: androidcontentContext, param1: string, param2: javautilMap): void;
 			public registerValidatorListener(param0: androidcontentContext, param1: com.appsflyer.AppsFlyerInAppPurchaseValidatorListener): void;
 			public sendPushNotificationData(param0: androidappActivity): void;
