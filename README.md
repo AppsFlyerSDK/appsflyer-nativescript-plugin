@@ -54,6 +54,8 @@ initializes the SDK.
 | `devKey`   |`string` |         |   [Appsflyer Dev key](https://support.appsflyer.com/hc/en-us/articles/207032126-AppsFlyer-SDK-Integration-Android)    |
 | `appId`    |`string` |        | [Apple Application ID](https://support.appsflyer.com/hc/en-us/articles/207032066-AppsFlyer-SDK-Integration-iOS) (for iOS only) |
 | `isDebug`  |`boolean`| `false` | debug mode (optional)|
+| `onConversionDataSuccess`  |`function`| | AppsFlyer allows you to access the user attribution data in real-time for every new install, directly from the SDK level. By doing this you can serve users with personalized content or send them to specific activities within the app, which can greatly enhance their engagement with your app. For [Android](https://support.appsflyer.com/hc/en-us/articles/207032126-AppsFlyer-SDK-Integration-Android#7-get-conversion-data); for [iOS](https://support.appsflyer.com/hc/en-us/articles/207032066-AppsFlyer-SDK-Integration-iOS#7-get-conversion-data)  |
+| `onConversionDataFailure`  |`function`| | |
 
 *Example:*
 
@@ -61,7 +63,13 @@ initializes the SDK.
  var options = {
             devKey:  'WdpTVAcYwmxsaQ4WeTspmh',
             appId: "975313579",
-            isDebug: true
+            isDebug: true,
+            onConversionDataSuccess: function(_res){
+                console.log(JSON.stringify(_res));
+            },
+            onConversionDataFailure: function(_res){
+                console.warn("failure: " + JSON.stringify(_res));
+            },
         };
 
         appsFlyer.initSdk(options).then(function(result) {
