@@ -9,6 +9,9 @@ android {
 repositories {
     jcenter()
     mavenCentral()
+    maven {
+            url "https://maven.google.com" // Google's Maven repository
+        }
 }
 
 dependencies {
