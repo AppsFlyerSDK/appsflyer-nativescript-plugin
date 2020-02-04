@@ -33,7 +33,7 @@ export const initSdk = function (args: InitSDKOptions) {
                         _appsFlyerConversionListener = new com.appsflyer.AppsFlyerConversionListener(<any>{
                               _successCallback: args.onConversionDataSuccess,
                               _failureCallback: args.onConversionDataFailure,
-                              onInstallConversionDataLoaded(conversionData: java.util.Map<string, string>): void {
+                              onConversionDataSuccess(conversionData: java.util.Map<string, string>): void {
                                 if (!this._successCallback) {
                                   return;
                                 }
@@ -51,7 +51,7 @@ export const initSdk = function (args: InitSDKOptions) {
                                   console.error(`AF-A :: onInstallConversionDataLoaded: callback is not a function`);
                                 }
                               },
-                              onInstallConversionFailure(error: string): void {
+                              onConversionDataFailure(error: string): void {
                                 if (!this._failureCallback) {
                                   return;
                                 }
