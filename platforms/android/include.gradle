@@ -1,9 +1,5 @@
 android {
-    productFlavors {
-        "nativescript-plugin-appsflyer" {
-            dimension "nativescript-plugin-appsflyer"
-        }
-    }
+    
 }
 
 repositories {

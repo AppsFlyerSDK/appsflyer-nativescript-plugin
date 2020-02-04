@@ -1,60 +1,37 @@
+<!--
+The markup in NativeScript apps contains a series of user interface components, each
+of which NativeScript renders with a platform-specific iOS or Android native control.
+You can find a full list of user interface components you can use in your app at
+https://docs.nativescript.org/ui/components.
+-->
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
-    <StackLayout orientation="vertical">
-
-
-
-    <FlexboxLayout flexDirection="column">
-        <Border  borderWidth="1" borderColor="#000000">
-        <FlexboxLayout height="60">
-            <Button cssClass="sdk-button" textWrap="false" text="initSDK" tap="{{initSdk}}"/>
-
-            <StackLayout orientation="horizontal" class="data-wrapper" flexGrow="3" paddingLeft="20">
-                <Label text="{{ initSdkResponse }}" class="data_wrapper-label" textWrap="true"/>
-            </StackLayout>
-        </FlexboxLayout>
-        </Border>
-    </FlexboxLayout>
-
-
-
-        <FlexboxLayout flexDirection="column" >
-            <Border  borderWidth="1" borderColor="#000000">
-                <FlexboxLayout height="60">
-                    <Button cssClass="sdk-button" textWrap="false" text="trackEvent" tap="{{trackEvent}}"/>
-
-                    <StackLayout orientation="horizontal" class="data-wrapper" flexGrow="3" paddingLeft="20">
-                        <Label text="{{ trackEventResponse.status }}" class="data_wrapper-label" textWrap="true"/>
-                    </StackLayout>
-                </FlexboxLayout>
-            </Border>
-        </FlexboxLayout>
-
-        <!--<FlexboxLayout flexDirection="column" >-->
-            <!--<Border  borderWidth="1" borderColor="#000000">-->
-                <!--<FlexboxLayout height="60">-->
-                    <!--<Button cssClass="sdk-button" textWrap="false" text="getAppsFlyerUID" tap="{{getAppsFlyerUID}}" />-->
-
-                    <!--<StackLayout orientation="horizontal" class="data-wrapper" flexGrow="3" paddingLeft="20">-->
-                        <!--<Label text="{{ getAppsFlyerUIDResponse }}" class="data_wrapper-label" textWrap="true"/>-->
-                    <!--</StackLayout>-->
-                <!--</FlexboxLayout>-->
-            <!--</Border>-->
-        <!--</FlexboxLayout>-->
-
-        <!--<FlexboxLayout flexDirection="column" >-->
-            <!--<Border  borderWidth="1" borderColor="#000000">-->
-                <!--<FlexboxLayout height="60">-->
-                    <!--<Button cssClass="sdk-button" textWrap="false" text="trackLocation" tap="{{trackLocation}}" />-->
-
-                    <!--<StackLayout orientation="horizontal" class="data-wrapper" flexGrow="3" paddingLeft="20">-->
-                        <!--<Label text="{{ trackLocationResponse }}" class="data_wrapper-label" textWrap="true"/>-->
-                    <!--</StackLayout>-->
-                <!--</FlexboxLayout>-->
-            <!--</Border>-->
-        <!--</FlexboxLayout>-->
-
-
-
-
-    </StackLayout>
+    <StackLayout orientation="vertical"
+            backgroundColor="lightgray">
+            <FlexboxLayout flexDirection="column" height="60">
+                <Label text="NativeScript Test App!" textAlignment="center" fontSize="28px"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="column">
+                <Label text="Conversion Data"  backgroundColor="green" textAlignment="center"/>
+                <TextView editable="false">
+                    <FormattedString>
+                        <Span text="{{ gcdResponse }}" />
+                    </FormattedString>
+                </TextView>
+                <!-- <Label text="On Appopen Attribution"  backgroundColor="green" textAlignment="center"/>
+                <TextView editable="false">
+                    <FormattedString>
+                        <Span
+                            text="" />
+                    </FormattedString>
+                </TextView> -->
+                <Label text="In-App event"  backgroundColor="green" textAlignment="center"/>
+                <TextView editable="false">
+                    <FormattedString>
+                        <Span
+                            text="{{ trackEventResponse }}" />
+                    </FormattedString>
+                </TextView>
+                <Button cssClass="sdk-button" textWrap="false" text="trackEvent" tap="{{trackEvent}}"/>
+            </FlexboxLayout>
+        </StackLayout>
 </Page>

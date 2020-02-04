@@ -117,7 +117,7 @@ class ConversionDataDelegate extends NSObject implements AppsFlyerTrackerDelegat
       return delegate;
     }
 
-    public onConversionDataReceived(installData: NSDictionary<string, string>): void {
+    public onConversionDataSuccess(installData: NSDictionary<string, string>): void {
       if (!this._successCallback) {
         return;
       }
@@ -146,7 +146,7 @@ class ConversionDataDelegate extends NSObject implements AppsFlyerTrackerDelegat
       }
     }
 
-    public onConversionDataRequestFailure(error: NSError): void {
+    public onConversionDataFailure(error: NSError): void {
       if (!this._failureCallback) {
         return;
       }
