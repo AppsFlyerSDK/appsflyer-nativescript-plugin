@@ -9,11 +9,13 @@ repositories {
             url "https://maven.google.com" // Google's Maven repository
         }
 }
-
+def safeExtGet(prop, fallback) {
+    rootProject.ext.has(prop) ? rootProject.ext.get(prop) : fallback
+}
 dependencies {
-	def googlePlayServicesVersion = project.hasProperty('googlePlayServicesVersion') ? project.googlePlayServicesVersion : '9.6.+'
+	def googlePlayServicesVersion = safeExtGet('googlePlayServicesVersion', '9.6.+')
 	compile "com.google.android.gms:play-services-ads:$googlePlayServicesVersion"
   compile "com.google.android.gms:play-services-identity:$googlePlayServicesVersion"
-  compile 'com.android.installreferrer:installreferrer:1.0'
-  compile 'com.appsflyer:af-android-sdk:4.8.9@aar'
+  compile "com.android.installreferrer:installreferrer:${safeExtGet('installreferrer', '1.1')}"
+  compile "com.appsflyer:af-android-sdk:${safeExtGet('appsflyerVersion', "5.1.0")}"
 }

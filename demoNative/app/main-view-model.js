@@ -21,15 +21,15 @@ function createViewModel() {
         console.log("FESS :: call initSdk ... ");
 
         var options = {
-            devKey:  'pJtNoWRvepn9EBtYG4jAUQ',
-            appId: "0546560375",
+            devKey:  'WdpTVAcYwmxsaQ4WeTspmh',
+            appId: "975313579",
             isDebug: true,
             onConversionDataSuccess: function(_res){
-                //console.log("gcd success: " + JSON.stringify(_res));
+                console.log("gcd success: " + JSON.stringify(_res));
                 viewModel.set("gcdResponse", JSON.stringify(_res));
             },
             onConversionDataFailure: function(_res){
-                //console.log("gcd failure: " + JSON.stringify(_res));
+                console.log("gcd failure: " + JSON.stringify(_res));
                 viewModel.set("gcdResponse", JSON.stringify(_res));
             },
         };

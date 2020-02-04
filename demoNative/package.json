@@ -1,6 +1,6 @@
 {
   "nativescript": {
-    "id": "com.appsflyer.gabrieltestapp",
+    "id": "com.appsflyer.nativescript.demoNative",
     "tns-android": {
       "version": "6.3.1"
     },
