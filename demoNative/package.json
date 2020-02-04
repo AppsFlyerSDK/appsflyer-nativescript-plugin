@@ -1,25 +1,24 @@
 {
-  "description": "NativeScript Application",
-  "license": "SEE LICENSE IN <your-license-filename>",
-  "readme": "NativeScript Application",
-  "repository": "<fill-your-repository-here>",
   "nativescript": {
-    "id": "com.appsflyer.nativescript.demoNative",
+    "id": "com.appsflyer.gabrieltestapp",
     "tns-android": {
-      "version": "3.2.0"
+      "version": "6.3.1"
     },
     "tns-ios": {
-      "version": "3.2.0"
+      "version": "6.3.0"
     }
   },
+  "description": "NativeScript Application",
+  "license": "SEE LICENSE IN <your-license-filename>",
+  "repository": "<fill-your-repository-here>",
   "dependencies": {
-    "nativescript-plugin-appsflyer": "^1.0.14",
-    "tns-core-modules": "^3.2.0"
+    "@nativescript/theme": "~2.2.1",
+    "nativescript-plugin-appsflyer": "file:..",
+    "tns-core-modules": "~6.3.0"
   },
   "devDependencies": {
-    "babel-traverse": "6.18.0",
-    "babel-types": "6.18.0",
-    "babylon": "6.13.1",
-    "lazy": "1.0.11"
-  }
+    "nativescript-dev-webpack": "~1.4.0"
+  },
+  "gitHead": "fa98f785df3fba482e5e2a0c76f4be1fa6dc7a14",
+  "readme": "NativeScript Application"
 }
