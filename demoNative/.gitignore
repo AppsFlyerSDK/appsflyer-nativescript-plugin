@@ -20,6 +20,7 @@ yarn-error.log*
 .idea
 .cloud
 .project
+package-lock.json
 tmp/
 typings/
 
