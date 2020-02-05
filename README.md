@@ -1,7 +1,7 @@
 
 <img src="https://www.appsflyer.com/wp-content/uploads/2016/11/logo-1.svg"  width="200">
 
-# nativescript-plugin-appsflyer
+# appsflyer-nativescript-plugin
  Nativescript Library for AppsFlyer SDK
 
 [![npm version](https://badge.fury.io/js/nativescript-plugin-appsflyer.svg)](https://badge.fury.io/js/nativescript-plugin-appsflyer)
