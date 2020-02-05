@@ -50,7 +50,7 @@
   },
   "homepage": "https://github.com/AppsFlyerSDK/nativescript-plugin-appsflyer#readme",
   "devDependencies": {
-    "tns-core-modules": "^6.3.0",
+    "tns-core-modules": "^3.2.0",
     "tns-platform-declarations": "~3.4.1",
     "typescript": "~2.7.2"
   },
