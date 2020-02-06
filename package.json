@@ -29,7 +29,7 @@
     "riw": "cd demoNative; tns livesync ios --watch",
     "raw": "cd demoNative; tns livesync android --watch",
     "preparedemo": "npm run build; cd demoNative; tns plugin remove nativescript-plugin-appsflyer; tns plugin add ..; tns install",
-    "setup": "cd demoNative; npm install; cd ..; npm run build; cd demoNative; tns plugin add ..; cd ..",
+    "setup": "cd demoNative; npm install; cd ..; npm i; npm run build; cd demoNative; tns plugin add ..; cd ..",
     "prepack": "tsc"
   },
   "repository": {
