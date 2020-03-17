@@ -16,6 +16,6 @@ dependencies {
 	def googlePlayServicesVersion = safeExtGet('googlePlayServicesVersion', '9.6.+')
 	compile "com.google.android.gms:play-services-ads:$googlePlayServicesVersion"
   compile "com.google.android.gms:play-services-identity:$googlePlayServicesVersion"
-  compile "com.android.installreferrer:installreferrer:${safeExtGet('installreferrer', '1.1')}"
-  compile "com.appsflyer:af-android-sdk:${safeExtGet('appsflyerVersion', "5.1.0")}"
+  compile "com.android.installreferrer:installreferrer:${safeExtGet('installreferrer', '1.0')}"
+  compile "com.appsflyer:af-android-sdk:${safeExtGet('appsflyerVersion', "5.2.0")}"
 }
