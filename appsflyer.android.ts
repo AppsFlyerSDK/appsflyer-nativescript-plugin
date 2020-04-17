@@ -11,6 +11,7 @@ import stringSetToStringArray = ad.collections.stringSetToStringArray;
 
 let _isDebugLocal = false;
 let _appsFlyerConversionListener = undefined;
+let _appsFlyerTrackingRequestListener = undefined;
 
 export const initSdk = function (args: InitSDKOptions) {
 
@@ -20,19 +21,15 @@ export const initSdk = function (args: InitSDKOptions) {
 
                 const appsFlyerLibInstance = com.appsflyer.AppsFlyerLib.getInstance();
 
-                _isDebugLocal = args.isDebug === true;
+                _isDebugLocal = args.isDebug;
 
                 appsFlyerLibInstance.setDebugLog(_isDebugLocal);
 
-                if (_isDebugLocal) {
-                    console.log("AF-A :: appsFlyer.initSdk: " + JSON.stringify(args));
-                }
-
-                if (args.onConversionDataSuccess || args.onConversionDataFailure) {
+                if (args.onConversionDataSuccess || args.onConversionDataFail) {
                     try {
                         _appsFlyerConversionListener = new com.appsflyer.AppsFlyerConversionListener(<any>{
                               _successCallback: args.onConversionDataSuccess,
-                              _failureCallback: args.onConversionDataFailure,
+                              _failureCallback: args.onConversionDataFail,
                               onConversionDataSuccess(conversionData: java.util.Map<string, string>): void {
                                 if (!this._successCallback) {
                                   return;
@@ -44,29 +41,31 @@ export const initSdk = function (args: InitSDKOptions) {
                                       data[key] = conversionData.get(key);
                                     }
                                     this._successCallback(data);
+                                    printLogs("onConversionDataSuccess: " + JSON.stringify(args));
                                   } catch (e) {
-                                    console.error(`AF-A :: onInstallConversionDataLoaded Error: ${e}`);
+                                    printLogs(`onInstallConversionDataLoaded Error: ${e}`);
                                   }
                                 } else {
-                                  console.error(`AF-A :: onInstallConversionDataLoaded: callback is not a function`);
+                                    printLogs(`onInstallConversionDataLoaded: callback is not a function`);
                                 }
                               },
-                              onConversionDataFailure(error: string): void {
+                              onConversionDataFail(error: string): void {
                                 if (!this._failureCallback) {
                                   return;
                                 }
                                 if (typeof this._failureCallback === 'function') {
                                   try {
                                     this._failureCallback(error);
+                                    printLogs("onInstallConversionFailure error: " + error);
                                   } catch (e) {
-                                    console.error(`AF-A :: onInstallConversionFailure Error: ${e}`);
+                                    printLogs(`onInstallConversionFailure Error: ${e}`);
                                   }
                                 } else {
-                                  console.error(`AF-A :: onInstallConversionFailure: callback is not a function`);
+                                    printLogs("onInstallConversionFailure: callback is not a function");
                                 }
                               },
                               onAttributionFailure(error: string): void {
-                                console.log("AF-A :: onAttributionFailure: " + error);
+                                printLogs("onAttributionFailure: " + error);
                               },
                               onAppOpenAttribution(onAppOpenAttributionData: java.util.Map<any, any>): void {
                                 if (_isDebugLocal) {
@@ -74,15 +73,16 @@ export const initSdk = function (args: InitSDKOptions) {
                                     for (const key of stringSetToStringArray(onAppOpenAttributionData.keySet())) {
                                         data[key] = onAppOpenAttributionData.get(key);
                                     }
-                                    console.log("AF-A :: onAppOpenAttribution is called with data: " + JSON.stringify(data));
+
+                                    printLogs("onAppOpenAttribution: " + JSON.stringify(data));
                                 }
                                },
                             });
                     } catch (e) {
-                        console.error(`AF-A :: registerConversionListener Error:${e}`);
+                        printLogs(`registerConversionListener Error:${e}`);
                     }
                 }
-
+                
                 appsFlyerLibInstance.init(args.devKey,_appsFlyerConversionListener,(appModule.android.currentContext || (<any>com).tns.NativeScriptApplication.getInstance()));
 
                 _trackAppLaunch(appsFlyerLibInstance);
@@ -94,14 +94,15 @@ export const initSdk = function (args: InitSDKOptions) {
                 reject({status: "failure", message: "com.appsflyer.AppsFlyerLib is not defined"});
             }
         } catch (ex) {
-            console.log("Error: " + ex);
+            printLogs("Error: " + ex);
             reject(ex);
         }
     });
 };
 
 function _trackAppLaunch (_instance: com.appsflyer.AppsFlyerLib) {
-  console.log("AppsFlyer :: NativeScript :: trackAppLaunch is called");
+    printLogs("trackAppLaunch is called");
+
   const c = appModule.android.currentContext || (<any>com).tns.NativeScriptApplication.getInstance();
   _instance.trackEvent(c, null, null);
 }
@@ -110,20 +111,56 @@ export const trackEvent = function (args: TrackEventOptions) {
 
     return new Promise(function (resolve, reject) {
         try {
+            if (args.onTrackingRequestSuccess || args.onTrackingRequestFailure) {
+                try {
+                    _appsFlyerTrackingRequestListener = new com.appsflyer.AppsFlyerTrackingRequestListener(<any>{
+                          _successCallback: args.onTrackingRequestSuccess,
+                          _failureCallback: args.onTrackingRequestFailure,
+                          onTrackingRequestSuccess(): void {
+                            if (!this._successCallback) {
+                              return;
+                            }
+                            if (typeof this._successCallback === 'function') {
+                              try {
+                                this._successCallback(args);
+                                printLogs("trackEvent success: " + JSON.stringify(args));
+                              } catch (e) {
+                                printLogs(`onTrackingRequestSuccess Error: ${e}`);
+                              }
+                            } else {
+                                printLogs(`onTrackingRequestSuccess: callback is not a function`);
+                            }
+                            resolve({status: args});
+                          },
+                          onTrackingRequestFailure(error: string): void {
+                            if (!this._failureCallback) {
+                              return;
+                            }
+                            if (typeof this._failureCallback === 'function') {
+                              try {
+                                this._failureCallback(error);
+                                printLogs("trackEvent error: " + error);
+                              } catch (e) {
+                                    printLogs(`onTrackingRequestFailure Error: ${e}`);
+                              }
+                            } else {
+                                printLogs(`onTrackingRequestFailure: callback is not a function`);
+                            }
+                            resolve({status: "failure"});
+                          },
+                        });
+                } catch (e) {
+                        printLogs(`AppsFlyerTrackingRequestListener Error:${e}`);
 
-            const appsFlyerLibInstance = com.appsflyer.AppsFlyerLib.getInstance();
-
-            if (_isDebugLocal) {
-                console.log("AF-A :: appsFlyer.trackEvent: " + JSON.stringify(args));
+                }
             }
-
+            const appsFlyerLibInstance = com.appsflyer.AppsFlyerLib.getInstance();
             const c = appModule.android.currentContext || (<any>com).tns.NativeScriptApplication.getInstance();
-
-            appsFlyerLibInstance.trackEvent(c, args.eventName, _toValue(args.eventValues));
-
-            resolve({status: "success"});
+            appsFlyerLibInstance.trackEvent(c, args.eventName, _toValue(args.eventValues), _appsFlyerTrackingRequestListener);
+            
+            
         } catch (ex) {
-            console.log("AF-A :: Error: " + ex);
+            printLogs("Error: " + ex);
             reject(ex);
         }
     });
@@ -138,7 +175,7 @@ export const setCustomerUserId = function (userId: string) {
 
             resolve({status: "success"});
         } catch (ex) {
-            console.log("AF-A :: Error: " + ex);
+            printLogs("setCustomerUserId Error: " + ex);
             reject(ex);
         }
     });
@@ -201,3 +238,9 @@ export const _toValue = function(val: any){
     }
     return returnVal;
 };
+
+function printLogs(logs){
+    if (_isDebugLocal) {
+        console.log("AppsFlyer :: " + logs);
+    }
+}
