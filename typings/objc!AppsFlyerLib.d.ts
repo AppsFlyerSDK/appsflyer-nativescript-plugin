@@ -135,9 +135,9 @@ interface AppsFlyerTrackerDelegate extends NSObjectProtocol {
 
 	onAppOpenAttributionFailure?(error: NSError): void;
 
-	onConversionDataReceived?(installData: NSDictionary<any, any>): void;
+	onConversionDataSuccess?(installData: NSDictionary<any, any>): void;
 
-	onConversionDataRequestFailure?(error: NSError): void;
+	onConversionDataFail?(error: NSError): void;
 }
 declare var AppsFlyerTrackerDelegate: {
 

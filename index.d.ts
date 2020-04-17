@@ -3,12 +3,14 @@ export interface InitSDKOptions {
     appId?: string;
     isDebug?: boolean;
     onConversionDataSuccess?: (obj: ConversionData) => void;
-    onConversionDataFailure?: (err: string) => void;
+    onConversionDataFail?: (err: string) => void;
 }
 
 export interface TrackEventOptions {
     eventName: string;
     eventValues: Object;
+    onTrackingRequestSuccess?: () => void;
+    onTrackingRequestFailure?: (err: string) => void;
 }
 
 export function initSdk(options: InitSDKOptions): Promise<{status} | any>;

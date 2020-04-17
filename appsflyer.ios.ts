@@ -25,14 +25,14 @@ export const initSdk = function (args: InitSDKOptions) {
                 _isDebugLocal = AppsFlyerTracker.sharedTracker().isDebug;
 
                 if (_isDebugLocal) {
-                    console.log("AF-I :: appsFlyer.trackEvent: " + JSON.stringify(args));
+                    console.log("AF-I :: appsFlyer.initSdk: " + JSON.stringify(args));
                 }
 
-                if (args.onConversionDataSuccess || args.onConversionDataFailure) {
+                if (args.onConversionDataSuccess || args.onConversionDataFail) {
                   try {
                     _conversionDataDelegate = ConversionDataDelegate.initWithCallbacks(
                       args.onConversionDataSuccess,
-                      args.onConversionDataFailure
+                      args.onConversionDataFail
                     );
                     AppsFlyerTracker.sharedTracker().delegate = _conversionDataDelegate;
                   } catch (e) {
@@ -146,7 +146,7 @@ class ConversionDataDelegate extends NSObject implements AppsFlyerTrackerDelegat
       }
     }
 
-    public onConversionDataFailure(error: NSError): void {
+    public onConversionDataFail(error: NSError): void {
       if (!this._failureCallback) {
         return;
       }
