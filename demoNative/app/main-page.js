@@ -30,6 +30,9 @@ function onNavigatingTo(args) {
     https://docs.nativescript.org/core-concepts/data-binding.
     */
     page.bindingContext = createViewModel;
+
+    // createViewModel.setSharingFilter();
+    // createViewModel.setSharingFilterForAllPartners();
     createViewModel.initSdk();
 }
 

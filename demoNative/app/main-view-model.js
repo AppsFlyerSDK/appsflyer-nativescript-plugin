@@ -19,7 +19,7 @@ function createViewModel() {
         var options = {
             devKey:  'WdpTVAcYwmxsaQ4WeTspmh',
             appId: "975313579",
-            isDebug: false,
+            isDebug: true,
             onConversionDataSuccess: function(_res){
                 console.log("Get conversion data success: " + JSON.stringify(_res));
                 viewModel.set("gcdResponse", JSON.stringify(_res));
@@ -67,6 +67,32 @@ function createViewModel() {
            viewModel.set("trackEventResponse", JSON.stringify(err));
         });
     }
+    // viewModel.setSharingFilter = function() {
+
+    //     console.log("call setSharingFilter ... ");
+    //     var partners = [""];
+
+    //     appsFlyer.setSharingFilter(partners).then(function(result) {
+    //         console.log("setSharingFilter is called");
+    //         viewModel.set("setSharingFilterResponse", result.status);
+    //     }, function(err) {
+    //         console.log("setSharingFilter error  ... " +  JSON.stringify(err));
+    //         viewModel.set("setSharingFilter Response", JSON.stringify(err));
+    //     });
+    // };
+    
+    // viewModel.setSharingFilterForAllPartners = function() {
+
+    //     console.log("call setSharingFilterForAllPartners ... ");
+
+    //     appsFlyer.setSharingFilterForAllPartners().then(function(result) {
+    //         console.log("setSharingFilterForAllPartners is called");
+    //         viewModel.set("setSharingFilterForAllPartners", result.status);
+    //     }, function(err) {
+    //         console.log("setSharingFilterForAllPartners error  ... " +  JSON.stringify(err));
+    //         viewModel.set("setSharingFilterForAllPartners Response", JSON.stringify(err));
+    //     });
+    // };
 
     return viewModel;
 }
