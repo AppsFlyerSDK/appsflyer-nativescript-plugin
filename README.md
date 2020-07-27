@@ -134,6 +134,7 @@ Reasons for this include:
  Competition with some partners (ad networks, 3rd parties)
  AppsFlyer provides two API methods to stop sharing data with some or all partners:
 
+
 #####<a id="setSharingFilter"> **`appsFlyer.setSharingFilter(partners): Promise<any>`**
 - `setSharingFilter`: Used by advertisers to set some (one or more) networks/integrated partners to exclude from getting data.
 
