@@ -140,7 +140,7 @@ Reasons for this include:
 
 | parameter   | type                        | description  |
 | ----------- |-----------------------------|--------------|
-| `partners`  | `Array<String>`             |   Exclude (one or more) networks/integrated partners from getting data          |
+| `partners`  | `Array`             |   Exclude (one or more) networks/integrated partners from getting data          |
 
 
 *Example: (native javascript)*
