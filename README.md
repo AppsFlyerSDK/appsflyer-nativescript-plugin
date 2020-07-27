@@ -125,7 +125,8 @@ to track ROI (Return on Investment) and LTV (Lifetime Value).
 ```
 
 ---
-##<a id="sharingFilter"> `Sharing filter (GDPR/CCPA COMPLIANT - Read more information in the [following article](https://support.appsflyer.com/hc/en-us/articles/360001422989-Implementing-app-user-opt-in-opt-out-in-the-AppsFlyer-SDK)`
+##<a id="sharingFilter"> `Sharing filter`
+(GDPR/CCPA COMPLIANT - Read more information in the [following article](https://support.appsflyer.com/hc/en-us/articles/360001422989-Implementing-app-user-opt-in-opt-out-in-the-AppsFlyer-SDK)`
 In some cases, advertisers may want to stop sharing user-level data with ad networks/partners for specific users. 
 Reasons for this include: 
  Privacy policies such as CCPA or GDPR
