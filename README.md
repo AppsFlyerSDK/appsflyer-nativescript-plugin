@@ -125,13 +125,14 @@ to track ROI (Return on Investment) and LTV (Lifetime Value).
 ```
 
 ---
-##<a id="sharingFilter"> **`Sharing filter (GDPR/CCPA COMPLIANT. Read more information in the following article: https://support.appsflyer.com/hc/en-us/articles/360001422989-Implementing-app-user-opt-in-opt-out-in-the-AppsFlyer-SDK)`**
-In some cases, advertisers may want to stop sharing user-level data with ad networks/partners for specific users. Reasons for this include: 
-
-Privacy policies such as CCPA or GDPR
-User opt-out mechanisms
-Competition with some partners (ad networks, 3rd parties)
-AppsFlyer provides two API methods to stop sharing data with some or all partners:
+##<a id="sharingFilter"> `Sharing filter (GDPR/CCPA COMPLIANT. Read more information in the following article: https://support.appsflyer.com/hc/en-us/articles/360001422989-Implementing-app-user-opt-in-opt-out-in-the-AppsFlyer-SDK)`
+ 
+In some cases, advertisers may want to stop sharing user-level data with ad networks/partners for specific users. 
+Reasons for this include: 
+ Privacy policies such as CCPA or GDPR
+ User opt-out mechanisms
+ Competition with some partners (ad networks, 3rd parties)
+ AppsFlyer provides two API methods to stop sharing data with some or all partners:
 
 #####<a id="setSharingFilter"> **`appsFlyer.setSharingFilter(partners): Promise<any>`**
 - `setSharingFilter`: Used by advertisers to set some (one or more) networks/integrated partners to exclude from getting data.
@@ -144,7 +145,6 @@ AppsFlyer provides two API methods to stop sharing data with some or all partner
 *Example: (native javascript)*
 
 ```javascript
- 
         var partners = [""];
 
         appsFlyer.setSharingFilter(partners).then(function(result) {
@@ -152,8 +152,6 @@ AppsFlyer provides two API methods to stop sharing data with some or all partner
         }, function(err) {
             viewModel.set("setSharingFilter Response", JSON.stringify(err));
         });
-    
-    
 ```
 
 #####<a id="setSharingFilterForAllPartners"> **`appsFlyer.setSharingFilterForAllPartners(): Promise<any>`**
@@ -162,7 +160,6 @@ AppsFlyer provides two API methods to stop sharing data with some or all partner
 *Example: (native javascript)*
 
 ```javascript
- 
         appsFlyer.setSharingFilterForAllPartners().then(function(result) {
             viewModel.set("setSharingFilterForAllPartners", result.status);
         }, function(err) {
