@@ -13,6 +13,9 @@
  - [API Methods](#api-methods) 
  - [initSdk](#initSdk) 
  - [trackEvent](#trackEvent) 
+- [sharingFilter](#setSharingFilter) 
+ - [setSharingFilter](#setSharingFilter) 
+ - [setSharingFilterForAllPartners](#setSharingFilterForAllPartners) 
 - [Demo](#demo) 
 
 
@@ -122,8 +125,51 @@ to track ROI (Return on Investment) and LTV (Lifetime Value).
 ```
 
 ---
+##<a id="sharingFilter"> **`Sharing filter (GDPR/CCPA COMPLIANT. Read more information in the following article: https://support.appsflyer.com/hc/en-us/articles/360001422989-Implementing-app-user-opt-in-opt-out-in-the-AppsFlyer-SDK)`**
+In some cases, advertisers may want to stop sharing user-level data with ad networks/partners for specific users. Reasons for this include: 
+
+Privacy policies such as CCPA or GDPR
+User opt-out mechanisms
+Competition with some partners (ad networks, 3rd parties)
+AppsFlyer provides two API methods to stop sharing data with some or all partners:
+
+#####<a id="setSharingFilter"> **`appsFlyer.setSharingFilter(partners): Promise<any>`**
+- `setSharingFilter`: Used by advertisers to set some (one or more) networks/integrated partners to exclude from getting data.
+
+| parameter   | type                        | description  |
+| ----------- |-----------------------------|--------------|
+| `partners`  | `Array<String>`             |   Exclude (one or more) networks/integrated partners from getting data          |
 
 
+*Example: (native javascript)*
+
+```javascript
+ 
+        var partners = [""];
+
+        appsFlyer.setSharingFilter(partners).then(function(result) {
+            viewModel.set("setSharingFilterResponse", result.status);
+        }, function(err) {
+            viewModel.set("setSharingFilter Response", JSON.stringify(err));
+        });
+    
+    
+```
+
+#####<a id="setSharingFilterForAllPartners"> **`appsFlyer.setSharingFilterForAllPartners(): Promise<any>`**
+- `setSharingFilterForAllPartners`: Used by advertisers to exclude all networks/integrated partners from getting data.
+ 
+*Example: (native javascript)*
+
+```javascript
+ 
+        appsFlyer.setSharingFilterForAllPartners().then(function(result) {
+            viewModel.set("setSharingFilterForAllPartners", result.status);
+        }, function(err) {
+            viewModel.set("setSharingFilterForAllPartners Response", JSON.stringify(err));
+        });
+ ```   
+---
 ##Demo
 
 This plugin has a `demo` project bundled with it. To give it a try , clone this repo and from root a.e. `nativescript-plugin-appsflyer` execute the following:
