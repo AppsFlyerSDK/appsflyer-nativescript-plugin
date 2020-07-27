@@ -271,6 +271,8 @@ declare module com {
 			public setUserEmail(param0: string): void;
 			public setAdditionalData(param0: javautilHashMap): void;
 			public setCurrencyCode(param0: string): void;
+			public setSharingFilter(param0: Array): void;
+			public setSharingFilterForAllPartners(): void;
 			public unregisterConversionListener(): void;
 			public getAppsFlyerUID(param0: androidcontentContext): string;
 			public getSdkVersion(): string;

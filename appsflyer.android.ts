@@ -181,7 +181,34 @@ export const setCustomerUserId = function (userId: string) {
     });
 };
 
+export const setSharingFilter = function (partners: Array<string>) {
 
+  return new Promise(function (resolve, reject) {
+      try {
+          const appsFlyerLibInstance = com.appsflyer.AppsFlyerLib.getInstance();
+          appsFlyerLibInstance.setSharingFilter(partners);
+
+          resolve({status: "success"});
+      } catch (ex) {
+          printLogs("setSharingFilter Error: " + ex);
+          reject(ex);
+      }
+  });
+};
+export const setSharingFilterForAllPartners = function () {
+
+  return new Promise(function (resolve, reject) {
+      try {
+          const appsFlyerLibInstance = com.appsflyer.AppsFlyerLib.getInstance();
+          appsFlyerLibInstance.setSharingFilterForAllPartners();
+
+          resolve({status: "success"});
+      } catch (ex) {
+          printLogs("setSharingFilterForAllPartners Error: " + ex);
+          reject(ex);
+      }
+  });
+};
 export const _toHashMap = function(obj: Object) {
     const node = new java.util.HashMap();
     for (const property in obj) {
