@@ -17,7 +17,7 @@ export function initSdk(options: InitSDKOptions): Promise<{status} | any>;
 
 export function trackEvent(options: TrackEventOptions): Promise<{status} | any>;
 
-export function setSharingFilter(partners: Array): Promise<{status} | any>;
+export function setSharingFilter(partners: Array<String>): Promise<{status} | any>;
 
 export function setSharingFilterForAllPartners(): Promise<{status} | any>;
 

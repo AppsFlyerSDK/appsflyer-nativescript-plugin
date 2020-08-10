@@ -15,7 +15,7 @@ function createViewModel() {
     viewModel.initSdk = function() {
 
         console.log("call initSdk ... ");
-
+ 
         var options = {
             devKey:  'WdpTVAcYwmxsaQ4WeTspmh',
             appId: "975313579",
@@ -67,34 +67,32 @@ function createViewModel() {
            viewModel.set("trackEventResponse", JSON.stringify(err));
         });
     }
-    // viewModel.setSharingFilter = function() {
+    viewModel.setSharingFilter = function(partners) {
+        console.log("call setSharingFilter with the following partners: " + partners);
 
-    //     console.log("call setSharingFilter ... ");
-    //     var partners = [""];
-
-    //     appsFlyer.setSharingFilter(partners).then(function(result) {
-    //         console.log("setSharingFilter is called");
-    //         viewModel.set("setSharingFilterResponse", result.status);
-    //     }, function(err) {
-    //         console.log("setSharingFilter error  ... " +  JSON.stringify(err));
-    //         viewModel.set("setSharingFilter Response", JSON.stringify(err));
-    //     });
-    // };
+        appsFlyer.setSharingFilter(partners).then(function(result) {
+            console.log("setSharingFilter is called");
+            viewModel.set("setSharingFilterResponse", result.status);
+        }, function(err) {
+            console.log("setSharingFilter error  ... " +  JSON.stringify(err));
+            viewModel.set("setSharingFilter Response", JSON.stringify(err));
+        });
+    };
     
-    // viewModel.setSharingFilterForAllPartners = function() {
+    viewModel.setSharingFilterForAllPartners = function() {
 
-    //     console.log("call setSharingFilterForAllPartners ... ");
+        console.log("call setSharingFilterForAllPartners ... ");
 
-    //     appsFlyer.setSharingFilterForAllPartners().then(function(result) {
-    //         console.log("setSharingFilterForAllPartners is called");
-    //         viewModel.set("setSharingFilterForAllPartners", result.status);
-    //     }, function(err) {
-    //         console.log("setSharingFilterForAllPartners error  ... " +  JSON.stringify(err));
-    //         viewModel.set("setSharingFilterForAllPartners Response", JSON.stringify(err));
-    //     });
-    // };
+        appsFlyer.setSharingFilterForAllPartners().then(function(result) {
+            console.log("setSharingFilterForAllPartners is called");
+            viewModel.set("setSharingFilterForAllPartners", result.status);
+        }, function(err) {
+            console.log("setSharingFilterForAllPartners error  ... " +  JSON.stringify(err));
+            viewModel.set("setSharingFilterForAllPartners Response", JSON.stringify(err));
+        });
+    };
 
     return viewModel;
 }
-
 exports.createViewModel = createViewModel;
+
