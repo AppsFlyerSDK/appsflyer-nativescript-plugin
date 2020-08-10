@@ -31,7 +31,7 @@ function onNavigatingTo(args) {
     */
     page.bindingContext = createViewModel;
 
-    // createViewModel.setSharingFilter();
+    // createViewModel.setSharingFilter(["",""]);
     // createViewModel.setSharingFilterForAllPartners();
     createViewModel.initSdk();
 }
