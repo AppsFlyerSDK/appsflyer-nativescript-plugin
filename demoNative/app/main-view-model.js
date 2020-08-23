@@ -1,4 +1,4 @@
-const Observable = require("tns-core-modules/data/observable").Observable;
+const Observable = require("@nativescript/core").Observable;
 var appsFlyer = require("nativescript-plugin-appsflyer");
 
 function createViewModel() {

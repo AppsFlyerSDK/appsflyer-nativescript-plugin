@@ -1,13 +1,17 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
+    "target": "es2017",
+    "module": "esnext",
+    "moduleResolution": "node",
     "declaration": false,
     "removeComments": true,
     "noLib": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "lib": ["es6", "dom"],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
     "sourceMap": false,
     "pretty": true,
     "allowUnreachableCode": false,
@@ -18,14 +22,20 @@
     "noImplicitReturns": true,
     "noImplicitUseStrict": false,
     "noFallthroughCasesInSwitch": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "plugins": [
+      {
+        "transform": "@nativescript/webpack/transformers/ns-transform-native-classes",
+        "type": "raw"
+      }
+    ],
   },
   "include": [
-    // references
-    "node_modules/tns-platform-declarations/android.d.ts",
-    "node_modules/tns-platform-declarations/ios.d.ts",
-    "typings/*.d.ts",
-    // sources
+    "references.d.ts",
+    "typings/*.d.ts"
+  ],
+  "files": [
     "appsflyer.android.ts",
     "appsflyer.ios.ts"
   ],
