@@ -12,7 +12,7 @@
 - [Installation](#installation)
  - [API Methods](#api-methods) 
  - [initSdk](#initSdk) 
- - [trackEvent](#trackEvent) 
+ - [logEvent](#logEvent) 
  - [setSharingFilter](#setSharingFilter) 
  - [setSharingFilterForAllPartners](#setSharingFilterForAllPartners) 
 - [Demo](#demo) 
@@ -20,8 +20,8 @@
 
 ## <a id="this-plugin-is-built-for"> This plugin is built for
 
-- iOS AppsFlyerSDK *latest*
-- Android AppsFlyerSDK **v5.4.1**
+- iOS AppsFlyerSDK **v6.0.3**
+- Android AppsFlyerSDK **v5.4.3**
 
 ## <a id="installation"> Installation
 
@@ -83,17 +83,17 @@ initializes the SDK.
 
 ---
 
-#####<a id="trackEvent"> **`appsFlyer.trackEvent(options): Promise<any>`**
+#####<a id="logEvent"> **`appsFlyer.logEvent(options): Promise<any>`**
 
 
 - These in-app events help you track how loyal users discover your app, and attribute them to specific 
 campaigns/media-sources. Please take the time define the event/s you want to measure to allow you 
 to track ROI (Return on Investment) and LTV (Lifetime Value).
-- The `trackEvent` method allows you to send in-app events to AppsFlyer analytics. This method allows you to add events dynamically by adding them directly to the application code.
+- The `logEvent` method allows you to send in-app events to AppsFlyer analytics. This method allows you to add events dynamically by adding them directly to the application code.
 
 | parameter   | type                        | description  |
 | ----------- |-----------------------------|--------------|
-| `options`   | `Object`                    |   track event configuration           |
+| `options`   | `Object`                    |   log event configuration           |
 
 **`options`**
 
@@ -114,10 +114,10 @@ to track ROI (Return on Investment) and LTV (Lifetime Value).
                 "af_revenue": "2"
             }
         };
-        appsFlyer.trackEvent(options).then(function(result) {
-            viewModel.set("trackEventResponse", result);
+        appsFlyer.logEvent(options).then(function(result) {
+            viewModel.set("logEventResponse", result);
         }, function(err) {
-            viewModel.set("trackEventResponse", JSON.stringify(err));
+            viewModel.set("logEventResponse", JSON.stringify(err));
         });
     
     
