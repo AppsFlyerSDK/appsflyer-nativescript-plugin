@@ -6,11 +6,11 @@ function createViewModel() {
 
     var viewModel = new Observable();
 
-    viewModel.trackEventResponse = "not called yet";
+    viewModel.logEventResponse = "not called yet";
     viewModel.getAppsFlyerUIDResponse = "not called yet";
     viewModel.initSdkResponse = "not initialized yet";
     viewModel.gcdResponse = "GCD isn't called yet";
-    viewModel.trackLocationResponse = [];
+    viewModel.logLocationResponse = [];
 
     viewModel.initSdk = function() {
 
@@ -38,33 +38,33 @@ function createViewModel() {
             viewModel.set("initSdkResponse", JSON.stringify(err));
         });
     };
-    viewModel.trackEvent = function() {
+    viewModel.logEvent = function() {
 
-        console.log("call trackEvent ... ");
+        console.log("call logEvent ... ");
 
         var options = {
             eventName: "af_add_to_cart",
             eventValues: {
-                "af_content_id": "id123",
-                "af_currency": "USD",
-                "af_revenue": "2"
+                af_content_id: "id123",
+                af_currency: "USD",
+                af_revenue: "2"
             },
-            onTrackingRequestSuccess: function(_res){
-                console.log("onTrackingRequestSuccess results: " + JSON.stringify(_res));
-                viewModel.set("trackEventResponse", JSON.stringify(_res));
+            onLogEventRequestSuccess: function(_res){
+                console.log("onLogEventRequestSuccess results: " + JSON.stringify(_res));
+                viewModel.set("logEventResponse", JSON.stringify(_res));
             },
-            onTrackingRequestFailure: function(_res){
-                console.log("trackEvent ERROR results  ... " + JSON.stringify(_res));
-                viewModel.set("trackEventResponse", JSON.stringify(_res));
+            onLogEventRequestFailure: function(_res){
+                console.log("logEvent ERROR results  ... " + JSON.stringify(_res));
+                viewModel.set("logEventResponse", JSON.stringify(_res));
             },
         };
 
-        appsFlyer.trackEvent(options).then(function(result) {
-            console.log("trackEvent is called");
-            viewModel.set("trackEventResponse", JSON.stringify(result));
+        appsFlyer.logEvent(options).then(function(result) {
+            console.log("logEvent is called");
+            viewModel.set("logEventResponse", JSON.stringify(result));
         }, function(err) {
-           console.log("trackEvent ERROR results  ... " + JSON.stringify(err));
-           viewModel.set("trackEventResponse", JSON.stringify(err));
+           console.log("logEvent ERROR results  ... " + JSON.stringify(err));
+           viewModel.set("logEventResponse", JSON.stringify(err));
         });
     }
     viewModel.setSharingFilter = function(partners) {

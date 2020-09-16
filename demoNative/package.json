@@ -1,11 +1,11 @@
 {
   "nativescript": {
     "id": "com.appsflyer.nativescript.demoNative",
-    "tns-android": {
-      "version": "6.4.1"
-    },
     "tns-ios": {
       "version": "6.4.0"
+    },
+    "tns-android": {
+      "version": "6.4.1"
     }
   },
   "description": "NativeScript Application",

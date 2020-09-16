@@ -264,7 +264,7 @@ declare module com {
 			public setCollectAndroidID(param0: boolean): void;
 			public init(param0: string, param1: com.appsflyer.AppsFlyerConversionListener, param2: androidcontentContext): com.appsflyer.AppsFlyerLib;
 			public trackEvent(param0: androidcontentContext, param1: string, param2: javautilMap): void;
-			public trackEvent(param0: androidcontentContext, param1: string, param2: javautilMap, param3: com.appsflyer.AppsFlyerTrackingRequestListener): void;
+			public trackEvent(param0: androidcontentContext, param1: string, param2: javautilMap, param3: com.appsflyer.attribution.appsFlyerRequestListener): void;
 			public registerValidatorListener(param0: androidcontentContext, param1: com.appsflyer.AppsFlyerInAppPurchaseValidatorListener): void;
 			public sendPushNotificationData(param0: androidappActivity): void;
 			public setDeepLinkData(param0: androidcontentIntent): void;
@@ -433,16 +433,18 @@ declare module com {
 /// <reference path="./java.util.Map.d.ts" />
 declare module com {
 	export module appsflyer {
-		export class AppsFlyerTrackingRequestListener {
-			/**
-			 * Constructs a new instance of the com.appsflyer.ConversionDataListener interface with the provided implementation.
-			 */
-			public constructor(implementation: {
-				onTrackingRequestSuccess(): void;
-				onTrackingRequestFailure(param0: string): void;
-			});
-			public onTrackingRequestSuccess(): void;
-			public onTrackingRequestFailure(param0: string): void;
+		export module attribution{
+			export class AppsFlyerRequestListener {
+				/**
+				 * Constructs a new instance of the com.appsflyer.ConversionDataListener interface with the provided implementation.
+				 */
+				public constructor(implementation: {
+					onSuccess(): void;
+					onError(param0: number, param1: string): void;
+				});
+				public onSuccess(): void;
+				public onError(param0: number, param1: string): void;
+			}
 		}
 	}
 }
