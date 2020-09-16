@@ -1,12 +1,9 @@
-
-import * as utils from "tns-core-modules/utils/utils";
-import * as platform from "tns-core-modules/platform";
 import {
   InitSDKOptions,
   LogEventOptions,
 } from './index';
-import { ios } from 'tns-core-modules/utils/utils';
-import nsArrayToJSArray = ios.collections.nsArrayToJSArray;
+import { Utils } from '@nativescript/core';
+const nsArrayToJSArray = Utils.ios.collections.nsArrayToJSArray;
 
 let _isDebugLocal = false;
 

@@ -1,15 +1,24 @@
 {
+  "nativescript": {
+    "id": "com.appsflyer.nativescript.demoNative",
+    "tns-ios": {
+      "version": "6.4.0"
+    },
+    "tns-android": {
+      "version": "6.4.1"
+    }
+  },
   "description": "NativeScript Application",
   "license": "SEE LICENSE IN <your-license-filename>",
   "repository": "<fill-your-repository-here>",
   "dependencies": {
     "@nativescript/theme": "~2.2.1",
     "nativescript-plugin-appsflyer": "file:..",
-    "@nativescript/core": "7.0.3",
-    "@nativescript/webpack": "3.0.0"
+    "tns-core-modules": "~6.4.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "nativescript-dev-webpack": "~1.5.0"
+  },
   "gitHead": "fa98f785df3fba482e5e2a0c76f4be1fa6dc7a14",
-  "readme": "NativeScript Application",
-  "main": "app.js"
+  "readme": "NativeScript Application"
 }
