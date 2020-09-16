@@ -5,9 +5,9 @@ declare class AppsFlyerCrossPromotionHelper extends NSObject {
 
 	static new(): AppsFlyerCrossPromotionHelper; // inherited from NSObject
 
-	static trackAndOpenStoreCampaignParamtersOpenStore(appID: string, campaign: string, parameters: NSDictionary<any, any>, openStoreBlock: (p1: NSURLSession, p2: NSURL) => void): void;
+	static logCrossPromotionAndOpenStore(appID: string, campaign: string, parameters: NSDictionary<any, any>, openStoreBlock: (p1: NSURLSession, p2: NSURL) => void): void;
 
-	static trackCrossPromoteImpressionCampaign(appID: string, campaign: string): void;
+	static logCrossPromotionImpression(appID: string, campaign: string): void;
 }
 
 declare class AppsFlyerLinkGenerator extends NSObject {
@@ -47,16 +47,16 @@ declare class AppsFlyerShareInviteHelper extends NSObject {
 
 	static new(): AppsFlyerShareInviteHelper; // inherited from NSObject
 
-	static trackInviteParameters(channel: string, parameters: NSDictionary<any, any>): void;
+	static logInvite(channel: string, parameters: NSDictionary<any, any>): void;
 }
 
-declare class AppsFlyerTracker extends NSObject {
+declare class AppsFlyerLib extends NSObject {
 
-	static alloc(): AppsFlyerTracker; // inherited from NSObject
+	static alloc(): AppsFlyerLib; // inherited from NSObject
 
-	static new(): AppsFlyerTracker; // inherited from NSObject
+	static new(): AppsFlyerLib; // inherited from NSObject
 
-	static sharedTracker(): AppsFlyerTracker;
+	static shared(): AppsFlyerLib;
 
 	advertiserId: string;
 
@@ -72,19 +72,17 @@ declare class AppsFlyerTracker extends NSObject {
 
 	customerUserID: string;
 
-	delegate: AppsFlyerTrackerDelegate;
+	delegate: AppsFlyerLibDelegate;
 
-	deviceTrackingDisabled: boolean;
+	anonymizeUser: boolean;
 
-	disableAppleAdSupportTracking: boolean;
-
-	disableIAdTracking: boolean;
+	disableCollectASA: boolean;
 
 	host: string;
 
 	isDebug: boolean;
 
-	isStopTracking: boolean;
+	isStopped: boolean;
 
 	minTimeBetweenSessions: number;
 
@@ -110,7 +108,7 @@ declare class AppsFlyerTracker extends NSObject {
 
 	handlePushNotification(pushPayload: NSDictionary<any, any>): void;
 
-	loadConversionDataWithDelegate(delegate: AppsFlyerTrackerDelegate): void;
+	loadConversionDataWithDelegate(delegate: AppsFlyerLibDelegate): void;
 
 	registerUninstall(deviceToken: NSData): void;
 
@@ -118,18 +116,18 @@ declare class AppsFlyerTracker extends NSObject {
 
 	setUserEmailsWithCryptType(userEmails: NSArray<any>, type: EmailCryptType): void;
 
-	trackAppLaunch(): void;
+	start(): void;
 
-	trackEventWithValue(eventName: string, value: string): void;
+	logEventWithValues(eventName: string, values: NSDictionary<any, any>): void;
+	
+	logEventWithEventNameEventValuesCompletionHandler(eventName: string, values: NSDictionary<any, any>, completionHandler: (p1: NSDictionary<any, any>, p2: NSError) => void): void;
 
-	trackEventWithValues(eventName: string, values: NSDictionary<any, any>): void;
+	logLocationLatitude(longitude: number, latitude: number): void;
 
-	trackLocationLatitude(longitude: number, latitude: number): void;
-
-	validateAndTrackInAppPurchasePriceCurrencyTransactionIdAdditionalParametersSuccessFailure(productIdentifier: string, price: string, currency: string, tranactionId: string, params: NSDictionary<any, any>, successBlock: (p1: NSDictionary<any, any>) => void, failedBlock: (p1: NSError, p2: any) => void): void;
+	validateAndLogInAppPurchase(productIdentifier: string, price: string, currency: string, tranactionId: string, params: NSDictionary<any, any>, successBlock: (p1: NSDictionary<any, any>) => void, failedBlock: (p1: NSError, p2: any) => void): void;
 }
 
-interface AppsFlyerTrackerDelegate extends NSObjectProtocol {
+interface AppsFlyerLibDelegate extends NSObjectProtocol {
 
 	onAppOpenAttribution?(attributionData: NSDictionary<any, any>): void;
 
@@ -139,9 +137,9 @@ interface AppsFlyerTrackerDelegate extends NSObjectProtocol {
 
 	onConversionDataFail?(error: NSError): void;
 }
-declare var AppsFlyerTrackerDelegate: {
+declare var AppsFlyerLibDelegate: {
 
-	prototype: AppsFlyerTrackerDelegate;
+	prototype: AppsFlyerLibDelegate;
 };
 
 declare const enum EmailCryptType {

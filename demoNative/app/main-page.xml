@@ -28,10 +28,10 @@ https://docs.nativescript.org/ui/components.
                 <TextView editable="false">
                     <FormattedString>
                         <Span
-                            text="{{ trackEventResponse }}" />
+                            text="{{ logEventResponse }}" />
                     </FormattedString>
                 </TextView>
-                <Button cssClass="sdk-button" textWrap="false" text="trackEvent" tap="{{trackEvent}}"/>
+                <Button cssClass="sdk-button" textWrap="false" text="logEvent" tap="{{logEvent}}"/>
             </FlexboxLayout>
         </StackLayout>
 </Page>

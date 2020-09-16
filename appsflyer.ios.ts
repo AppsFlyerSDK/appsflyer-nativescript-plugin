@@ -3,7 +3,7 @@ import * as utils from "tns-core-modules/utils/utils";
 import * as platform from "tns-core-modules/platform";
 import {
   InitSDKOptions,
-  TrackEventOptions,
+  LogEventOptions,
 } from './index';
 import { ios } from 'tns-core-modules/utils/utils';
 import nsArrayToJSArray = ios.collections.nsArrayToJSArray;
@@ -16,13 +16,13 @@ export const initSdk = function (args: InitSDKOptions) {
 
     return new Promise(function (resolve, reject) {
         try {
-            if (typeof(AppsFlyerTracker) !== "undefined") {
+            if (typeof(AppsFlyerLib) !== "undefined") {
 
-                AppsFlyerTracker.sharedTracker().appleAppID = args.appId;
-                AppsFlyerTracker.sharedTracker().appsFlyerDevKey = args.devKey;
-                AppsFlyerTracker.sharedTracker().isDebug = args.isDebug === true;
+                AppsFlyerLib.shared().appleAppID = args.appId;
+                AppsFlyerLib.shared().appsFlyerDevKey = args.devKey;
+                AppsFlyerLib.shared().isDebug = args.isDebug === true;
 
-                _isDebugLocal = AppsFlyerTracker.sharedTracker().isDebug;
+                _isDebugLocal = AppsFlyerLib.shared().isDebug;
 
                 if (_isDebugLocal) {
                     console.log("AF-I :: appsFlyer.initSdk: " + JSON.stringify(args));
@@ -34,17 +34,17 @@ export const initSdk = function (args: InitSDKOptions) {
                       args.onConversionDataSuccess,
                       args.onConversionDataFail
                     );
-                    AppsFlyerTracker.sharedTracker().delegate = _conversionDataDelegate;
+                    AppsFlyerLib.shared().delegate = _conversionDataDelegate;
                   } catch (e) {
                     console.error(`AF-I :: delegate assignment Error: ${e}`);
                   }
                 }
 
-                AppsFlyerTracker.sharedTracker().trackAppLaunch();
+                AppsFlyerLib.shared().start();
 
                 resolve({status: "success"});
             } else {
-                reject({status: "failure", message: "AppsFlyerTracker is not defined"});
+                reject({status: "failure", message: "AppsFlyer is not defined"});
             }
         } catch (ex) {
             console.log("AF_IOS ::  Error: " + ex);
@@ -54,22 +54,22 @@ export const initSdk = function (args: InitSDKOptions) {
 };
 
 
-export const trackEvent = function (args: TrackEventOptions) {
+export const logEvent = function (args: LogEventOptions) {
 
     return new Promise(function (resolve, reject) {
         try {
 
-            if (typeof(AppsFlyerTracker) !== "undefined") {
+            if (typeof(AppsFlyerLib) !== "undefined") {
 
                 if (_isDebugLocal) {
-                    console.log("AF-I :: appsFlyer.initSdk: " + JSON.stringify(args));
+                    console.log("AF-I :: appsFlyer.logEvent: " + JSON.stringify(args));
                 }
 
-                AppsFlyerTracker.sharedTracker().trackEventWithValues(args.eventName, <any>args.eventValues);
+                AppsFlyerLib.shared().logEventWithValues(args.eventName, <any> args.eventValues);
 
                 resolve({status: "success"});
             } else {
-                reject({status: "failure", message: "appsFlyerTracker is not defined, call 1st 'initSdk'"});
+                reject({status: "failure", message: "AppsFlyer is not defined, call 1st 'initSdk'"});
             }
 
         } catch (ex) {
@@ -85,13 +85,13 @@ export const setCustomerUserId = function (userId: string) {
     return new Promise(function (resolve, reject) {
         try {
 
-            if (typeof(AppsFlyerTracker) !== "undefined") {
+            if (typeof(AppsFlyerLib) !== "undefined") {
 
-                AppsFlyerTracker.sharedTracker().customerUserID = userId;
+              AppsFlyerLib.shared().customerUserID = userId;
 
                 resolve({status: "success"});
             } else {
-                reject({status: "failure", message: "appsFlyerTracker is not defined, call 1st 'initSdk'"});
+                reject({status: "failure", message: "AppsFlyer is not defined, call 1st 'initSdk'"});
             }
 
         } catch (ex) {
@@ -101,8 +101,8 @@ export const setCustomerUserId = function (userId: string) {
     });
 };
 
-class ConversionDataDelegate extends NSObject implements AppsFlyerTrackerDelegate {
-    public static ObjCProtocols = [AppsFlyerTrackerDelegate];
+class ConversionDataDelegate extends NSObject implements AppsFlyerLibDelegate {
+    public static ObjCProtocols = [AppsFlyerLibDelegate];
 
     private _successCallback: (obj: Object) => void;
     private _failureCallback: (err: string) => void;

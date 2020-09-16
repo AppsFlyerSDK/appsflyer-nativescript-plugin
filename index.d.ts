@@ -6,16 +6,16 @@ export interface InitSDKOptions {
     onConversionDataFail?: (err: string) => void;
 }
 
-export interface TrackEventOptions {
+export interface LogEventOptions {
     eventName: string;
     eventValues: Object;
-    onTrackingRequestSuccess?: () => void;
-    onTrackingRequestFailure?: (err: string) => void;
+    onSuccess?: () => void;
+    onError?: (err: string) => void;
 }
 
 export function initSdk(options: InitSDKOptions): Promise<{status} | any>;
 
-export function trackEvent(options: TrackEventOptions): Promise<{status} | any>;
+export function logEvent(options: LogEventOptions): Promise<{status} | any>;
 
 export function setSharingFilter(partners: Array<String>): Promise<{status} | any>;
 

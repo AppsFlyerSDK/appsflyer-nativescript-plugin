@@ -4,14 +4,14 @@ import * as utils from "tns-core-modules/utils/utils";
 import * as platform from "tns-core-modules/platform";
 import {
   InitSDKOptions,
-  TrackEventOptions,
+  LogEventOptions,
 } from './index';
 import { ad } from 'tns-core-modules/utils/utils';
 import stringSetToStringArray = ad.collections.stringSetToStringArray;
 
 let _isDebugLocal = false;
 let _appsFlyerConversionListener = undefined;
-let _appsFlyerTrackingRequestListener = undefined;
+let _appsFlyerRequestListener = undefined;
 
 export const initSdk = function (args: InitSDKOptions) {
 
@@ -107,16 +107,16 @@ function _trackAppLaunch (_instance: com.appsflyer.AppsFlyerLib) {
   _instance.trackEvent(c, null, null);
 }
 
-export const trackEvent = function (args: TrackEventOptions) {
+export const logEvent = function (args: LogEventOptions) {
 
     return new Promise(function (resolve, reject) {
         try {
-            if (args.onTrackingRequestSuccess || args.onTrackingRequestFailure) {
+            if (args.onSuccess || args.onError) {
                 try {
-                    _appsFlyerTrackingRequestListener = new com.appsflyer.AppsFlyerTrackingRequestListener(<any>{
-                          _successCallback: args.onTrackingRequestSuccess,
-                          _failureCallback: args.onTrackingRequestFailure,
-                          onTrackingRequestSuccess(): void {
+                    _appsFlyerRequestListener = new com.appsflyer.attribution.AppsFlyerRequestListener(<any>{
+                          _successCallback: args.onSuccess,
+                          _failureCallback: args.onError,
+                          onSuccess(): void {
                             if (!this._successCallback) {
                               return;
                             }
@@ -125,14 +125,14 @@ export const trackEvent = function (args: TrackEventOptions) {
                                 this._successCallback(args);
                                 printLogs("trackEvent success: " + JSON.stringify(args));
                               } catch (e) {
-                                printLogs(`onTrackingRequestSuccess Error: ${e}`);
+                                printLogs(`onLogEventRequestSuccess Error: ${e}`);
                               }
                             } else {
-                                printLogs(`onTrackingRequestSuccess: callback is not a function`);
+                                printLogs(`onLogEventRequestSuccess: callback is not a function`);
                             }
                             resolve({status: args});
                           },
-                          onTrackingRequestFailure(error: string): void {
+                          onError(error: string): void {
                             if (!this._failureCallback) {
                               return;
                             }
@@ -141,7 +141,7 @@ export const trackEvent = function (args: TrackEventOptions) {
                                 this._failureCallback(error);
                                 printLogs("trackEvent error: " + error);
                               } catch (e) {
-                                    printLogs(`onTrackingRequestFailure Error: ${e}`);
+                                    printLogs(`onLogEventRequestFailure Error: ${e}`);
                               }
                             } else {
                                 printLogs(`onTrackingRequestFailure: callback is not a function`);
@@ -150,13 +150,13 @@ export const trackEvent = function (args: TrackEventOptions) {
                           },
                         });
                 } catch (e) {
-                        printLogs(`AppsFlyerTrackingRequestListener Error:${e}`);
+                        printLogs(`AppsFlyerRequestListener Error:${e}`);
 
                 }
             }
             const appsFlyerLibInstance = com.appsflyer.AppsFlyerLib.getInstance();
             const c = appModule.android.currentContext || (<any>com).tns.NativeScriptApplication.getInstance();
-            appsFlyerLibInstance.trackEvent(c, args.eventName, _toValue(args.eventValues), _appsFlyerTrackingRequestListener);
+            appsFlyerLibInstance.trackEvent(c, args.eventName, _toValue(args.eventValues), _appsFlyerRequestListener);
             
             
         } catch (ex) {
