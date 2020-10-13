@@ -1,13 +1,9 @@
-
-import * as appModule from "tns-core-modules/application";
-import * as utils from "tns-core-modules/utils/utils";
-import * as platform from "tns-core-modules/platform";
+import { Application, Utils } from '@nativescript/core';
 import {
   InitSDKOptions,
   LogEventOptions,
 } from './index';
-import { ad } from 'tns-core-modules/utils/utils';
-import stringSetToStringArray = ad.collections.stringSetToStringArray;
+const stringSetToStringArray = Utils.android.collections.stringSetToStringArray;
 
 let _isDebugLocal = false;
 let _appsFlyerConversionListener = undefined;
@@ -83,7 +79,7 @@ export const initSdk = function (args: InitSDKOptions) {
                     }
                 }
                 
-                appsFlyerLibInstance.init(args.devKey,_appsFlyerConversionListener,(appModule.android.currentContext || (<any>com).tns.NativeScriptApplication.getInstance()));
+                appsFlyerLibInstance.init(args.devKey,_appsFlyerConversionListener,(Application.android.context || (<any>com).tns.NativeScriptApplication.getInstance()));
 
                 _trackAppLaunch(appsFlyerLibInstance);
 
@@ -103,7 +99,7 @@ export const initSdk = function (args: InitSDKOptions) {
 function _trackAppLaunch (_instance: com.appsflyer.AppsFlyerLib) {
     printLogs("trackAppLaunch is called");
 
-  const c = appModule.android.currentContext || (<any>com).tns.NativeScriptApplication.getInstance();
+  const c = Application.android.context || (<any>com).tns.NativeScriptApplication.getInstance();
   _instance.trackEvent(c, null, null);
 }
 
@@ -155,7 +151,7 @@ export const logEvent = function (args: LogEventOptions) {
                 }
             }
             const appsFlyerLibInstance = com.appsflyer.AppsFlyerLib.getInstance();
-            const c = appModule.android.currentContext || (<any>com).tns.NativeScriptApplication.getInstance();
+            const c = Application.android.context || (<any>com).tns.NativeScriptApplication.getInstance();
             appsFlyerLibInstance.trackEvent(c, args.eventName, _toValue(args.eventValues), _appsFlyerRequestListener);
             
             

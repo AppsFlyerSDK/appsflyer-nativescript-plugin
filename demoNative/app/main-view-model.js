@@ -1,4 +1,4 @@
-const Observable = require("tns-core-modules/data/observable").Observable;
+const Observable = require("@nativescript/core").Observable;
 var appsFlyer = require("nativescript-plugin-appsflyer");
 
 function createViewModel() {
@@ -15,7 +15,7 @@ function createViewModel() {
     viewModel.initSdk = function() {
 
         console.log("call initSdk ... ");
- 
+
         var options = {
             devKey:  'WdpTVAcYwmxsaQ4WeTspmh',
             appId: "975313579",
@@ -78,7 +78,7 @@ function createViewModel() {
             viewModel.set("setSharingFilter Response", JSON.stringify(err));
         });
     };
-    
+
     viewModel.setSharingFilterForAllPartners = function() {
 
         console.log("call setSharingFilterForAllPartners ... ");
