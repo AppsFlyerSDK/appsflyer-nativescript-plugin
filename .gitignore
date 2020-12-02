@@ -4,6 +4,8 @@ hooks/
 demoNative/node_modules/
 demoNative/platforms/
 demoNative/lib
+demoNative/.migration_backup/
+demoNative/.update_backup/
 
 npm_debug.log
 
