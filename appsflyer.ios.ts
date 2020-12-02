@@ -1,12 +1,14 @@
 
-import * as utils from "tns-core-modules/utils/utils";
-import * as platform from "tns-core-modules/platform";
+import { 
+  Utils
+} from '@nativescript/core';
+
 import {
   InitSDKOptions,
   LogEventOptions,
 } from './index';
-import { ios } from 'tns-core-modules/utils/utils';
-import nsArrayToJSArray = ios.collections.nsArrayToJSArray;
+
+const nsArrayToJSArray = Utils.ios.collections.nsArrayToJSArray;
 
 let _isDebugLocal = false;
 
@@ -101,6 +103,7 @@ export const setCustomerUserId = function (userId: string) {
     });
 };
 
+@NativeClass
 class ConversionDataDelegate extends NSObject implements AppsFlyerLibDelegate {
     public static ObjCProtocols = [AppsFlyerLibDelegate];
 
