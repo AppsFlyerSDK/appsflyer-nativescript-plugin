@@ -249,10 +249,9 @@ declare module com {
 			public setImeiData(param0: string): void;
 			public setExtension(param0: string): void;
 			public setGCMProjectNumber(param0: androidcontentContext, param1: string): void;
-			public enableUninstallTracking(param0: string): void;
-			public reportTrackSession(param0: androidcontentContext): void;
+			public logSession(param0: androidcontentContext): void;
 			public setAppId(param0: string): void;
-			public trackLocation(param0: androidcontentContext, param1: number, param2: number): void;
+			public logLocation(param0: androidcontentContext, param1: number, param2: number): void;
 			public setCollectIMEI(param0: boolean): void;
 			public setAppInviteOneLink(param0: string): void;
 			public setUserEmails(param0: native.Array<string>): void;
@@ -263,8 +262,8 @@ declare module com {
 			public static getInstance(): com.appsflyer.AppsFlyerLib;
 			public setCollectAndroidID(param0: boolean): void;
 			public init(param0: string, param1: com.appsflyer.AppsFlyerConversionListener, param2: androidcontentContext): com.appsflyer.AppsFlyerLib;
-			public trackEvent(param0: androidcontentContext, param1: string, param2: javautilMap): void;
-			public trackEvent(param0: androidcontentContext, param1: string, param2: javautilMap, param3: com.appsflyer.attribution.appsFlyerRequestListener): void;
+			public logEvent(param0: androidcontentContext, param1: string, param2: javautilMap): void;
+			public logEvent(param0: androidcontentContext, param1: string, param2: javautilMap, param3: com.appsflyer.attribution.appsFlyerRequestListener): void;
 			public registerValidatorListener(param0: androidcontentContext, param1: com.appsflyer.AppsFlyerInAppPurchaseValidatorListener): void;
 			public sendPushNotificationData(param0: androidappActivity): void;
 			public setDeepLinkData(param0: androidcontentIntent): void;
@@ -279,19 +278,19 @@ declare module com {
 			public setUserEmails(param0: com.appsflyer.AppsFlyerProperties.EmailsCryptType, param1: native.Array<string>): void;
 			public setCustomerUserId(param0: string): void;
 			public setLogLevel(param0: com.appsflyer.AFLogger.LogLevel): void;
-			public startTracking(param0: androidappApplication): void;
+			public start(param0: androidappApplication): void;
 			public isPreInstalledApp(param0: androidcontentContext): boolean;
 			public setHostName(param0: string): void;
 			public setDebugLog(param0: boolean): void;
 			public setCollectFingerPrint(param0: boolean): void;
-			public startTracking(param0: androidappApplication, param1: string): void;
-			public trackAppLaunch(param0: androidcontentContext, param1: string): void;
+			public start(param0: androidappApplication, param1: string): void;
+			public start(param0: androidcontentContext, param1: string): void;
 			public getConversionData(param0: androidcontentContext, param1: com.appsflyer.ConversionDataListener): void;
 			public setGCMProjectNumber(param0: string): void;
 			public updateServerUninstallToken(param0: androidcontentContext, param1: string): void;
-			public setDeviceTrackingDisabled(param0: boolean): void;
+			public anonymizeUser(param0: boolean): void;
 			public setIsUpdate(param0: boolean): void;
-			public validateAndTrackInAppPurchase(param0: androidcontentContext, param1: string, param2: string, param3: string, param4: string, param5: string, param6: javautilHashMap): void;
+			public validateAndLogInAppPurchase(param0: androidcontentContext, param1: string, param2: string, param3: string, param4: string, param5: string, param6: javautilHashMap): void;
 		}
 		export module AppsFlyerLib {
 			export abstract class a {
@@ -884,9 +883,9 @@ declare module com {
 	export module appsflyer {
 		export module share {
 			export class CrossPromotionHelper {
-				public static trackAndOpenStore(param0: androidcontentContext, param1: string, param2: string): void;
-				public static trackCrossPromoteImpression(param0: androidcontentContext, param1: string, param2: string): void;
-				public static trackAndOpenStore(param0: androidcontentContext, param1: string, param2: string, param3: javautilMap): void;
+				public static logCrossPromotionAndOpenStore(param0: androidcontentContext, param1: string, param2: string): void;
+				public static logCrossPromotionImpression(param0: androidcontentContext, param1: string, param2: string): void;
+				public static logCrossPromotionAndOpenStore(param0: androidcontentContext, param1: string, param2: string, param3: javautilMap): void;
 				public constructor();
 			}
 			export module CrossPromotionHelper {
@@ -938,7 +937,7 @@ declare module com {
 			export class ShareInviteHelper {
 				public static generateUserInviteLink(param0: androidcontentContext, param1: string, param2: javautilMap, param3: com.appsflyer.CreateOneLinkHttpTask.ResponseListener): void;
 				public static generateInviteUrl(param0: androidcontentContext): com.appsflyer.share.LinkGenerator;
-				public static trackInvite(param0: androidcontentContext, param1: string, param2: javautilMap): void;
+				public static logInvite(param0: androidcontentContext, param1: string, param2: javautilMap): void;
 				public constructor();
 			}
 		}

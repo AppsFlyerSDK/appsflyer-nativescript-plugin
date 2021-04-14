@@ -1,6 +1,6 @@
 {
   "name": "nativescript-plugin-appsflyer",
-  "version": "6.2.3",
+  "version": "6.2.4",
   "description": "Appsflyer SDK for NativeScript applications",
   "main": "appsflyer",
   "typings": "index.d.ts",
