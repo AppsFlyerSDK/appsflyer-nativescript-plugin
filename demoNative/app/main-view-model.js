@@ -50,12 +50,12 @@ function createViewModel() {
                 af_currency: "USD",
                 af_revenue: "2"
             },
-            onLogEventRequestSuccess: function(_res){
+            onSuccess: function(_res){
                 console.log("onLogEventRequestSuccess results: " + JSON.stringify(_res));
                 viewModel.set("logEventResponse", JSON.stringify(_res));
             },
-            onLogEventRequestFailure: function(_res){
-                console.log("logEvent ERROR results  ... " + JSON.stringify(_res));
+            onError: function(_res){
+                console.log("onLogEventRequestFailure results: " + JSON.stringify(_res));
                 viewModel.set("logEventResponse", JSON.stringify(_res));
             },
         };

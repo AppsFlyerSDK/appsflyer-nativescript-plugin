@@ -83,9 +83,9 @@ export const initSdk = function (args: InitSDKOptions) {
                 
                 appsFlyerLibInstance.init(args.devKey,_appsFlyerConversionListener,(Application.android.context || (<any>com).tns.NativeScriptApplication.getInstance()));
 
-                _trackAppLaunch(appsFlyerLibInstance);
+                _start(appsFlyerLibInstance);
 
-                appsFlyerLibInstance.startTracking((<any>com).tns.NativeScriptApplication.getInstance());
+                appsFlyerLibInstance.start((<any>com).tns.NativeScriptApplication.getInstance());
 
                 resolve({status: "success"});
             } else {
@@ -98,11 +98,11 @@ export const initSdk = function (args: InitSDKOptions) {
     });
 };
 
-function _trackAppLaunch (_instance: com.appsflyer.AppsFlyerLib) {
-    printLogs("trackAppLaunch is called");
+function _start (_instance: com.appsflyer.AppsFlyerLib) {
+    printLogs("start is called");
 
   const c = Application.android.context || (<any>com).tns.NativeScriptApplication.getInstance();
-  _instance.trackEvent(c, null, null);
+  _instance.logEvent(c, null, null);
 }
 
 export const logEvent = function (args: LogEventOptions) {
@@ -121,7 +121,7 @@ export const logEvent = function (args: LogEventOptions) {
                             if (typeof this._successCallback === 'function') {
                               try {
                                 this._successCallback(args);
-                                printLogs("trackEvent success: " + JSON.stringify(args));
+                                printLogs("logEvent success: " + JSON.stringify(args));
                               } catch (e) {
                                 printLogs(`onLogEventRequestSuccess Error: ${e}`);
                               }
@@ -137,12 +137,12 @@ export const logEvent = function (args: LogEventOptions) {
                             if (typeof this._failureCallback === 'function') {
                               try {
                                 this._failureCallback(error);
-                                printLogs("trackEvent error: " + error);
+                                printLogs("logEvent error: " + error);
                               } catch (e) {
                                     printLogs(`onLogEventRequestFailure Error: ${e}`);
                               }
                             } else {
-                                printLogs(`onTrackingRequestFailure: callback is not a function`);
+                                printLogs(`onLogRequestFailure: callback is not a function`);
                             }
                             resolve({status: "failure"});
                           },
@@ -154,7 +154,7 @@ export const logEvent = function (args: LogEventOptions) {
             }
             const appsFlyerLibInstance = com.appsflyer.AppsFlyerLib.getInstance();
             const c = Application.android.context || (<any>com).tns.NativeScriptApplication.getInstance();
-            appsFlyerLibInstance.trackEvent(c, args.eventName, _toValue(args.eventValues), _appsFlyerRequestListener);
+            appsFlyerLibInstance.logEvent(c, args.eventName, _toValue(args.eventValues), _appsFlyerRequestListener);
             
             
         } catch (ex) {

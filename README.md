@@ -20,8 +20,8 @@
 
 ## <a id="this-plugin-is-built-for"> This plugin is built for
 
-- iOS AppsFlyerSDK **v6.2.3**
-- Android AppsFlyerSDK **v5.4.3**
+- iOS AppsFlyerSDK **v6.2.4**
+- Android AppsFlyerSDK **v6.2.3**
 
 ## <a id="installation"> Installation
 
@@ -86,9 +86,9 @@ initializes the SDK.
 #####<a id="logEvent"> **`appsFlyer.logEvent(options): Promise<any>`**
 
 
-- These in-app events help you track how loyal users discover your app, and attribute them to specific 
+- These in-app events help you measure how loyal users discover your app, and attribute them to specific 
 campaigns/media-sources. Please take the time define the event/s you want to measure to allow you 
-to track ROI (Return on Investment) and LTV (Lifetime Value).
+to measure the ROI (Return on Investment) and LTV (Lifetime Value).
 - The `logEvent` method allows you to send in-app events to AppsFlyer analytics. This method allows you to add events dynamically by adding them directly to the application code.
 
 | parameter   | type                        | description  |
