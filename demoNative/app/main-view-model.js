@@ -20,7 +20,7 @@ function createViewModel() {
         var options = {
             devKey:  'WdpTVAcYwmxsaQ4WeTspmh',
             appId: "975313579",
-            isDebug: false,
+            isDebug: true,
             onConversionDataSuccess: function(_res){
                 console.log("Get conversion data success: " + JSON.stringify(_res));
                 viewModel.set("gcdResponse", JSON.stringify(_res));
