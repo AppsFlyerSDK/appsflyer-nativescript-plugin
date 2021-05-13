@@ -125,6 +125,8 @@ declare class AppsFlyerLib extends NSObject {
 	logLocationLatitude(longitude: number, latitude: number): void;
 
 	validateAndLogInAppPurchase(productIdentifier: string, price: string, currency: string, tranactionId: string, params: NSDictionary<any, any>, successBlock: (p1: NSDictionary<any, any>) => void, failedBlock: (p1: NSError, p2: any) => void): void;
+
+	waitForATTUserAuthorizationWithTimeoutInterval(timeoutInterval: NSTimeInterval): void;
 }
 
 interface AppsFlyerLibDelegate extends NSObjectProtocol {
