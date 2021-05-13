@@ -1,0 +1,30 @@
+{
+    "compilerOptions": {
+        "module": "esnext",
+        "target": "es2017",
+        "moduleResolution": "node",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "noEmitHelpers": true,
+        "noEmitOnError": false,
+        "skipLibCheck": true,
+        "lib": [
+            "es2017",
+            "dom",
+            "es6"
+        ],
+        "baseUrl": ".",
+        "plugins": [{
+            "transform": "@nativescript/webpack/transformers/ns-transform-native-classes",
+            "type": "raw"
+          }],
+        "paths": {
+            "~/*": [
+                "app/*"
+            ]
+        }
+    },
+    "include": [
+        "app/*",
+    ],
+}
