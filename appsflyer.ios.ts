@@ -24,6 +24,10 @@ export const initSdk = function (args: InitSDKOptions) {
                 AppsFlyerLib.shared().appsFlyerDevKey = args.devKey;
                 AppsFlyerLib.shared().isDebug = args.isDebug === true;
 
+                if(args.timeToWaitForATTUserAuthorization){
+                  AppsFlyerLib.shared().waitForATTUserAuthorizationWithTimeoutInterval(args.timeToWaitForATTUserAuthorization);
+                }
+
                 _isDebugLocal = AppsFlyerLib.shared().isDebug;
 
                 if (_isDebugLocal) {

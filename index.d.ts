@@ -2,6 +2,7 @@ export interface InitSDKOptions {
     devKey: string;
     appId?: string;
     isDebug?: boolean;
+    timeToWaitForATTUserAuthorization?: NSTimeInterval;  
     onConversionDataSuccess?: (obj: ConversionData) => void;
     onConversionDataFail?: (err: string) => void;
 }
