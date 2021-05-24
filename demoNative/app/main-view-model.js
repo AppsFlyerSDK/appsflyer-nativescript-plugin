@@ -14,7 +14,7 @@ function createViewModel() {
             devKey: 'WdpTVAcYwmxsaQ4WeTspmh',
             appId: "975313579",
             isDebug: true,
-            timeToWaitForATTUserAuthorization: 10,
+            timeToWaitForATTUserAuthorization: 60,
             onConversionDataSuccess: function (_res) {
                 console.log("Get conversion data success: " + JSON.stringify(_res));
                 viewModel.set("gcdResponse", JSON.stringify(_res));
@@ -22,6 +22,9 @@ function createViewModel() {
             onConversionDataFail: function (_res) {
                 console.log("Get conversion data failure: " + JSON.stringify(_res));
                 viewModel.set("gcdResponse", JSON.stringify(_res));
+            },
+            onAppOpenAttribution: function (_res) {
+                console.log("onAppOpenAttribution: " + JSON.stringify(_res));
             },
         };
         appsFlyer.initSdk(options).then(function (result) {

@@ -38,7 +38,9 @@ export const initSdk = function (args: InitSDKOptions) {
                   try {
                     _conversionDataDelegate = ConversionDataDelegate.initWithCallbacks(
                       args.onConversionDataSuccess,
-                      args.onConversionDataFail
+                      args.onConversionDataFail,
+                      args.onAppOpenAttribution,
+                      args.onAppOpenAttributionFailure,
                     );
                     AppsFlyerLib.shared().delegate = _conversionDataDelegate;
                   } catch (e) {
@@ -111,24 +113,30 @@ export const setCustomerUserId = function (userId: string) {
 class ConversionDataDelegate extends NSObject implements AppsFlyerLibDelegate {
     public static ObjCProtocols = [AppsFlyerLibDelegate];
 
-    private _successCallback: (obj: Object) => void;
-    private _failureCallback: (err: string) => void;
+    private _gcdSuccessCallback: (obj: Object) => void;
+    private _gcdFailureCallback: (err: string) => void;
+    private _oaoaSuccessCallback: (obj: Object) => void;
+    private _oaoaFailureCallback: (err: string) => void;
 
     public static initWithCallbacks(
-      successCallback: (obj: Object) => void,
-      failureCallback: (err: string) => void,
+      gcdSuccessCallback: (obj: Object) => void,
+      gcdFailureCallback: (err: string) => void,
+      oaoaSuccessCallback: (obj: Object) => void,
+      oaoaFailureCallback: (err: string) => void
     ): ConversionDataDelegate {
       const delegate: ConversionDataDelegate = ConversionDataDelegate.new() as ConversionDataDelegate;
-      delegate._successCallback = successCallback;
-      delegate._failureCallback = failureCallback;
+      delegate._gcdSuccessCallback = gcdSuccessCallback;
+      delegate._gcdFailureCallback = gcdFailureCallback;
+      delegate._oaoaSuccessCallback = oaoaSuccessCallback;
+      delegate._oaoaFailureCallback = oaoaFailureCallback;
       return delegate;
     }
 
     public onConversionDataSuccess(installData: NSDictionary<string, string>): void {
-      if (!this._successCallback) {
+      if (!this._gcdSuccessCallback) {
         return;
       }
-      if (typeof this._successCallback === 'function') {
+      if (typeof this._gcdSuccessCallback === 'function') {
         const data = {};
         if (installData && installData.allKeys) {
           let keys;
@@ -147,19 +155,19 @@ class ConversionDataDelegate extends NSObject implements AppsFlyerLibDelegate {
             }
           }
         }
-        this._successCallback(data);
+        this._gcdSuccessCallback(data);
       } else {
         console.error(`AF-I :: onConversionDataReceived: callback is not a function`);
       }
     }
 
     public onConversionDataFail(error: NSError): void {
-      if (!this._failureCallback) {
+      if (!this._gcdFailureCallback) {
         return;
       }
-      if (typeof this._failureCallback === 'function') {
+      if (typeof this._gcdFailureCallback === 'function') {
         try {
-          this._failureCallback(`${error}`);
+          this._gcdFailureCallback(`${error}`);
         } catch (e) {
           console.error(`AF-I :: onConversionDataRequestFailure Error: ${e}`);
         }
@@ -167,4 +175,49 @@ class ConversionDataDelegate extends NSObject implements AppsFlyerLibDelegate {
         console.error(`AF-I :: onConversionDataRequestFailure: callback is not a function`);
       }
     }
+
+    onAppOpenAttribution?(attributionData: NSDictionary<any, any>): void{
+      if (!this._oaoaSuccessCallback) {
+        return;
+      }
+      if (typeof this._oaoaSuccessCallback === 'function') {
+        const data = {};
+        if (attributionData && attributionData.allKeys) {
+          let keys;
+          try {
+            keys = nsArrayToJSArray(attributionData.allKeys);
+          } catch (e) {
+            console.error(`AF-I :: onConversionDataReceived allKeys Error: ${e}`);
+          }
+          if (keys && keys.length) {
+            for (const key of keys) {
+              try {
+                data[key] = attributionData.objectForKey(key);
+              } catch (e) {
+                console.error(`AF-I :: onConversionDataReceived objectForKey Error: ${e}`);
+              }
+            }
+          }
+        }
+        this._oaoaSuccessCallback(data);
+      } else {
+        console.error(`AF-I :: onConversionDataReceived: callback is not a function`);
+      }
+    }
+
+	  onAppOpenAttributionFailure?(error: NSError): void{
+      if (!this._oaoaFailureCallback) {
+        return;
+      }
+      if (typeof this._oaoaFailureCallback === 'function') {
+        try {
+          this._oaoaFailureCallback(`${error}`);
+        } catch (e) {
+          console.error(`AF-I :: onConversionDataRequestFailure Error: ${e}`);
+        }
+      } else {
+        console.error(`AF-I :: onConversionDataRequestFailure: callback is not a function`);
+      }
+    }
+
 }
