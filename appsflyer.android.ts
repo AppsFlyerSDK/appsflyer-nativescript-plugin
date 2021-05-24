@@ -26,53 +26,77 @@ export const initSdk = function (args: InitSDKOptions) {
                 if (args.onConversionDataSuccess || args.onConversionDataFail) {
                     try {
                         _appsFlyerConversionListener = new com.appsflyer.AppsFlyerConversionListener(<any>{
-                              _successCallback: args.onConversionDataSuccess,
-                              _failureCallback: args.onConversionDataFail,
+                              _gcdSuccessCallback: args.onConversionDataSuccess,
+                              _gcdFailureCallback: args.onConversionDataFail,
+                              _oaoaSuccessCallback: args.onAppOpenAttribution,
+                              _oaoaFailureCallback: args.onAppOpenAttributionFailure,
+
                               onConversionDataSuccess(conversionData: java.util.Map<string, string>): void {
-                                if (!this._successCallback) {
+                                if (!this._gcdSuccessCallback) {
                                   return;
                                 }
-                                if (typeof this._successCallback === 'function') {
+                                if (typeof this._gcdSuccessCallback === 'function') {
                                   try {
                                     const data = {};
                                     for (const key of stringSetToStringArray(conversionData.keySet())) {
                                       data[key] = conversionData.get(key);
                                     }
-                                    this._successCallback(data);
+                                    this._gcdSuccessCallback(data);
                                     printLogs("onConversionDataSuccess: " + JSON.stringify(args));
                                   } catch (e) {
-                                    printLogs(`onInstallConversionDataLoaded Error: ${e}`);
+                                    printLogs(`onConversionDataSuccess Error: ${e}`);
                                   }
                                 } else {
-                                    printLogs(`onInstallConversionDataLoaded: callback is not a function`);
+                                    printLogs(`onConversionDataSuccess: callback is not a function`);
                                 }
                               },
                               onConversionDataFail(error: string): void {
-                                if (!this._failureCallback) {
+                                if (!this._gcdFailureCallback) {
                                   return;
                                 }
-                                if (typeof this._failureCallback === 'function') {
+                                if (typeof this._gcdFailureCallback === 'function') {
                                   try {
-                                    this._failureCallback(error);
-                                    printLogs("onInstallConversionFailure error: " + error);
+                                    this._gcdFailureCallback(error);
+                                    printLogs("onConversionDataFail error: " + error);
                                   } catch (e) {
-                                    printLogs(`onInstallConversionFailure Error: ${e}`);
+                                    printLogs(`onConversionDataFail Error: ${e}`);
                                   }
                                 } else {
-                                    printLogs("onInstallConversionFailure: callback is not a function");
+                                    printLogs("onConversionDataFail: callback is not a function");
                                 }
                               },
                               onAttributionFailure(error: string): void {
-                                printLogs("onAttributionFailure: " + error);
+                                if (!this._oaoaFailureCallback) {
+                                  return;
+                                }
+                                if (typeof this._oaoaFailureCallback === 'function') {
+                                  try {
+                                    this._oaoaFailureCallback(error);
+                                    printLogs("onAttributionFailure error: " + error);
+                                  } catch (e) {
+                                    printLogs(`onAttributionFailure Error: ${e}`);
+                                  }
+                                } else {
+                                    printLogs("onAttributionFailure: callback is not a function");
+                                }
                               },
                               onAppOpenAttribution(onAppOpenAttributionData: java.util.Map<any, any>): void {
-                                if (_isDebugLocal) {
+                                if (!this._oaoaSuccessCallback) {
+                                  return;
+                                }
+                                if (typeof this._oaoaSuccessCallback === 'function') {
+                                  try {
                                     let data = {};
                                     for (const key of stringSetToStringArray(onAppOpenAttributionData.keySet())) {
                                         data[key] = onAppOpenAttributionData.get(key);
                                     }
 
                                     printLogs("onAppOpenAttribution: " + JSON.stringify(data));
+                                  } catch (e) {
+                                    printLogs(`onAppOpenAttribution Error: ${e}`);
+                                  }
+                                } else {
+                                    printLogs(`onAppOpenAttribution: callback is not a function`);
                                 }
                                },
                             });

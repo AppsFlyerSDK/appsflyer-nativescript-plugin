@@ -30,6 +30,12 @@ function createViewModel() {
                 console.log("Get conversion data failure: " + JSON.stringify(_res));
                 viewModel.set("gcdResponse", JSON.stringify(_res));
             },
+            onAppOpenAttribution: function(_res){
+                console.log("onAppOpenAttribution: " + JSON.stringify(_res));
+            },
+            onAppOpenAttributionFailure: function(_res){
+                console.log("onAppOpenAttributionFailure: " + JSON.stringify(_res));
+            },
         };
 
         appsFlyer.initSdk(options).then(function(result) {

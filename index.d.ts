@@ -5,6 +5,8 @@ export interface InitSDKOptions {
     timeToWaitForATTUserAuthorization?: NSTimeInterval;  
     onConversionDataSuccess?: (obj: ConversionData) => void;
     onConversionDataFail?: (err: string) => void;
+    onAppOpenAttribution?: (obj: Object) => void;
+    onAppOpenAttributionFailure?: (err: string) => void;
 }
 
 export interface LogEventOptions {
