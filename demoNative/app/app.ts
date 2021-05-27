@@ -5,11 +5,13 @@ purpose of the file is to pass control to the app’s first module.
 */
 
 const Application = require("@nativescript/core").Application;
+import { setActivityCallbacks } from "@nativescript/core";
 import { CustomAppDelegate } from "./custom-app-delegate";
 
 if (Application.ios) {
     Application.ios.delegate = CustomAppDelegate;
 }
+
 
 Application.run({ moduleName: "app-root" });
 

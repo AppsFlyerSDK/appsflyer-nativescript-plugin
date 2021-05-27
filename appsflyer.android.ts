@@ -99,12 +99,26 @@ export const initSdk = function (args: InitSDKOptions) {
                                     printLogs(`onAppOpenAttribution: callback is not a function`);
                                 }
                                },
-                            });
+                            });                        
                     } catch (e) {
                         printLogs(`registerConversionListener Error:${e}`);
                     }
                 }
-                
+
+                if(args.onDeepLinking){
+                  try{
+                    appsFlyerLibInstance.subscribeForDeepLink(new com.appsflyer.deeplink.DeepLinkListener(<any>{
+                      _onDeepLinkingCallback: args.onDeepLinking,
+                      onDeepLinking(deepLinkResult: Object): void {
+                        printLogs(`DeepLinkResult: ${deepLinkResult.toString()}`);
+                        this._onDeepLinkingCallback(deepLinkResult.toString());
+                      }
+                    }));
+                  } catch(e){
+                    printLogs(`onDeepLinking Error: ${e}`);
+                  }
+                }
+
                 appsFlyerLibInstance.init(args.devKey,_appsFlyerConversionListener,(Application.android.context || (<any>com).tns.NativeScriptApplication.getInstance()));
 
                 _start(appsFlyerLibInstance);

@@ -36,6 +36,9 @@ function createViewModel() {
             onAppOpenAttributionFailure: function(_res){
                 console.log("onAppOpenAttributionFailure: " + JSON.stringify(_res));
             },
+            onDeepLinking: function(_res){
+                console.log("onDeepLinking: " + _res);
+            },
         };
 
         appsFlyer.initSdk(options).then(function(result) {

@@ -74,6 +74,8 @@ declare class AppsFlyerLib extends NSObject {
 
 	delegate: AppsFlyerLibDelegate;
 
+	deepLinkDelegate: AppsFlyerDeepLinkDelegate;
+
 	anonymizeUser: boolean;
 
 	disableCollectASA: boolean;
@@ -129,6 +131,43 @@ declare class AppsFlyerLib extends NSObject {
 	waitForATTUserAuthorizationWithTimeoutInterval(timeoutInterval: NSTimeInterval): void;
 }
 
+declare class AppsFlyerDeepLinkResult extends NSObject {
+	static alloc(): AppsFlyerDeepLinkResult; // inherited from NSObject
+	static new(): AppsFlyerDeepLinkResult;
+	
+	deepLink: AppsFlyerDeepLink;
+	status: AFSDKDeepLinkResultStatus;
+	error: NSError;
+}
+
+declare class AppsFlyerDeepLink extends NSObject {
+	static alloc(): AppsFlyerDeepLink; // inherited from NSObject
+	static new(): AppsFlyerDeepLink;
+
+	clickEvent: NSDictionary<string, any>;
+	deeplinkValue: string;
+	matchType: string;
+	clickHTTPReferrer: string;
+	mediaSource: string;
+	campaign: string;
+	campaignId: string;
+	afSub1: string;
+	afSub2: string;
+	afSub3: string;
+	afSub4: string;
+	afSub5: string;
+	isDeferred: boolean;
+	toString(): string;
+}
+
+interface AppsFlyerDeepLinkDelegate extends NSObjectProtocol {
+	didResolveDeepLink?(result: AppsFlyerDeepLinkResult): void;
+}
+
+declare var AppsFlyerDeepLinkDelegate: {
+	prototype: AppsFlyerDeepLinkDelegate;
+};
+
 interface AppsFlyerLibDelegate extends NSObjectProtocol {
 
 	onAppOpenAttribution?(attributionData: NSDictionary<any, any>): void;
@@ -140,7 +179,6 @@ interface AppsFlyerLibDelegate extends NSObjectProtocol {
 	onConversionDataFail?(error: NSError): void;
 }
 declare var AppsFlyerLibDelegate: {
-
 	prototype: AppsFlyerLibDelegate;
 };
 
