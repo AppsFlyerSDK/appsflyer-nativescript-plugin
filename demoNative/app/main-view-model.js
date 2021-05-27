@@ -26,6 +26,12 @@ function createViewModel() {
             onAppOpenAttribution: function (_res) {
                 console.log("onAppOpenAttribution: " + JSON.stringify(_res));
             },
+            onAppOpenAttributionFailure: function (_res) {
+                console.log("onAppOpenAttributionFailure: " + JSON.stringify(_res));
+            },
+            onDeepLinking: function (_res) {
+                console.log("onDeepLinking: " + _res);
+            },
         };
         appsFlyer.initSdk(options).then(function (result) {
             console.log("initSdk is called");

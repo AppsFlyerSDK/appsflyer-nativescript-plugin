@@ -178,7 +178,17 @@ When a deeplink is clicked on the device the AppsFlyer SDK will return the link 
 
 ###  <a id="Unified-deep-linking"> 3. Unified deep linking
 
-Coming soon!
+Handle the Unified deeplink in the 'onDeepLinking' callback (if `onDeepLinking` callback is define, `onAppOpenAttribution` won't be called):
+
+```
+var options = {
+    devKey: 'devKey',
+    appId: "appId",
+    isDebug: true,
+    onDeepLinking: function(_res){
+        console.log("onDeepLinking: " + _res);
+    },
+};
 
 For more information about this api, please check [OneLink Guide Here](https://dev.appsflyer.com/docs/android-unified-deep-linking)
 

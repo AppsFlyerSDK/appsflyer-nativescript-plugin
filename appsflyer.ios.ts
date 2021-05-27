@@ -13,6 +13,7 @@ const nsArrayToJSArray = Utils.ios.collections.nsArrayToJSArray;
 let _isDebugLocal = false;
 
 let _conversionDataDelegate;
+let _deepLinkDelegate;
 
 export const initSdk = function (args: InitSDKOptions) {
 
@@ -47,7 +48,16 @@ export const initSdk = function (args: InitSDKOptions) {
                     console.error(`AF-I :: delegate assignment Error: ${e}`);
                   }
                 }
-
+                if(args.onDeepLinking){
+                  try{
+                    _deepLinkDelegate = DeepLinkDelegate.DeepLinkCallback(
+                      args.onDeepLinking
+                    );
+                    AppsFlyerLib.shared().deepLinkDelegate = _deepLinkDelegate;
+                  }catch (e){
+                    console.error(`AF-I :: onDeepLinking Error: ${e}`);
+                  }
+                }
                 AppsFlyerLib.shared().start();
 
                 resolve({status: "success"});
@@ -108,6 +118,35 @@ export const setCustomerUserId = function (userId: string) {
         }
     });
 };
+
+@NativeClass
+class DeepLinkDelegate extends NSObject implements AppsFlyerDeepLinkDelegate {
+    public static ObjCProtocols = [AppsFlyerDeepLinkDelegate];
+
+    private _didResolveDeepLink: (obj: Object) => void;
+
+    public static DeepLinkCallback(
+      didResolveDeepLink: (obj: Object) => void
+    ): DeepLinkDelegate {
+      const delegate: DeepLinkDelegate = DeepLinkDelegate.new() as DeepLinkDelegate;
+      delegate._didResolveDeepLink = didResolveDeepLink;
+      return delegate;
+    }
+
+    public didResolveDeepLink(DeepLinkResult: AppsFlyerDeepLinkResult): void {
+      if (!this._didResolveDeepLink) {
+        return;
+      }
+      if (typeof this._didResolveDeepLink === 'function') {
+        if (DeepLinkResult) {
+          this._didResolveDeepLink(DeepLinkResult.deepLink);
+        }
+      } else {
+        console.error(`AF-I :: _didResolveDeepLink: callback is not a function`);
+      }
+    }
+
+}
 
 @NativeClass
 class ConversionDataDelegate extends NSObject implements AppsFlyerLibDelegate {

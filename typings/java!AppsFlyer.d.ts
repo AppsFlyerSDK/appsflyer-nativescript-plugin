@@ -196,6 +196,23 @@ declare module com {
 	}
 }
 
+// import DeepLinkResult = com.appsflyer.deeplink;;
+declare module com {
+	export module appsflyer {
+		export module deeplink {
+			export class DeepLinkListener {
+				/**
+				 * Constructs a new instance of the DeepLinkListener interface with the provided implementation.
+				 */
+				public constructor(implementation: {
+					onDeepLinking(param0: DeepLinkResult): void;
+				});
+				public onDeepLinking(param0: DeepLinkResult): void;
+			}
+		}
+	}
+}
+
 /// <reference path="./java.lang.String.d.ts" />
 declare module com {
 	export module appsflyer {
@@ -242,6 +259,7 @@ declare module com {
 			public static PRE_INSTALL_SYSTEM_DEFAULT: string;
 			public static PRE_INSTALL_SYSTEM_DEFAULT_ETC: string;
 			public static AF_PRE_INSTALL_PATH: string;
+			public subscribeForDeepLink(deepLinkListener: DeepLinkListener): void;
 			public registerConversionListener(param0: androidcontentContext, param1: com.appsflyer.AppsFlyerConversionListener): void;
 			public getHost(): string;
 			public setGCMProjectID(param0: string): void;

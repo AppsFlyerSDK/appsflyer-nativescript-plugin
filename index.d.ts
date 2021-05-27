@@ -7,6 +7,7 @@ export interface InitSDKOptions {
     onConversionDataFail?: (err: string) => void;
     onAppOpenAttribution?: (obj: Object) => void;
     onAppOpenAttributionFailure?: (err: string) => void;
+    onDeepLinking?: (obj: Object) => void;
 }
 
 export interface LogEventOptions {
@@ -25,6 +26,8 @@ export function setSharingFilter(partners: Array<String>): Promise<{status} | an
 export function setSharingFilterForAllPartners(): Promise<{status} | any>;
 
 export function setCustomerUserId (userId: string): Promise<{status} | any>;
+
+
 
 export interface ConversionData {
   af_status;
