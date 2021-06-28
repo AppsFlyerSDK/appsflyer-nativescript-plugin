@@ -17,5 +17,5 @@ dependencies {
 	compile "com.google.android.gms:play-services-ads:$googlePlayServicesVersion"
   compile "com.google.android.gms:play-services-identity:$googlePlayServicesVersion"
   compile "com.android.installreferrer:installreferrer:${safeExtGet('installreferrer', '1.1.2')}"
-  compile "com.appsflyer:af-android-sdk:${safeExtGet('appsflyerVersion', "6.2.3")}"
+  compile "com.appsflyer:af-android-sdk:${safeExtGet('appsflyerVersion', "6.3.2")}"
 }
