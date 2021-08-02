@@ -1,5 +1,5 @@
 @NativeClass()
-export class CustomAppDelegate extends UIResponder, ATTrackingManager implements UIApplicationDelegate{
+export class CustomAppDelegate extends UIResponder implements UIApplicationDelegate{
     public static ObjCProtocols = [UIApplicationDelegate];
 
     applicationDidFinishLaunchingWithOptions(application: UIApplication, launchOptions: NSDictionary): boolean {
