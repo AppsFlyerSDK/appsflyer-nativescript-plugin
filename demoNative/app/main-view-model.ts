@@ -37,7 +37,7 @@ function createViewModel() {
                 console.log("onAppOpenAttributionFailure: " + JSON.stringify(_res));
             },
             onDeepLinking: function(_res){
-                console.log("onDeepLinking: " + _res);
+                console.log("onDeepLinking: " + JSON.parse(_res).deepLink);
             },
         };
 

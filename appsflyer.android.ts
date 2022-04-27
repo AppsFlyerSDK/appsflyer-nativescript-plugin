@@ -111,18 +111,18 @@ export const initSdk = function (args: InitSDKOptions) {
                       _onDeepLinkingCallback: args.onDeepLinking,
                       onDeepLinking(deepLinkResult: Object): void {
                         printLogs(`DeepLinkResult: ${deepLinkResult.toString()}`);
-                        this._onDeepLinkingCallback(deepLinkResult.toString());
+                        this._onDeepLinkingCallback(deepLinkResult);
                       }
                     }));
                   } catch(e){
                     printLogs(`onDeepLinking Error: ${e}`);
                   }
                 }
-
+                
                 appsFlyerLibInstance.init(args.devKey,_appsFlyerConversionListener,(Application.android.context || (<any>com).tns.NativeScriptApplication.getInstance()));
-
+                
                 _start(appsFlyerLibInstance);
-
+                
                 appsFlyerLibInstance.start((<any>com).tns.NativeScriptApplication.getInstance());
 
                 resolve({status: "success"});

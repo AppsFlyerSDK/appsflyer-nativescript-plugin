@@ -14,7 +14,7 @@ function createViewModel() {
             devKey: 'WdpTVAcYwmxsaQ4WeTspmh',
             appId: "975313579",
             isDebug: true,
-            timeToWaitForATTUserAuthorization: 60,
+            timeToWaitForATTUserAuthorization: 0,
             onConversionDataSuccess: function (_res) {
                 console.log("Get conversion data success: " + JSON.stringify(_res));
                 viewModel.set("gcdResponse", JSON.stringify(_res));
@@ -30,7 +30,7 @@ function createViewModel() {
                 console.log("onAppOpenAttributionFailure: " + JSON.stringify(_res));
             },
             onDeepLinking: function (_res) {
-                console.log("onDeepLinking: " + _res);
+                console.log("onDeepLinking: " + JSON.parse(_res).deepLink);
             },
         };
         appsFlyer.initSdk(options).then(function (result) {
