@@ -14,8 +14,8 @@ def safeExtGet(prop, fallback) {
 }
 dependencies {
 	def googlePlayServicesVersion = safeExtGet('googlePlayServicesVersion', '16.+')
-	compile "com.google.android.gms:play-services-ads:$googlePlayServicesVersion"
-  compile "com.google.android.gms:play-services-identity:$googlePlayServicesVersion"
-  compile "com.android.installreferrer:installreferrer:${safeExtGet('installreferrer', '1.1.2')}"
-  compile "com.appsflyer:af-android-sdk:${safeExtGet('appsflyerVersion', "6.2.3")}"
+	implementation "com.google.android.gms:play-services-ads:$googlePlayServicesVersion"
+  implementation "com.google.android.gms:play-services-identity:$googlePlayServicesVersion"
+  implementation "com.android.installreferrer:installreferrer:${safeExtGet('installreferrer', '1.1.2')}"
+  implementation "com.appsflyer:af-android-sdk:${safeExtGet('appsflyerVersion', "6.5.4")}"
 }

@@ -22,8 +22,14 @@
 
 ## <a id="this-plugin-is-built-for"> This plugin is built for
 
-- iOS AppsFlyerSDK **v6.3.2**
-- Android AppsFlyerSDK **v6.2.3**
+- iOS AppsFlyerSDK **v6.5.4**
+- Android AppsFlyerSDK **v6.5.4**
+
+## <a id="breaking-changes"> Breaking Changes
+
+**v6.5.4**
+
+Android: deepLinkResult will return an object instead of a string
 
 ## <a id="installation"> Installation
 

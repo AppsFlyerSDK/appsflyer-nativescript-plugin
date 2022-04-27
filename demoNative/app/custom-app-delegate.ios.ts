@@ -2,14 +2,12 @@
 export class CustomAppDelegate extends UIResponder implements UIApplicationDelegate{
     public static ObjCProtocols = [UIApplicationDelegate];
 
-    applicationDidFinishLaunchingWithOptions(application: UIApplication, launchOptions: NSDictionary): boolean {
-        if (parseFloat(UIDevice.currentDevice.systemVersion) >= 14) {
+    applicationDidBecomeActive(application: UIApplication): void {
+        if(parseFloat(UIDevice.currentDevice.systemVersion) >= 14){
             console.log("iOS 14");
             ATTrackingManager.requestTrackingAuthorizationWithCompletionHandler((status) => {
-
             });
         }
-        console.log("applicationDidFinishLaunchingWithOptions");
     }
 
     applicationOpenURLOptions(application: UIApplication, urlOptions: NSURL, options: NSDictionary<string, any>): boolean {
