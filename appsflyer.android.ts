@@ -217,6 +217,21 @@ export const setCustomerUserId = function (userId: string) {
     });
 };
 
+export const getAppsFlyerUID = function() {
+    return new Promise(function (resolve, reject) {
+        try {
+            const appsFlyerLibInstance = com.appsflyer.AppsFlyerLib.getInstance();
+            const c = Application.android.context || (<any>com).tns.NativeScriptApplication.getInstance();
+            const uid = appsFlyerLibInstance.getAppsFlyerUID(c);
+
+            resolve(uid);
+        } catch (ex) {
+            printLogs("setCustomerUserId Error: " + ex);
+            reject(ex);
+        }
+    });
+}
+
 export const setSharingFilter = function (partners: Array<string>) {
 
   return new Promise(function (resolve, reject) {

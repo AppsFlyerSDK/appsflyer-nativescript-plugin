@@ -119,6 +119,24 @@ export const setCustomerUserId = function (userId: string) {
     });
 };
 
+export const getAppsFlyerUID = function() {
+    return new Promise((resolve, reject) => {
+        try {
+
+            if (typeof(AppsFlyerLib) !== "undefined") {
+                const uid = AppsFlyerLib.shared().getAppsFlyerUID();
+                resolve(uid);
+            } else {
+                reject({status: "failure", message: "AppsFlyer is not defined, call 1st 'initSdk'"});
+            }
+
+        } catch (ex) {
+            console.log("AF_IOS ::  Error: " + ex);
+            reject(ex);
+        }
+    });
+}
+
 @NativeClass
 class DeepLinkDelegate extends NSObject implements AppsFlyerDeepLinkDelegate {
     public static ObjCProtocols = [AppsFlyerDeepLinkDelegate];
