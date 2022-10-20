@@ -27,7 +27,7 @@ export function setSharingFilterForAllPartners(): Promise<{status} | any>;
 
 export function setCustomerUserId (userId: string): Promise<{status} | any>;
 
-
+export function getAppsFlyerUID(): Promise<string>;
 
 export interface ConversionData {
   af_status;
