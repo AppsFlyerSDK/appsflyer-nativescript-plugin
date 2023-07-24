@@ -19,7 +19,7 @@ https://docs.nativescript.org/ui/components.
                 <Label text="In-App event"  backgroundColor="green" textAlignment="center"/>
                 <TextView editable="false">
                     <FormattedString>
-                        <TextField
+                        <span
                             text="{{ logEventResponse }}" />
                     </FormattedString>
                 </TextView>
