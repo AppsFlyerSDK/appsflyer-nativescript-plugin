@@ -58,6 +58,9 @@ export const initSdk = function (args: InitSDKOptions) {
                     console.error(`AF-I :: onDeepLinking Error: ${e}`);
                   }
                 }
+                  
+                AppsFlyerLib.shared().setPluginInfoWithPluginVersionAdditionalParams(AFSDKPlugin.AFSDKPluginNativeScript, "6.12.1", null);
+
                 AppsFlyerLib.shared().start();
 
                 resolve({status: "success"});

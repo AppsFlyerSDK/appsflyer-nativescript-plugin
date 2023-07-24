@@ -94,6 +94,8 @@ declare class AppsFlyerLib extends NSObject {
 
 	useUninstallSandbox: boolean;
 
+	setPluginInfoWithPluginVersionAdditionalParams(initWithPlugin: AFSDKPlugin, pluginVersion: string, additionalParams: NSDictionary<any, any>): void;
+	
 	continueUserActivityRestorationHandler(userActivity: NSUserActivity, restorationHandler: (p1: NSArray<any>) => void): boolean;
 
 	didUpdateUserActivity(userActivity: NSUserActivity): void;
@@ -191,4 +193,25 @@ declare const enum EmailCryptType {
 	MD5 = 2,
 
 	SHA256 = 3
+}
+
+declare const enum AFSDKPlugin {
+
+	AFSDKPluginIOSNative = 0,
+    AFSDKPluginUnity = 1,
+    AFSDKPluginFlutter = 2,
+    AFSDKPluginReactNative = 3,
+    AFSDKPluginAdobeAir = 4,
+    AFSDKPluginAdobeMobile = 5,
+    AFSDKPluginCocos2dx = 6,
+    AFSDKPluginCordova = 7,
+    AFSDKPluginMparticle = 8,
+    AFSDKPluginNativeScript = 9,
+    AFSDKPluginExpo = 10,
+    AFSDKPluginUnreal = 11,
+    AFSDKPluginXamarin = 12,
+    AFSDKPluginCapacitor = 13,
+    AFSDKPluginSegment = 14,
+    AFSDKPluginAdobeSwiftAEP = 15
+
 }
