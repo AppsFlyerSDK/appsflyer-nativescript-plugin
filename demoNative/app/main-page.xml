@@ -10,6 +10,12 @@ https://docs.nativescript.org/ui/components.
                 <Label text="NativeScript Test App!" textAlignment="center" fontSize="28px"/>
             </FlexboxLayout>
             <FlexboxLayout flexDirection="column">
+                <Label text="AppsFlyer SDK initalization response"  backgroundColor="green" textAlignment="center"/>
+                <TextView editable="false">
+                    <FormattedString>
+                        <span text="{{ initSdkResponse }}" />
+                    </FormattedString>
+                </TextView>
                 <Label text="Conversion Data"  backgroundColor="green" textAlignment="center"/>
                 <TextView editable="false">
                     <FormattedString>
