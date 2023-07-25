@@ -119,6 +119,10 @@ export const initSdk = function (args: InitSDKOptions) {
                   }
                 }
                 
+                const platform_extension = com.appsflyer.internal.platform_extension;
+                const pluginInfoClass = new platform_extension.PluginInfo(platform_extension.Plugin.NATIVE_SCRIPT, "6.12.1", new java.util.HashMap());
+                appsFlyerLibInstance.setPluginInfo(pluginInfoClass);
+
                 appsFlyerLibInstance.init(args.devKey,_appsFlyerConversionListener,(Application.android.context || (<any>com).tns.NativeScriptApplication.getInstance()));
                 
                 _start(appsFlyerLibInstance);

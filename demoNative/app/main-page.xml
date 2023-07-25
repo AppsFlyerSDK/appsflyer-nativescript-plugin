@@ -4,30 +4,28 @@ of which NativeScript renders with a platform-specific iOS or Android native con
 You can find a full list of user interface components you can use in your app at
 https://docs.nativescript.org/ui/components.
 -->
-<Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="onNavigatingTo">
-    <StackLayout orientation="vertical"
-            backgroundColor="lightgray">
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="navigatingTo">
+    <StackLayout orientation="vertical" backgroundColor="lightgray">
             <FlexboxLayout flexDirection="column" height="60">
                 <Label text="NativeScript Test App!" textAlignment="center" fontSize="28px"/>
             </FlexboxLayout>
             <FlexboxLayout flexDirection="column">
+                <Label text="AppsFlyer SDK initalization response"  backgroundColor="green" textAlignment="center"/>
+                <TextView editable="false">
+                    <FormattedString>
+                        <span text="{{ initSdkResponse }}" />
+                    </FormattedString>
+                </TextView>
                 <Label text="Conversion Data"  backgroundColor="green" textAlignment="center"/>
                 <TextView editable="false">
                     <FormattedString>
-                        <Span text="{{ gcdResponse }}" />
+                        <span text="{{ gcdResponse }}" />
                     </FormattedString>
                 </TextView>
-                <!-- <Label text="On Appopen Attribution"  backgroundColor="green" textAlignment="center"/>
-                <TextView editable="false">
-                    <FormattedString>
-                        <Span
-                            text="" />
-                    </FormattedString>
-                </TextView> -->
                 <Label text="In-App event"  backgroundColor="green" textAlignment="center"/>
                 <TextView editable="false">
                     <FormattedString>
-                        <Span
+                        <span
                             text="{{ logEventResponse }}" />
                     </FormattedString>
                 </TextView>

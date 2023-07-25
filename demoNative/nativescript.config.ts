@@ -1,11 +1,11 @@
-import { NativeScriptConfig } from '@nativescript/core'
+import { NativeScriptConfig } from '@nativescript/core';
 
 export default {
   id: 'com.appsflyer.nativescript.demoNative',
-  appResourcesPath: 'app/App_Resources',
+  appPath: 'app',
+  appResourcesPath: 'App_Resources',
   android: {
     v8Flags: '--expose_gc',
-    markingMode: 'none',
-  },
-  appPath: 'app',
-} as NativeScriptConfig
+    markingMode: 'none'
+  }
+} as NativeScriptConfig;

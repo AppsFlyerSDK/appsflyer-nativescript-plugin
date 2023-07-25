@@ -213,6 +213,23 @@ declare module com {
 	}
 }
 
+declare module com {
+	export module appsflyer {
+		export module internal {
+			export module platform_extension {
+				export class Plugin {
+					public static NATIVE_SCRIPT: com.appsflyer.internal.platform_extension.Plugin
+				}
+				export class PluginInfo {
+					public constructor(
+						plugin: com.appsflyer.internal.platform_extension.Plugin, version: string, additionalParams: java.util.HashMap
+					);
+				}
+			}
+		}
+	}
+}
+
 /// <reference path="./java.lang.String.d.ts" />
 declare module com {
 	export module appsflyer {
@@ -259,6 +276,7 @@ declare module com {
 			public static PRE_INSTALL_SYSTEM_DEFAULT: string;
 			public static PRE_INSTALL_SYSTEM_DEFAULT_ETC: string;
 			public static AF_PRE_INSTALL_PATH: string;
+			public setPluginInfo(pluginInfo: PluginInfo): void;
 			public subscribeForDeepLink(deepLinkListener: DeepLinkListener): void;
 			public registerConversionListener(param0: androidcontentContext, param1: com.appsflyer.AppsFlyerConversionListener): void;
 			public getHost(): string;
