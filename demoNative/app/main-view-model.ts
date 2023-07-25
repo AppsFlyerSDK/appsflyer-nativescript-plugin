@@ -1,7 +1,6 @@
-import { Observable, TextField, fromObject, Page, BindingOptions, getViewById, Label } from "@nativescript/core";
+import { Observable } from "@nativescript/core";
 
 var appsFlyer = require("nativescript-plugin-appsflyer");
-
 
 export class HelloWorldModel extends Observable {
     options: any;
@@ -11,6 +10,7 @@ export class HelloWorldModel extends Observable {
     super()
 
     this.viewModel = viewModel
+    
     this.options = {
       devKey:  'WdpTVAcYwmxsaQ4WeTspmh',
       appId: "975313579",
@@ -49,7 +49,7 @@ export class HelloWorldModel extends Observable {
         });
     };
 
-     logEvent() {
+     logEvent(viewModel : Observable) {
 
         console.log("call logEvent ... ");
 
@@ -62,46 +62,22 @@ export class HelloWorldModel extends Observable {
             },
             onSuccess: function(_res){
                 console.log("onLogEventRequestSuccess results: " + JSON.stringify(_res));
-                this.viewModel.set("logEventResponse", JSON.stringify(_res));
+                viewModel.set("logEventResponse", JSON.stringify(_res));
             },
             onError: function(_res){
                 console.log("onLogEventRequestFailure results: " + JSON.stringify(_res));
-                this.viewModel.set("logEventResponse", JSON.stringify(_res));
+                viewModel.set("logEventResponse", JSON.stringify(_res));
             },
         };
 
         appsFlyer.logEvent(options).then(function(result) {
             console.log("logEvent is called");
-            this.viewModel.set("logEventResponse", JSON.stringify(result));
+            viewModel.set("logEventResponse", JSON.stringify(result));
         }, function(err) {
            console.log("logEvent ERROR results  ... " + JSON.stringify(err));
-           this.viewModel.set("logEventResponse", JSON.stringify(err));
+           viewModel.set("logEventResponse", JSON.stringify(err));
         });
     }
-    //  setSharingFilter(partners) {
-    //     console.log("call setSharingFilter with the following partners: " + partners);
-
-    //     appsFlyer.setSharingFilter(partners).then(function(result) {
-    //         console.log("setSharingFilter is called");
-    //         viewModel.set("setSharingFilterResponse", result.status);
-    //     }, function(err) {
-    //         console.log("setSharingFilter error  ... " +  JSON.stringify(err));
-    //         viewModel.set("setSharingFilterResponse", JSON.stringify(err));
-    //     });
-    // };
-    
-    //  setSharingFilterForAllPartners() {
-
-    //     console.log("call setSharingFilterForAllPartners ... ");
-
-    //     appsFlyer.setSharingFilterForAllPartners().then(function(result) {
-    //         console.log("setSharingFilterForAllPartners is called");
-    //         viewModel.set("setSharingFilterForAllPartners", result.status);
-    //     }, function(err) {
-    //         console.log("setSharingFilterForAllPartners error  ... " +  JSON.stringify(err));
-    //         viewModel.set("setSharingFilterForAllPartners", JSON.stringify(err));
-    //     });
-    // };
     
 }
 

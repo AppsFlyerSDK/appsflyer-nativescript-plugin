@@ -18,7 +18,7 @@
     "demo.ios.watch.sim": "npm run preparedemo; cd demoNative; tns livesync ios --emulator --watch",
     "demo.ios.watch": "npm run preparedemo; cd demoNative; tns livesync ios --watch",
     "demo.debug.i": "cd demoNative; tns debug ios",
-    "demo.android": "npm run preparedemo; cd demoNative; tns run android",
+    "demo.android": "npm run preparedemo; cd demoNative; ns run android",
     "demo.debug.a": "cd demoNative; tns debug android",
     "demo.android.watch": "npm run preparedemo; cd demoNative; tns livesync android --emulator --watch",
     "run.android": "npm run preparedemo; cd demoNative; tns run android",
