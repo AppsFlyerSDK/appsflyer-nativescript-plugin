@@ -91,7 +91,7 @@ initializes the SDK.
 
 ---
 
-#####<a id="logEvent"> **`appsFlyer.logEvent(options): Promise<any>`**
+##### <a id="logEvent"> **`appsFlyer.logEvent(options): Promise<any>`**
 
 
 - These in-app events help you measure how loyal users discover your app, and attribute them to specific 
@@ -131,7 +131,7 @@ to measure the ROI (Return on Investment) and LTV (Lifetime Value).
     
 ```
 
-##Demo
+## Demo
 
 This plugin has a `demo` project bundled with it. To give it a try , clone this repo and from root a.e. `nativescript-plugin-appsflyer` execute the following:
 
