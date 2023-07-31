@@ -1,4 +1,4 @@
-
+// @ts-nocheck
 import { 
   Utils
 } from '@nativescript/core';
@@ -101,6 +101,27 @@ export const logEvent = function (args: LogEventOptions) {
 
 };
 
+export const stop = function (isStopped: bool) {
+
+    return new Promise(function (resolve, reject) {
+        try {
+
+            if (typeof(AppsFlyerLib) !== "undefined") {
+
+              AppsFlyerLib.shared().isStopped = isStopped;
+
+                resolve({status: "success"});
+            } else {
+                reject({status: "failure", message: "AppsFlyer is not defined, call 1st 'initSdk'"});
+            }
+
+        } catch (ex) {
+            console.log("AF_IOS ::  Error: " + ex);
+            reject(ex);
+        }
+    });
+};
+
 export const setCustomerUserId = function (userId: string) {
 
     return new Promise(function (resolve, reject) {
@@ -121,6 +142,99 @@ export const setCustomerUserId = function (userId: string) {
         }
     });
 };
+
+export const setAppInviteOneLink = function (link: string) {
+
+    return new Promise(function (resolve, reject) {
+        try {
+
+            if (typeof(AppsFlyerLib) !== "undefined") {
+
+              AppsFlyerLib.shared().appInviteOneLinkID = link;
+
+                resolve({status: "success"});
+            } else {
+                reject({status: "failure", message: "AppsFlyer is not defined, call 1st 'initSdk'"});
+            }
+
+        } catch (ex) {
+            console.log("AF_IOS ::  Error: " + ex);
+            reject(ex);
+        }
+    });
+};
+
+export const generateInviteUrl = function (args: AppsFlyerLinkGeneratorArgs) {
+
+    return new Promise(function (resolve, reject) {
+      try {
+        const params = args.params;
+        const channel: String = params.channel;
+        const campaign: String = params.campaign;
+        const referrerName: String = params.referrerName;
+        const referrerImageUrl: String = params.referrerImageUrl;
+        const customerID: String = params.customerID;
+        const baseDeepLink: String = params.baseDeepLink;
+        const brandDomain: String = params.brandDomain;
+      
+        const appsFlyerShareInviteHelper = new AppsFlyerShareInviteHelper();
+        const linkGenerator: function = function(linkGenerator: AppsFlyerLinkGenerator){
+          if (channel != null && channel != "") {
+            linkGenerator.setChannel(channel);
+          }
+          if (campaign != null && campaign != "") {
+              linkGenerator.setCampaign(campaign);
+          }
+          if (referrerName != null && referrerName != "") {
+              linkGenerator.setReferrerName(referrerName);
+          }
+          if (referrerImageUrl != null && referrerImageUrl != "") {
+              linkGenerator.setReferrerImageURL(referrerImageUrl);
+          }
+          if (customerID != null && customerID != "") {
+              linkGenerator.setReferrerCustomerId(customerID);
+          }
+          if (baseDeepLink != null && baseDeepLink != "") {
+              linkGenerator.setBaseDeeplink(baseDeepLink);
+          }
+          if (brandDomain != null && brandDomain != "") {
+              linkGenerator.setBrandDomain(brandDomain);
+          }
+
+          if (!isEmpty(params.userParams)) {
+            linkGenerator.addParameters(params.userParams);
+          }
+          return linkGenerator
+        }
+
+        let completionHandler = null;
+        if(args.onSuccess && args.onFailure){
+         completionHandler = function(url: string){
+          if(url !== null){
+            args.onSuccess(link);
+          }else{
+            args.onFailure("failed to generate link");
+          }
+        }
+      }
+        AppsFlyerShareInviteHelper.generateInviteUrlWithLinkGeneratorCompletionHandler(linkGenerator, completionHandler)
+
+      } catch (ex) {
+          console.log("AF_IOS ::  Error: " + ex);
+          reject(ex);
+      }
+    });
+};
+
+function isEmpty(obj) {
+  for (const prop in obj) {
+    if (Object.hasOwn(obj, prop)) {
+      return false;
+    }
+  }
+
+  return true;
+}
 
 @NativeClass
 class DeepLinkDelegate extends NSObject implements AppsFlyerDeepLinkDelegate {

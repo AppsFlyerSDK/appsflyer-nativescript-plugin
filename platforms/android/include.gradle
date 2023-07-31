@@ -13,9 +13,7 @@ def safeExtGet(prop, fallback) {
     rootProject.ext.has(prop) ? rootProject.ext.get(prop) : fallback
 }
 dependencies {
-	def googlePlayServicesVersion = safeExtGet('googlePlayServicesVersion', '16.+')
-	implementation "com.google.android.gms:play-services-ads:$googlePlayServicesVersion"
-  implementation "com.google.android.gms:play-services-identity:$googlePlayServicesVersion"
-  implementation "com.android.installreferrer:installreferrer:${safeExtGet('installreferrer', '1.1.2')}"
+  implementation 'com.google.android.gms:play-services-ads:15.0.0'
+  implementation "com.android.installreferrer:installreferrer:${safeExtGet('installreferrer', '2.2')}"
   implementation "com.appsflyer:af-android-sdk:${safeExtGet('appsflyerVersion', "6.12.1")}"
 }
