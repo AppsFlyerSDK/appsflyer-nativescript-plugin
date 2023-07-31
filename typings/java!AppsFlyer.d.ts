@@ -276,6 +276,7 @@ declare module com {
 			public static PRE_INSTALL_SYSTEM_DEFAULT: string;
 			public static PRE_INSTALL_SYSTEM_DEFAULT_ETC: string;
 			public static AF_PRE_INSTALL_PATH: string;
+			public stop(isStopped: bool, context: androidcontentContext): void;
 			public setPluginInfo(pluginInfo: PluginInfo): void;
 			public subscribeForDeepLink(deepLinkListener: DeepLinkListener): void;
 			public registerConversionListener(param0: androidcontentContext, param1: com.appsflyer.AppsFlyerConversionListener): void;
@@ -490,10 +491,10 @@ declare module com {
 /// <reference path="./java.util.Map.d.ts" />
 declare module com {
 	export module appsflyer {
-		export class CreateOneLinkHttpTask extends com.appsflyer.OneLinkHttpTask {
-			public setListener(param0: com.appsflyer.CreateOneLinkHttpTask.ResponseListener): void;
-			public constructor(param0: string, param1: javautilMap, param2: com.appsflyer.AppsFlyerLib, param3: androidcontentContext);
-		}
+		// export class CreateOneLinkHttpTask extends com.appsflyer.OneLinkHttpTask {
+		// 	public setListener(param0: com.appsflyer.CreateOneLinkHttpTask.ResponseListener): void;
+		// 	public constructor(param0: string, param1: javautilMap, param2: com.appsflyer.AppsFlyerLib, param3: androidcontentContext);
+		// }
 		export module CreateOneLinkHttpTask {
 			export class ResponseListener {
 				/**
@@ -958,6 +959,7 @@ declare module com {
 				public addParameter(param0: string, param1: string): com.appsflyer.share.LinkGenerator;
 				public setChannel(param0: string): com.appsflyer.share.LinkGenerator;
 				public setBaseURL(param0: string, param1: string, param2: string): com.appsflyer.share.LinkGenerator;
+				public setBrandDomain(param0: string): com.appsflyer.share.LinkGenerator;
 			}
 		}
 	}

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import  { Application, Utils } from "@nativescript/core";
 
 import {
@@ -216,6 +217,138 @@ export const setCustomerUserId = function (userId: string) {
             resolve({status: "success"});
         } catch (ex) {
             printLogs("setCustomerUserId Error: " + ex);
+            reject(ex);
+        }
+    });
+};
+
+export const setAppInviteOneLink = function (link: string) {
+
+    return new Promise(function (resolve, reject) {
+        try {
+            const appsFlyerLibInstance = com.appsflyer.AppsFlyerLib.getInstance();
+            appsFlyerLibInstance.setAppInviteOneLink(link);
+
+            resolve({status: "success"});
+        } catch (ex) {
+            printLogs("setAppInviteOneLink Error: " + ex);
+            reject(ex);
+        }
+    });
+};
+
+export const generateInviteUrl = function (args: AppsFlyerLinkGeneratorArgs) {
+
+    return new Promise(function (resolve, reject) {
+        try {
+          const params = args.params;
+          const channel: String = params.channel;
+          const campaign: String = params.campaign;
+          const referrerName: String = params.referrerName;
+          const referrerImageUrl: String = params.referrerImageUrl;
+          const customerID: String = params.customerID;
+          const baseDeepLink: String = params.baseDeepLink;
+          const brandDomain: String = params.brandDomain;
+        
+          const appsflyerShareInviteHelper: com.appsflyer.share.ShareInviteHelper = com.appsflyer.share.ShareInviteHelper;
+          const linkGenerator: com.appsflyer.share.LinkGenerator = appsflyerShareInviteHelper.generateInviteUrl(Application.android.context);
+
+          if (channel != null && channel != "") {
+            linkGenerator.setChannel(channel);
+          }
+          if (campaign != null && campaign != "") {
+              linkGenerator.setCampaign(campaign);
+          }
+          if (referrerName != null && referrerName != "") {
+              linkGenerator.setReferrerName(referrerName);
+          }
+          if (referrerImageUrl != null && referrerImageUrl != "") {
+              linkGenerator.setReferrerImageURL(referrerImageUrl);
+          }
+          if (customerID != null && customerID != "") {
+              linkGenerator.setReferrerCustomerId(customerID);
+          }
+          if (baseDeepLink != null && baseDeepLink != "") {
+              linkGenerator.setBaseDeeplink(baseDeepLink);
+          }
+          if (brandDomain != null && brandDomain != "") {
+              linkGenerator.setBrandDomain(brandDomain);
+          }
+
+          if (!isEmpty(params.userParams)) {
+            Object.entries(params.userParams).forEach(([key, value]) => {  
+              linkGenerator.addParameter(key, value);
+            })
+          }
+
+          if(args.onSuccess && args.onFailure){
+            const listener: com.appsflyer.CreateOneLinkHttpTask.ResponseListener  = new com.appsflyer.CreateOneLinkHttpTask.ResponseListener(<any>{
+              _successCallback: args.onSuccess,
+              _failureCallback: args.onFailure,
+              onResponse(): void {
+                if (!this._successCallback) {
+                  return;
+                }
+                if (typeof this._successCallback === 'function') {
+                  try {
+                    this._successCallback(args);
+                    printLogs("generateInviteUrl success: " + JSON.stringify(args));
+                  } catch (e) {
+                    printLogs(`generateInviteUrl Error: ${e}`);
+                  }
+                } else {
+                    printLogs(`generateInviteUrl: callback is not a function`);
+                }
+                resolve({status: args});
+              },
+              onResponseError(error: string): void {
+                if (!this._failureCallback) {
+                  return;
+                }
+                if (typeof this._failureCallback === 'function') {
+                  try {
+                    this._failureCallback(error);
+                    printLogs("generateInviteUrl error: " + error);
+                  } catch (e) {
+                        printLogs(`generateInviteUrl Error: ${e}`);
+                  }
+                } else {
+                    printLogs(`generateInviteUrl: callback is not a function`);
+                }
+                resolve({status: "failure"});
+              },
+            });
+
+            linkGenerator.generateLink(Application.android.context, listener);
+          }
+     
+
+          resolve({status: "success"});
+        } catch (ex) {
+          printLogs("generateInviteUrl Error: " + ex);
+          reject(ex);
+        }
+    });
+};
+function isEmpty(obj) {
+  for (const prop in obj) {
+    if (Object.hasOwn(obj, prop)) {
+      return false;
+    }
+  }
+
+  return true;
+}
+export const stop = function (isStopped: bool) {
+
+    return new Promise(function (resolve, reject) {
+        try {
+            const appsFlyerLibInstance = com.appsflyer.AppsFlyerLib.getInstance();
+            appsFlyerLibInstance.stop(isStopped, Application.android.context);
+
+            resolve({status: "success"});
+        } catch (ex) {
+            printLogs("stop Error: " + ex);
             reject(ex);
         }
     });

@@ -37,13 +37,15 @@ declare class AppsFlyerLinkGenerator extends NSObject {
 	setReferrerName(referrerName: string): void;
 
 	setReferrerUID(referrerUID: string): void;
+
+	setBrandDomain(brandDomain: string): void;
 }
 
 declare class AppsFlyerShareInviteHelper extends NSObject {
 
 	static alloc(): AppsFlyerShareInviteHelper; // inherited from NSObject
 
-	static generateInviteUrlWithLinkGeneratorCompletionHandler(generatorCreator: (p1: AppsFlyerLinkGenerator) => AppsFlyerLinkGenerator, completionHandler: (p1: NSURL) => void): void;
+	static generateInviteUrlWithLinkGeneratorCompletionHandlergenerateUserInviteLink(generatorCreator: (p1: AppsFlyerLinkGenerator) => AppsFlyerLinkGenerator, completionHandler: (p1: NSURL) => void): void;
 
 	static new(): AppsFlyerShareInviteHelper; // inherited from NSObject
 

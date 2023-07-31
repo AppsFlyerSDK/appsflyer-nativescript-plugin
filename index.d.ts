@@ -17,6 +17,12 @@ export interface LogEventOptions {
     onError?: (err: string) => void;
 }
 
+export interface AppsFlyerLinkGeneratorArgs {
+    params: Object;
+    onSuccess?: (link: string) => void;
+    onError?: (err: string) => void;
+}
+
 export function initSdk(options: InitSDKOptions): Promise<{status} | any>;
 
 export function logEvent(options: LogEventOptions): Promise<{status} | any>;
@@ -26,6 +32,12 @@ export function setSharingFilter(partners: Array<String>): Promise<{status} | an
 export function setSharingFilterForAllPartners(): Promise<{status} | any>;
 
 export function setCustomerUserId (userId: string): Promise<{status} | any>;
+
+export function setAppInviteOneLink (link: string): void;
+
+export function stop (isStopped: bool): void;
+
+export function generateInviteUrl (args: AppsFlyerLinkGeneratorArgs): void;
 
 
 
