@@ -6,7 +6,8 @@
 - [initSdk](#initSdk)
 - [logEvent](#logEvent)
 - [setSharingFilter](#setSharingFilter) 
-- [setSharingFilterForAllPartners](#setSharingFilterForAllPartners) 
+- [setSharingFilterForAllPartners](#setSharingFilterForAllPartners)
+- [setCustomerUserId](#setCustomerUserId)
 - [setAppInviteOneLink](#setAppInviteOneLink)
 - [generateInviteUrl](#generateInviteUrl)
 - [stop](#stop)
@@ -138,7 +139,17 @@ Reasons for this include:
         }, function(err) {
             viewModel.set("setSharingFilterForAllPartners Response", JSON.stringify(err));
         });
- ```   
+ ```
+
+---
+
+##### <a id="setCustomerUserId"> **`appsFlyer.setCustomerUserId(id): void`**
+
+*Example:*
+
+```javascript
+appsFlyer.setCustomerUserId("123);   
+```
 
 ---
 
@@ -205,8 +216,6 @@ appsFlyer.generateInviteUrl(
 ---
 
 ##### <a id="stop"> **`appsFlyer.stop(isStopped): void`**
-
-`stop(isStopped)`
 
 In some extreme cases you might want to shut down all SDK functions due to legal and privacy compliance. This can be achieved with the stopSDK API. Once this API is invoked, our SDK no longer communicates with our servers and stops functioning.
 
