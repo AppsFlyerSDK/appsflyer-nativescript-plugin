@@ -13,6 +13,23 @@ export class HelloWorldModel extends Observable {
     constructor() {
         super()
         this.initSdk()
+        appsFlyer.setAppInviteOneLink('abcd'); 
+        appsFlyer.generateInviteUrl(
+            {
+                params: {
+                    channel: 'gmail',
+                    campaign: 'myCampaign',
+                    customerID: '1234',
+                    userParams: {
+                        myParam: 'newUser',
+                        anotherParam: 'fromWeb',
+                        amount: 1,
+                    },
+                },
+                onSuccess: function(link){console.log(link);},
+                onFailure: function(err){console.log(err);}
+            }
+        );
     }
 
     initSdk(){

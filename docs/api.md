@@ -209,7 +209,8 @@ appsFlyer.generateInviteUrl(
         },
         onSuccess: function(link){console.log(link);},
         onFailure: function(err){console.log(err);}
-    );
+    }
+);
 ```
 
 

@@ -177,7 +177,6 @@ export const generateInviteUrl = function (args: AppsFlyerLinkGeneratorArgs) {
         const baseDeepLink: String = params.baseDeepLink;
         const brandDomain: String = params.brandDomain;
       
-        const appsFlyerShareInviteHelper = new AppsFlyerShareInviteHelper();
         const linkGenerator: function = function(linkGenerator: AppsFlyerLinkGenerator){
           if (channel != null && channel != "") {
             linkGenerator.setChannel(channel);

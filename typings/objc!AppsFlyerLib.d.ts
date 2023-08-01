@@ -45,7 +45,7 @@ declare class AppsFlyerShareInviteHelper extends NSObject {
 
 	static alloc(): AppsFlyerShareInviteHelper; // inherited from NSObject
 
-	static generateInviteUrlWithLinkGeneratorCompletionHandlergenerateUserInviteLink(generatorCreator: (p1: AppsFlyerLinkGenerator) => AppsFlyerLinkGenerator, completionHandler: (p1: NSURL) => void): void;
+	static generateInviteUrlWithLinkGeneratorCompletionHandler(generatorCreator: (p1: AppsFlyerLinkGenerator) => AppsFlyerLinkGenerator, completionHandler: (p1: NSURL) => void): void;
 
 	static new(): AppsFlyerShareInviteHelper; // inherited from NSObject
 
