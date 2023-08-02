@@ -26,8 +26,8 @@ export class HelloWorldModel extends Observable {
                         amount: 1,
                     },
                 },
-                onSuccess: function(link){console.log(link);},
-                onFailure: function(err){console.log(err);}
+                onSuccess: function(link: string){console.log(link);},
+                onError: function(err: string){console.log(err);}
             }
         );
     }
