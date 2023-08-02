@@ -206,17 +206,18 @@ export const generateInviteUrl = function (args: AppsFlyerLinkGeneratorArgs) {
           return linkGenerator
         }
 
-        let completionHandler = null;
-        if(args.onSuccess && args.onFailure){
-         completionHandler = function(url: string){
-          if(url !== null){
-            args.onSuccess(link);
-          }else{
-            args.onFailure("failed to generate link");
+        let completionHandler = function(url: string){};
+        if(args.onSuccess && args.onError){
+          completionHandler = function(url: string){
+            if(url !== null){
+              args.onSuccess(url);
+            }else{
+              args.onError("failed to generate link");
+            }
           }
         }
-      }
-        AppsFlyerShareInviteHelper.generateInviteUrlWithLinkGeneratorCompletionHandler(linkGenerator, completionHandler)
+    
+      AppsFlyerShareInviteHelper.generateInviteUrlWithLinkGeneratorCompletionHandler(linkGenerator, completionHandler)
 
       } catch (ex) {
           console.log("AF_IOS ::  Error: " + ex);
