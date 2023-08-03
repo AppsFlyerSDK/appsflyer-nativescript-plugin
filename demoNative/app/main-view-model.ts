@@ -1,6 +1,5 @@
 import { Observable } from "@nativescript/core";
-
-var appsFlyer = require("nativescript-plugin-appsflyer");
+import * as appsFlyer from "nativescript-plugin-appsflyer";
 
 export class HelloWorldModel extends Observable {
     options: any;
@@ -19,7 +18,8 @@ export class HelloWorldModel extends Observable {
                 params: {
                     channel: 'gmail',
                     campaign: 'myCampaign',
-                    customerID: '1234',
+                    customerID: 1234,
+                    brandDomain: "brand.domain.com",
                     userParams: {
                         myParam: 'newUser',
                         anotherParam: 'fromWeb',
