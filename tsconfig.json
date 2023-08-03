@@ -3,7 +3,7 @@
     "target": "es2017",
     "module": "esnext",
     "moduleResolution": "node",
-    "declaration": false,
+    "declaration": true,
     "removeComments": true,
     "noLib": false,
     "emitDecoratorMetadata": true,
@@ -23,7 +23,7 @@
     "baseUrl": ".",
     "plugins": [
       {
-        "transform": "@nativescript/webpack/transformers/ns-transform-native-classes",
+        "transform": "@nativescript/webpack/dist/transformers/NativeClass",
         "type": "raw"
       }
     ]
