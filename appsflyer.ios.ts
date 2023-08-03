@@ -15,7 +15,7 @@ let _isDebugLocal = false;
 let _conversionDataDelegate;
 let _deepLinkDelegate;
 
-export const initSdk = function (args: InitSDKOptions) {
+const initSdk = function (args: InitSDKOptions) {
 
     return new Promise(function (resolve, reject) {
         try {
@@ -75,7 +75,7 @@ export const initSdk = function (args: InitSDKOptions) {
 };
 
 
-export const logEvent = function (args: LogEventOptions) {
+const logEvent = function (args: LogEventOptions) {
 
     return new Promise(function (resolve, reject) {
         try {
@@ -101,7 +101,7 @@ export const logEvent = function (args: LogEventOptions) {
 
 };
 
-export const stop = function (isStopped: bool) {
+const stop = function (isStopped: bool) {
 
     return new Promise(function (resolve, reject) {
         try {
@@ -122,7 +122,7 @@ export const stop = function (isStopped: bool) {
     });
 };
 
-export const setCustomerUserId = function (userId: string) {
+const setCustomerUserId = function (userId: string) {
 
     return new Promise(function (resolve, reject) {
         try {
@@ -143,7 +143,7 @@ export const setCustomerUserId = function (userId: string) {
     });
 };
 
-export const setAppInviteOneLink = function (link: string) {
+const setAppInviteOneLink = function (link: string) {
 
     return new Promise(function (resolve, reject) {
         try {
@@ -164,7 +164,7 @@ export const setAppInviteOneLink = function (link: string) {
     });
 };
 
-export const generateInviteUrl = function (args: AppsFlyerLinkGeneratorArgs) {
+const generateInviteUrl = function (args: AppsFlyerLinkGeneratorArgs) {
 
     return new Promise(function (resolve, reject) {
       try {
@@ -376,4 +376,13 @@ class ConversionDataDelegate extends NSObject implements AppsFlyerLibDelegate {
       }
     }
 
+}
+
+export {
+  initSdk,
+  logEvent,
+  stop,
+  setCustomerUserId,
+  setAppInviteOneLink,
+  generateInviteUrl,
 }
