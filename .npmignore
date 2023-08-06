@@ -2,7 +2,7 @@ demoNative/
 
 *.svg
 *.log
-*.ts
+*.js
 !*.d.ts
 
 es6-promise.d.ts
