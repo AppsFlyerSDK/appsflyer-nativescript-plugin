@@ -92,6 +92,7 @@ export const initSdk = function (args: InitSDKOptions) {
                                         data[key] = onAppOpenAttributionData.get(key);
                                     }
 
+                                    this._oaoaSuccessCallback(data);
                                     printLogs("onAppOpenAttribution: " + JSON.stringify(data));
                                   } catch (e) {
                                     printLogs(`onAppOpenAttribution Error: ${e}`);
