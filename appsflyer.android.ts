@@ -285,14 +285,14 @@ export const generateInviteUrl = function (args: AppsFlyerLinkGeneratorArgs) {
             const listener: com.appsflyer.CreateOneLinkHttpTask.ResponseListener  = new com.appsflyer.CreateOneLinkHttpTask.ResponseListener(<any>{
               _successCallback: args.onSuccess,
               _failureCallback: args.onError,
-              onResponse(): void {
+              onResponse(oneLinkUrl): void {
                 if (!this._successCallback) {
                   return;
                 }
                 if (typeof this._successCallback === 'function') {
                   try {
-                    this._successCallback(args);
-                    printLogs("generateInviteUrl success: " + JSON.stringify(args));
+                    this._successCallback(oneLinkUrl);
+                    printLogs("generateInviteUrl success: " + JSON.stringify(oneLinkUrl));
                   } catch (e) {
                     printLogs(`generateInviteUrl Error: ${e}`);
                   }
@@ -332,7 +332,7 @@ export const generateInviteUrl = function (args: AppsFlyerLinkGeneratorArgs) {
 };
 function isEmpty(obj) {
   for (const prop in obj) {
-    if (Object.hasOwn(obj, prop)) {
+    if (Object.hasOwnProperty(obj, prop)) {
       return false;
     }
   }
