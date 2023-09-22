@@ -254,45 +254,45 @@ export const generateInviteUrl = function (args: AppsFlyerLinkGeneratorArgs) {
           const linkGenerator: com.appsflyer.share.LinkGenerator = appsflyerShareInviteHelper.generateInviteUrl(Application.android.context);
 
           if (channel != null && channel != "") {
-            linkGenerator.setChannel(channel);
+            linkGenerator.setChannel(String(channel));
           }
           if (campaign != null && campaign != "") {
-              linkGenerator.setCampaign(campaign);
+              linkGenerator.setCampaign(String(campaign));
           }
           if (referrerName != null && referrerName != "") {
-              linkGenerator.setReferrerName(referrerName);
+              linkGenerator.setReferrerName(String(referrerName));
           }
           if (referrerImageUrl != null && referrerImageUrl != "") {
-              linkGenerator.setReferrerImageURL(referrerImageUrl);
+              linkGenerator.setReferrerImageURL(String(referrerImageUrl));
           }
           if (customerID != null && customerID != "") {
-              linkGenerator.setReferrerCustomerId(customerID);
+              linkGenerator.setReferrerCustomerId(String(customerID));
           }
           if (baseDeepLink != null && baseDeepLink != "") {
-              linkGenerator.setBaseDeeplink(baseDeepLink);
+              linkGenerator.setBaseDeeplink(String(baseDeepLink));
           }
           if (brandDomain != null && brandDomain != "") {
-              linkGenerator.setBrandDomain(brandDomain);
+              linkGenerator.setBrandDomain(String(brandDomain));
           }
 
           if (!isEmpty(params.userParams)) {
             Object.entries(params.userParams).forEach(([key, value]) => {  
-              linkGenerator.addParameter(key, value);
+              linkGenerator.addParameter(key, String(value));
             })
           }
 
-          if(args.onSuccess && args.onFailure){
+          if(args.onSuccess && args.onError){
             const listener: com.appsflyer.CreateOneLinkHttpTask.ResponseListener  = new com.appsflyer.CreateOneLinkHttpTask.ResponseListener(<any>{
               _successCallback: args.onSuccess,
-              _failureCallback: args.onFailure,
-              onResponse(): void {
+              _failureCallback: args.onError,
+              onResponse(oneLinkUrl): void {
                 if (!this._successCallback) {
                   return;
                 }
                 if (typeof this._successCallback === 'function') {
                   try {
-                    this._successCallback(args);
-                    printLogs("generateInviteUrl success: " + JSON.stringify(args));
+                    this._successCallback(oneLinkUrl);
+                    printLogs("generateInviteUrl success: " + JSON.stringify(oneLinkUrl));
                   } catch (e) {
                     printLogs(`generateInviteUrl Error: ${e}`);
                   }
@@ -331,13 +331,7 @@ export const generateInviteUrl = function (args: AppsFlyerLinkGeneratorArgs) {
     });
 };
 function isEmpty(obj) {
-  for (const prop in obj) {
-    if (Object.hasOwn(obj, prop)) {
-      return false;
-    }
-  }
-
-  return true;
+  return Object.entries(obj).length < 1
 }
 export const stop = function (isStopped: bool) {
 

@@ -7,5 +7,5 @@ export declare const generateInviteUrl: (args: AppsFlyerLinkGeneratorArgs) => Pr
 export declare const stop: (isStopped: bool) => Promise<unknown>;
 export declare const setSharingFilter: (partners: Array<string>) => Promise<unknown>;
 export declare const setSharingFilterForAllPartners: () => Promise<unknown>;
-export declare const _toHashMap: (obj: Object) => any;
+export declare const _toHashMap: (obj: Object) => javautilHashMap<unknown, unknown>;
 export declare const _toValue: (val: any) => any;
