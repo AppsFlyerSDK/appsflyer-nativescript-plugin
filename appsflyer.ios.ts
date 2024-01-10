@@ -229,13 +229,7 @@ const generateInviteUrl = function (args: AppsFlyerLinkGeneratorArgs) {
 };
 
 function isEmpty(obj) {
-  for (const prop in obj) {
-    if (Object.hasOwn(obj, prop)) {
-      return false;
-    }
-  }
-
-  return true;
+  return Object.entries(obj).length < 1
 }
 
 @NativeClass
