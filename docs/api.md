@@ -4,12 +4,15 @@
 
 ## Methods
 - [initSdk](#initSdk)
+- [startSdk](#startSdk)
 - [logEvent](#logEvent)
 - [setSharingFilter](#setSharingFilter) 
 - [setSharingFilterForAllPartners](#setSharingFilterForAllPartners)
 - [setCustomerUserId](#setCustomerUserId)
 - [setAppInviteOneLink](#setAppInviteOneLink)
 - [generateInviteUrl](#generateInviteUrl)
+- [enableTCFDataCollection](#enableTCFDataCollection)  <!-- New addition -->
+- [setConsentData](#setConsentData)
 - [stop](#stop)
 
 
@@ -29,6 +32,7 @@ initializes the SDK.
 | `devKey`   |`string` |         |   [Appsflyer Dev key](https://support.appsflyer.com/hc/en-us/articles/207032126-AppsFlyer-SDK-Integration-Android)    |
 | `appId`    |`string` |        | [Apple Application ID](https://support.appsflyer.com/hc/en-us/articles/207032066-AppsFlyer-SDK-Integration-iOS) (for iOS only) |
 | `isDebug`  |`boolean`| `false` | debug mode (optional)|
+| `manualStart`  |`boolean`| `false` | Prevents from the SDK from sending the launch request after using appsFlyer.initSdk(...). When using this property, the apps needs to manually trigger the appsFlyer.startSdk() API to report the app launch.|
 | `onConversionDataSuccess`  |`function`| | AppsFlyer allows you to access the user attribution data in real-time for every new install, directly from the SDK level. By doing this you can serve users with personalized content or send them to specific activities within the app, which can greatly enhance their engagement with your app. For [Android](https://support.appsflyer.com/hc/en-us/articles/207032126-AppsFlyer-SDK-Integration-Android#7-get-conversion-data); for [iOS](https://support.appsflyer.com/hc/en-us/articles/207032066-AppsFlyer-SDK-Integration-iOS#7-get-conversion-data)  |
 | `onConversionDataFailure`  |`function`| | |
 
@@ -56,6 +60,9 @@ initializes the SDK.
 ```
 
 ---
+
+##### <a id="startSdk">  **`appsFlyer.startSdk(): void`**
+`startSDK()` In version 6.13.0 of the appslfyer-nativescript-plugin SDK we added the option of splitting between the initialization stage and start stage. All you need to do is add the property manualStart: true to the init object, and later call appsFlyer.startSdk() whenever you decide. If this property is set to false or doesn’t exist, the sdk will start after calling appsFlyer.initSdk(...).
 
 
 ##### <a id="logEvent"> **`appsFlyer.logEvent(options): Promise<any>`**
@@ -213,6 +220,100 @@ appsFlyer.generateInviteUrl(
 );
 ```
 
+
+---
+
+**<a id="enableTCFDataCollection"> `enableTCFDataCollection(bool shouldCollect)`**
+
+The `enableTCFDataCollection` method is employed to control the automatic collection of the Transparency and Consent Framework (TCF) data. By setting this flag to `true`, the system is instructed to automatically collect TCF data. Conversely, setting it to `false` prevents such data collection.
+
+_Example:_
+```javascript
+appsFlyer.enableTCFDataCollection(true);
+```
+---
+
+**<a id="setConsentData"> `setConsentData(Map<String, Object> consentData)`**
+
+The `AppsflyerConsentArgs` interface helps manage user consent settings. By using the setConsentData we able to manually collect the TCF data.
+
+```javascript
+//For GDPR:
+appsFlyer.setConsentData({
+      isUserSubjectToGDPR: true,
+      hasConsentForAdsPersonalization: true, //optional setted to false if not defined
+      hasConsentForDataUsage: true, //optional setted to false if not defined
+    });
+
+//For Non-GDPR:
+appsFlyer.setConsentData({
+      isUserSubjectToGDPR: false,
+    });
+```
+
+The `appsFlyer` handles consent data with `setConsentData` method, where you can pass the desired `AppsflyerConsent` instance.
+
+---
+
+To reflect TCF data in the conversion (first launch) payload, it's crucial to configure `enableTCFDataCollection` **or** `setConsentData` between the SDK initialization and start phase. Follow the example provided:
+
+```javascript
+// Set AppsFlyerOption - make sure to set manualStart to true
+let options = {
+      devKey: "WdpTVAcYwmxsaQ4WeTspmh",
+      appId: "975313579",
+      isDebug: true,
+      manualStart: true,
+      timeToWaitForATTUserAuthorization: 10,
+      onConversionDataSuccess: function (_res) {
+        console.log("Get conversion data success: " + JSON.stringify(_res));
+        _this.set("gcdResponse", JSON.stringify(_res));
+      },
+      onConversionDataFail: function (_res) {
+        console.log("Get conversion data failure: " + JSON.stringify(_res));
+        _this.set("gcdResponse", JSON.stringify(_res));
+      },
+      onAppOpenAttribution: function (_res) {
+        console.log("onAppOpenAttribution: " + JSON.stringify(_res));
+        _this.set("gcdResponse", "onAppOpenAttribution: " + JSON.stringify(_res));
+
+      },
+      onAppOpenAttributionFailure: function (_res) {
+        console.log("onAppOpenAttributionFailure: " + JSON.stringify(_res));
+      },
+      onDeepLinking: function (_res) {
+        if (_res) {
+          console.log("onDeepLinking: " + JSON.parse(_res).deepLink);
+          _this.set("gcdResponse", "onDeepLinking: " + JSON.parse(_res).deepLink);
+        }
+      },
+    };
+
+appsFlyer.initSdk(options)
+
+// Set configurations to the SDK
+// Enable TCF Data Collection
+appsFlyer.enableTCFDataCollection(true);
+  
+// Set Consent Data
+// If user is subject to GDPR
+  appsFlyer.setConsentData({
+      isUserSubjectToGDPR: true,
+      hasConsentForAdsPersonalization: true,
+      hasConsentForDataUsage: true,
+    });
+
+// If user is not subject to GDPR
+//  appsFlyer.setConsentData({
+//      isUserSubjectToGDPR: false,
+//    });
+
+// Here we start a session
+appsFlyer.startSDK(); 
+```
+
+Following this sequence ensures that the consent configurations take effect before the AppsFlyer SDK starts, providing accurate consent data in the first launch payload.
+Note: You need to use either `enableTCFDataCollection` or `setConsentData` if you use both of them our backend will prioritize the provided consent data from `setConsentData`.
 
 ---
 

@@ -1,6 +1,76 @@
 ﻿@import '@nativescript/theme/css/core.css';
 @import '@nativescript/theme/css/default.css';
 
-Button.-primary {
+/* Page styles */
+
+.page {
+  background-color: #f9f9f9;
+}
+
+/* Container styles */
+.container {
+  padding: 8; 
+  vertical-align: middle;
+  margin: 8;
+}
+
+/* ActionBar styles */
+.action-bar {
+  background-color: #3949AB;
+  color: #FFFFFF;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.action-bar-title {
+  color: #FFFFFF;
+  font-weight: 300;
+}
+
+/* Section styles */
+.section {
+  border-width: 1;
+  border-color: #ccc;
+  border-radius: 15;
+  overflow: hidden;
+  margin-bottom: 20;
+  background-color: #ffffff;
+}
+
+.section-title {
+  background-color: #5C6BC0;
+  color: #ffffff;
+  padding: 15;
+  font-size: 20;
+  border-top-left-radius: 15;
+  border-top-right-radius: 15;
+  font-weight: bold;
+  text-align: center;
+}
+
+.section-content {
+  padding: 20;
+  font-size: 16;
+  color: #555;
+}
+
+/* Button styles */
+.button {
+  background-color: #7E57C2;
+  color: #ffffff;
+  font-weight: bold;
   font-size: 18;
+  border-radius: 15;
+  margin-top: 20;
+  margin-bottom: 8; /* Add space between buttons if they are stacked */
+}
+
+/* Buttons container */
+.buttons-container {
+  padding: 8;
+  width: 100%;
+}
+
+/* Ensure last button does not have margin at the bottom */
+.button:last-child {
+  margin-bottom: 0;
 }

@@ -247,6 +247,21 @@ declare module com {
 	}
 }
 
+declare module com {
+    export module appsflyer {
+        export class AppsFlyerConsent {
+
+            public isUserSubjectToGDPR: boolean;
+            public hasConsentForDataUsage: boolean | null; 
+            public hasConsentForAdsPersonalization: boolean | null; 
+
+            public static forGDPRUser(hasConsentForDataUsage: boolean, hasConsentForAdsPersonalization: boolean): com.appsflyer.AppsFlyerConsent;
+
+            public static forNonGDPRUser(): com.appsflyer.AppsFlyerConsent;
+        }
+    }
+}
+
 import javautilHashMap = java.util.HashMap;
 import androidappActivity = android.app.Activity;
 import androidappApplication = android.app.Application;
@@ -276,6 +291,8 @@ declare module com {
 			public static PRE_INSTALL_SYSTEM_DEFAULT: string;
 			public static PRE_INSTALL_SYSTEM_DEFAULT_ETC: string;
 			public static AF_PRE_INSTALL_PATH: string;
+			public setConsentData(consent: AppsFlyerConsent): void;
+			public enableTCFDataCollection(shouldCollect: bool): void;
 			public stop(isStopped: bool, context: androidcontentContext): void;
 			public setPluginInfo(pluginInfo: PluginInfo): void;
 			public subscribeForDeepLink(deepLinkListener: DeepLinkListener): void;
