@@ -3,6 +3,7 @@ export interface InitSDKOptions {
     appId?: string;
     isDebug?: boolean;
     timeToWaitForATTUserAuthorization?: NSTimeInterval;  
+    manualStart?: boolean; //If true need to call startSdk , otherwise the SDK will start when initSdk is invoked.
     onConversionDataSuccess?: (obj: ConversionData) => void;
     onConversionDataFail?: (err: string) => void;
     onAppOpenAttribution?: (obj: Object) => void;
@@ -23,7 +24,16 @@ export interface AppsFlyerLinkGeneratorArgs {
     onError?: (err: string) => void;
 }
 
+//Interface for AppsFlyerConsent parameters
+export interface AppsFlyerConsentArgs{
+  isUserSubjectToGDPR: boolean 
+  hasConsentForDataUsage?: boolean 
+  hasConsentForAdsPersonalization?: boolean 
+}
+
 export function initSdk(options: InitSDKOptions): Promise<{status} | any>;
+
+export function startSdk(): void;
 
 export function logEvent(options: LogEventOptions): Promise<{status} | any>;
 
@@ -34,6 +44,12 @@ export function setSharingFilterForAllPartners(): Promise<{status} | any>;
 export function setCustomerUserId (userId: string): Promise<{status} | any>;
 
 export function setAppInviteOneLink (link: string): void;
+
+export function enableTCFDataCollection(shouldCollect: boolean): void;
+
+export function getAppsFlyerUID(): string;
+
+export function setConsentData(consent: AppsFlyerConsentArgs) : void;
 
 export function stop (isStopped: bool): void;
 

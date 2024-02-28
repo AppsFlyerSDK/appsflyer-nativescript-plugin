@@ -1,35 +1,54 @@
-<!--
-The markup in NativeScript apps contains a series of user interface components, each
-of which NativeScript renders with a platform-specific iOS or Android native control.
-You can find a full list of user interface components you can use in your app at
-https://docs.nativescript.org/ui/components.
--->
-<Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="navigatingTo">
-    <StackLayout orientation="vertical" backgroundColor="lightgray">
-            <FlexboxLayout flexDirection="column" height="60">
-                <Label text="NativeScript Test App!" textAlignment="center" fontSize="28px"/>
-            </FlexboxLayout>
-            <FlexboxLayout flexDirection="column">
-                <Label text="AppsFlyer SDK initalization response"  backgroundColor="green" textAlignment="center"/>
-                <TextView editable="false">
-                    <FormattedString>
-                        <span text="{{ initSdkResponse }}" />
-                    </FormattedString>
-                </TextView>
-                <Label text="Conversion Data"  backgroundColor="green" textAlignment="center"/>
-                <TextView editable="false">
-                    <FormattedString>
-                        <span text="{{ gcdResponse }}" />
-                    </FormattedString>
-                </TextView>
-                <Label text="In-App event"  backgroundColor="green" textAlignment="center"/>
-                <TextView editable="false">
-                    <FormattedString>
-                        <span
-                            text="{{ logEventResponse }}" />
-                    </FormattedString>
-                </TextView>
-                <Button cssClass="sdk-button" textWrap="false" text="logEvent" tap="{{logEvent}}"/>
-            </FlexboxLayout>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="navigatingTo" class="page">
+    <ActionBar title="NativeScript App" class="action-bar"/>
+    <GridLayout rows="*, auto" class="page-content">
+        
+        <!-- ScrollView for the content -->
+        <ScrollView row="0">
+            <StackLayout class="container">
+                <!-- Section for SDK Initialization Response -->
+                <GridLayout rows="auto, *" class="section" borderRadius="15">
+                    <Label text="AppsFlyer SDK Initialization" row="0" class="section-title"/>
+                    <ScrollView row="1">
+                        <TextView editable="false">
+                            <FormattedString>
+                                <span text="{{ initSdkResponse }}" class="section-content"/>
+                            </FormattedString>
+                        </TextView>
+                    </ScrollView>
+                </GridLayout>
+
+                <!-- Section for Conversion Data Response -->
+                <GridLayout rows="auto, *" class="section" borderRadius="15">
+                    <Label text="Conversion Data" row="0" class="section-title"/>
+                    <ScrollView row="1">
+                        <TextView editable="false">
+                            <FormattedString>
+                                <span text="{{ gcdResponse }}" class="section-content"/>
+                            </FormattedString>
+                        </TextView>
+                    </ScrollView>
+                </GridLayout>
+
+                <!-- Section for Log Event Response -->
+                <GridLayout rows="auto, *" class="section" borderRadius="15">
+                    <Label text="In-App Event" row="0" class="section-title"/>
+                    <ScrollView row="1">
+                        <TextView editable="false">
+                            <FormattedString>
+                                <span text="{{ logEventResponse }}" class="section-content"/>
+                            </FormattedString>
+                        </TextView>
+                    </ScrollView>
+                </GridLayout>
+            </StackLayout>
+        </ScrollView>
+
+        <!-- Buttons container -->
+        <StackLayout row="1" class="buttons-container">
+            <!-- Log Event Button -->
+            <Button text="Log Event" tap="{{ logEvent }}" class="button"/>
+            <!-- Start SDK Button -->
+            <Button text="Start SDK" tap="{{ startSdk }}" class="button"/>
         </StackLayout>
+    </GridLayout>
 </Page>
