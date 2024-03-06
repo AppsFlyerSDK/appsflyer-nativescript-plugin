@@ -21,7 +21,7 @@
 
 ## <a id="this-plugin-is-built-for"> This plugin is built for
 
-- iOS AppsFlyerSDK **v6.13.0**
+- iOS AppsFlyerSDK **v6.13.1**
 - Android AppsFlyerSDK **v6.13.0**
 
 ## <a id="breaking-changes"> Breaking Changes

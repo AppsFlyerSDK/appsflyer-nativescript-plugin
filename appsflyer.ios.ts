@@ -65,7 +65,7 @@ const initSdk = function (args: InitSDKOptions) {
 
         AppsFlyerLib.shared().setPluginInfoWithPluginVersionAdditionalParams(
           AFSDKPlugin.AFSDKPluginNativeScript,
-          "6.13.0",
+          "6.13.1",
           null
         );
         
