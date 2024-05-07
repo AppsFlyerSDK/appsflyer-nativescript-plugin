@@ -14,5 +14,5 @@ def safeExtGet(prop, fallback) {
 }
 dependencies {
   implementation "com.android.installreferrer:installreferrer:${safeExtGet('installreferrer', '2.2')}"
-  implementation "com.appsflyer:af-android-sdk:${safeExtGet('appsflyerVersion', "6.13.0")}"
+  implementation "com.appsflyer:af-android-sdk:${safeExtGet('appsflyerVersion', "6.14.0")}"
 }

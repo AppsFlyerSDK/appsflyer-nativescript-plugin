@@ -21,10 +21,14 @@
 
 ## <a id="this-plugin-is-built-for"> This plugin is built for
 
-- iOS AppsFlyerSDK **v6.13.1**
-- Android AppsFlyerSDK **v6.13.0**
+- iOS AppsFlyerSDK **v6.14.3**
+- Android AppsFlyerSDK **v6.14.0**
 
 ## <a id="breaking-changes"> Breaking Changes
+
+**v6.14.3**
+
+iOS Minimum deployment target: 12 , Android minSdk: 19 
 
 **v6.5.4**
 
@@ -34,7 +38,8 @@ Android: deepLinkResult will return an object instead of a string
 
 `$ tns plugin add nativescript-plugin-appsflyer`
 
-
+### Huawei Referrer (Android)
+Huawei Referrer is supported in SDK v6.14.0 and above. Due to changes in the Huawei AppGallery store, previous versions of the AppsFlyer SDK are not able to fetch the referrer from the store. Learn more.
 
 ## <a id="Integration">  Integration
 
