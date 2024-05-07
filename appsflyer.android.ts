@@ -141,7 +141,7 @@ const initSdk = function (args: InitSDKOptions) {
         const platform_extension = com.appsflyer.internal.platform_extension;
         const pluginInfoClass = new platform_extension.PluginInfo(
           platform_extension.Plugin.NATIVE_SCRIPT,
-          "6.13.1",
+          "6.14.3",
           new java.util.HashMap()
         );
         appsFlyerLibInstance.setPluginInfo(pluginInfoClass);
