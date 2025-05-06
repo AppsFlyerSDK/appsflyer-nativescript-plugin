@@ -79,4 +79,8 @@ export interface ConversionData {
   campaign_id;
   adset;
   adset_id;
+  is_first_launch;
+  adgroup_id;
+  http_referrer;
+  retargeting_conversion_type;
 }
