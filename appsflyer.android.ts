@@ -247,6 +247,7 @@ const logEvent = function (args: LogEventOptions) {
         _toValue(args.eventValues),
         _appsFlyerRequestListener
       );
+      resolve({ status: "success" });
     } catch (ex) {
       printLogs("Error: " + ex);
       reject(ex);
